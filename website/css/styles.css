@@ -1050,3 +1050,5 @@ p { margin: 0 0 1.1em; }
 .contact-grid .map-frame { display: flex; flex-direction: column; }
 
 .contact-grid .map-frame iframe { flex: 1; height: auto; min-height: 430px; }
+
+.footer-logo { height: 62px; }
