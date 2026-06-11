@@ -31,6 +31,9 @@
     { id: "keittio-01", cat: "keittio", caption: "Keittiön työtilat" },
     { id: "keittio-02", cat: "keittio", caption: "Keittiö" },
     { id: "keittio-03", cat: "keittio", caption: "Uunit ja liedet" },
+    { id: "wc-01", cat: "wc", caption: "WC ja Coca-Cola-kyltti" },
+    { id: "wc-02", cat: "wc", caption: "Kultakehyksinen peili" },
+    { id: "wc-03", cat: "wc", caption: "WC-tilojen aula" },
     { id: "piha-01", cat: "piha", caption: "Rentun Ruusu kesäpäivänä" },
     { id: "piha-02", cat: "piha", caption: "Talo Kauppakujalta" },
     { id: "piha-03", cat: "piha", caption: "Punainen puutalo" },
@@ -43,6 +46,7 @@
     kahvila: "Kahvila",
     aula: "Aula",
     keittio: "Keittiö",
+    wc: "WC-tilat",
     piha: "Piha"
   };
 
