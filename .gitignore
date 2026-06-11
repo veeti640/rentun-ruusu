@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Suuret videotallenteet (eivät kuulu repoon)
+*.mov

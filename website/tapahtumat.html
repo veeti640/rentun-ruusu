@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tapahtumat · Rentun Ruusu · Turenki</title>
+  <meta name="description" content="Rentun Ruusun tulevat tanssi-illat, konsertit ja juhlat Turengissa. Katso kalenteri ja tule mukaan!">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Rentun <span class="amp">✦</span> Ruusu</span>
+        <span class="brand-town">Turenki</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Valikko ☰</button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html">Etusivu</a>
+        <a href="tapahtumat.html" class="active">Tapahtumat</a>
+        <a href="galleria.html">Galleria</a>
+        <a href="yhteystiedot.html">Yhteystiedot</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="rose-blot" style="top:-14rem; left:-12rem;"></div>
+      <div class="wrap" style="position:relative;">
+        <p class="eyebrow">kalenteri</p>
+        <h1>Tapahtumat</h1>
+        <p class="lead">Tanssi-iltoja, iskelmää ja juhlaa — tässä talossa on aina jotain tulossa.
+          Liput yleensä ovelta, kahvila palvelee tapahtumien yhteydessä.</p>
+      </div>
+    </section>
+
+    <!-- TULEVAT -->
+    <section class="section on-light">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">tulossa seuraavaksi</p>
+          <h2 class="on-light">Tulevat <em>tapahtumat</em></h2>
+        </div>
+        <div class="event-list" id="upcoming-events"></div>
+      </div>
+    </section>
+
+    <!-- MENNEET -->
+    <section class="section on-dark" id="past-section">
+      <div class="rose-blot" style="bottom:-14rem; right:-12rem;"></div>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">arkisto</p>
+          <h2>Menneet <em>juhlat</em></h2>
+          <p>Pieni kurkistus siihen, mitä talossa on jo ehditty juhlia.</p>
+        </div>
+        <div class="past-events" id="past-events"></div>
+      </div>
+    </section>
+
+    <!-- OMA TAPAHTUMA -->
+    <section class="cta-band">
+      <div class="wrap">
+        <p class="eyebrow" style="justify-content:center;">oma tapahtuma?</p>
+        <h2>Järjestä omat juhlasi <em>Rentun Ruusussa</em></h2>
+        <p class="lead">Sali, näyttämö, kahvila ja keittiö ovat vuokrattavissa myös omiin
+          tapahtumiin — konsertteihin, teemailtoihin ja yksityisjuhliin.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="yhteystiedot.html">Kysy vapaita päiviä</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">Rentun <span class="amp">✦</span> Ruusu</span>
+        <p>Tunnelmallinen juhla- ja tapahtumatalo Turengin sydämessä.
+          Juhlat kuin ennen vanhaan — vuodesta toiseen.</p>
+      </div>
+      <div>
+        <p class="footer-head">sivut</p>
+        <ul>
+          <li><a href="index.html">Etusivu</a></li>
+          <li><a href="tapahtumat.html">Tapahtumat</a></li>
+          <li><a href="galleria.html">Galleria</a></li>
+          <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-head">löydät meidät</p>
+        <ul>
+          <li>Kauppakuja 16, 14200 Turenki</li>
+          <li><a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">Instagram @rentunruusu</a></li>
+          <li><a href="https://rentunruusu.vip">rentunruusu.vip</a></li>
+        </ul>
+      </div>
+    </div>
+    <img class="footer-house" src="assets/img/banner-talo.png" alt="" aria-hidden="true">
+    <div class="footer-bottom">
+      © <span id="footer-year">2026</span> Rentun Ruusu<span class="star">✦</span>Turenki
+    </div>
+  </footer>
+
+  <script src="js/events-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/events.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yhteystiedot · Rentun Ruusu · Turenki</title>
+  <meta name="description" content="Rentun Ruusu, Kauppakuja 16, 14200 Turenki. Ota yhteyttä ja varaa juhlasali, kahvila tai koko talo omiin juhliisi.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Rentun <span class="amp">✦</span> Ruusu</span>
+        <span class="brand-town">Turenki</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Valikko ☰</button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html">Etusivu</a>
+        <a href="tapahtumat.html">Tapahtumat</a>
+        <a href="galleria.html">Galleria</a>
+        <a href="yhteystiedot.html" class="active">Yhteystiedot</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="rose-blot" style="top:-14rem; left:-12rem;"></div>
+      <div class="wrap" style="position:relative;">
+        <p class="eyebrow">ota yhteyttä</p>
+        <h1>Yhteystiedot</h1>
+        <p class="lead">Kysy vapaita päiviä, sovi tilojen esittely tai kerro suoraan,
+          millaiset juhlat sinulla on mielessä.</p>
+      </div>
+    </section>
+
+    <!-- YHTEYSTIEDOT + KARTTA -->
+    <section class="section on-light">
+      <div class="wrap contact-grid">
+        <div class="contact-card reveal">
+          <p class="eyebrow">rentun ruusu</p>
+          <h3>Tervetuloa Kauppakujalle</h3>
+          <div class="contact-rows">
+            <div class="contact-row">
+              <span class="label">käyntiosoite</span>
+              <span class="value">Kauppakuja 16, 14200 Turenki</span>
+            </div>
+            <div class="contact-row">
+              <span class="label">sähköposti</span>
+              <!-- PÄIVITÄ tarvittaessa: vaihda oikea osoite myös alla olevaan lomakkeeseen (js) -->
+              <span class="value"><a href="mailto:info@rentunruusu.vip">info@rentunruusu.vip</a></span>
+            </div>
+            <div class="contact-row">
+              <span class="label">instagram</span>
+              <span class="value"><a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">@rentunruusu</a></span>
+            </div>
+            <div class="contact-row">
+              <span class="label">aukiolo</span>
+              <span class="value">Avoinna tapahtumien ja varausten mukaan — katso <a href="tapahtumat.html">tapahtumakalenteri</a>.</span>
+            </div>
+            <div class="contact-row">
+              <span class="label">saapuminen</span>
+              <span class="value">Talon edessä on omat parkkipaikat. Sisäänkäynti pihan puolelta.</span>
+            </div>
+          </div>
+        </div>
+
+        <figure class="map-frame reveal" style="margin:0;">
+          <iframe
+            src="https://www.google.com/maps?q=Rentun%20Ruusu%2C%20Kauppakuja%2016%2C%2014200%20Turenki&z=16&hl=fi&output=embed"
+            title="Rentun Ruusu kartalla — Kauppakuja 16, Turenki"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <figcaption>kauppakuja 16 · 14200 turenki ✦
+            <a href="https://www.google.com/maps/search/?api=1&query=Rentun%20Ruusu%2C%20Kauppakuja%2016%2C%2014200%20Turenki"
+               target="_blank" rel="noopener">avaa reittiohjeet</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- LOMAKE -->
+    <section class="section on-dark">
+      <div class="rose-blot" style="bottom:-14rem; right:-12rem;"></div>
+      <div class="wrap" style="max-width: 56rem; position: relative;">
+        <div class="section-head center reveal">
+          <p class="eyebrow">varauskysely</p>
+          <h2>Kerro juhlistasi <em>meille</em></h2>
+          <p>Lomake avaa valmiiksi täytetyn sähköpostin omassa sähköpostiohjelmassasi —
+            vastaamme yleensä jo samana päivänä.</p>
+        </div>
+
+        <form class="form-card reveal" id="contact-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="cf-name">nimi</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="cf-email">oma sähköposti</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="cf-date">toivottu päivämäärä</label>
+              <input type="date" id="cf-date" name="date">
+            </div>
+            <div class="field">
+              <label for="cf-type">tilaisuuden luonne</label>
+              <input type="text" id="cf-type" name="type" placeholder="esim. syntymäpäivät, häät, kokous">
+            </div>
+            <div class="field full">
+              <label for="cf-message">viesti</label>
+              <textarea id="cf-message" name="message" required
+                placeholder="Kerro vieras­määrä, toiveet tarjoiluista ja muut ajatukset…"></textarea>
+            </div>
+          </div>
+          <div style="margin-top: 1.6rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+            <button type="submit" class="btn btn-gold">Lähetä viesti</button>
+            <span class="form-note">tai kirjoita suoraan: info@rentunruusu.vip</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">Rentun <span class="amp">✦</span> Ruusu</span>
+        <p>Tunnelmallinen juhla- ja tapahtumatalo Turengin sydämessä.
+          Juhlat kuin ennen vanhaan — vuodesta toiseen.</p>
+      </div>
+      <div>
+        <p class="footer-head">sivut</p>
+        <ul>
+          <li><a href="index.html">Etusivu</a></li>
+          <li><a href="tapahtumat.html">Tapahtumat</a></li>
+          <li><a href="galleria.html">Galleria</a></li>
+          <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-head">löydät meidät</p>
+        <ul>
+          <li>Kauppakuja 16, 14200 Turenki</li>
+          <li><a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">Instagram @rentunruusu</a></li>
+          <li><a href="https://rentunruusu.vip">rentunruusu.vip</a></li>
+        </ul>
+      </div>
+    </div>
+    <img class="footer-house" src="assets/img/banner-talo.png" alt="" aria-hidden="true">
+    <div class="footer-bottom">
+      © <span id="footer-year">2026</span> Rentun Ruusu<span class="star">✦</span>Turenki
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* Varauskysely: koostaa sähköpostin ja avaa sen käyttäjän omassa
+       sähköpostiohjelmassa (toimii ilman palvelinta). */
+    (function () {
+      var EMAIL = "info@rentunruusu.vip"; /* PÄIVITÄ tarvittaessa */
+      var form = document.getElementById("contact-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("cf-name").value.trim();
+        var email = document.getElementById("cf-email").value.trim();
+        var date = document.getElementById("cf-date").value;
+        var type = document.getElementById("cf-type").value.trim();
+        var msg = document.getElementById("cf-message").value.trim();
+
+        var subject = "Varauskysely" + (type ? ": " + type : "") + (date ? " (" + date + ")" : "");
+        var body = "Hei,\n\n" + msg + "\n\n" +
+          (date ? "Toivottu päivämäärä: " + date + "\n" : "") +
+          (type ? "Tilaisuus: " + type + "\n" : "") +
+          "\nTerveisin\n" + name + "\n" + email;
+
+        window.location.href = "mailto:" + EMAIL +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+      });
+    })();
+  </script>
+</body>
+</html>
