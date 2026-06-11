@@ -978,3 +978,75 @@ p { margin: 0 0 1.1em; }
 @media (prefers-reduced-motion: reduce) {
   .hero-inner > * { animation: none; }
 }
+
+/* ---------- UKK / FAQ ---------- */
+
+.faq-list {
+  max-width: 50rem;
+  margin-inline: auto;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.faq-item {
+  background: #fdfbf6;
+  background-image: var(--rr-grain);
+  border: 1px solid rgba(192, 138, 87, 0.45);
+  outline: 1px solid rgba(192, 138, 87, 0.18);
+  outline-offset: 3px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.15rem 1.5rem;
+  font-family: var(--rr-font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  color: var(--rr-navy);
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: "✦";
+  flex: none;
+  font-size: 0.85rem;
+  color: var(--rr-rose);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(135deg);
+  color: var(--rr-brass);
+}
+
+.faq-item .faq-body {
+  padding: 0 1.5rem 1.25rem;
+  color: rgba(34, 43, 60, 0.85);
+}
+
+.faq-item .faq-body p { margin: 0; }
+
+/* ---------- Lomakkeen tila & kartan vierusasettelu ---------- */
+
+.form-card .eyebrow { color: var(--rr-gold); }
+
+.form-card h3 { color: var(--rr-gold); }
+
+.form-status {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  min-height: 1.3em;
+}
+
+.form-status.ok { color: var(--rr-gold); }
+.form-status.err { color: #e8a3a0; }
+
+.contact-grid .map-frame { display: flex; flex-direction: column; }
+
+.contact-grid .map-frame iframe { flex: 1; height: auto; min-height: 430px; }

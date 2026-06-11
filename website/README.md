@@ -20,10 +20,16 @@ repon juuren `vercel.json`-tiedostossa.
 2. Lisää rivi `js/gallery.js`-tiedoston `PHOTOS`-listaan
    (`id`, kategoria ja kuvateksti).
 
+## Yhteydenottolomake
+
+Lomake (`yhteystiedot.html`) lähettää viestit **FormSubmit**-palvelun kautta
+osoitteeseen `rentunruusu16@gmail.com`. Ensimmäisen lähetyksen jälkeen
+FormSubmit lähettää tuohon osoitteeseen **vahvistussähköpostin** — klikkaa
+siinä olevaa Activate-linkkiä kerran, minkä jälkeen viestit tulevat perille.
+
 ## Tarkista ennen julkaisua
 
-- [ ] Sähköpostiosoite (`yhteystiedot.html` — kahdessa kohdassa, merkitty
-      kommentilla `PÄIVITÄ`). Nyt: `info@rentunruusu.vip`.
+- [ ] FormSubmit-vahvistus klikattu (ks. yllä).
 - [ ] Osoite: sivustolla **Kauppakuja 16, 14200 Turenki** (talon kyltin
       mukaan). Korjaa, jos virallinen osoite on eri.
 

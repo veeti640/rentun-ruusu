@@ -41,36 +41,36 @@
       </div>
     </section>
 
-    <!-- YHTEYSTIEDOT + KARTTA -->
+    <!-- LOMAKE + KARTTA -->
     <section class="section on-light">
       <div class="wrap contact-grid">
-        <div class="contact-card reveal">
-          <p class="eyebrow">rentun ruusu</p>
-          <h3>Tervetuloa Kauppakujalle</h3>
-          <div class="contact-rows">
-            <div class="contact-row">
-              <span class="label">käyntiosoite</span>
-              <span class="value">Kauppakuja 16, 14200 Turenki</span>
+        <form class="form-card reveal" id="contact-form" novalidate>
+          <p class="eyebrow">kirjoita meille</p>
+          <h3>Lähetä viesti</h3>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="cf-name">nimi</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name">
             </div>
-            <div class="contact-row">
-              <span class="label">sähköposti</span>
-              <!-- PÄIVITÄ tarvittaessa: vaihda oikea osoite myös alla olevaan lomakkeeseen (js) -->
-              <span class="value"><a href="mailto:info@rentunruusu.vip">info@rentunruusu.vip</a></span>
+            <div class="field full">
+              <label for="cf-email">oma sähköposti</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email">
             </div>
-            <div class="contact-row">
-              <span class="label">instagram</span>
-              <span class="value"><a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">@rentunruusu</a></span>
-            </div>
-            <div class="contact-row">
-              <span class="label">aukiolo</span>
-              <span class="value">Avoinna tapahtumien ja varausten mukaan — ajankohtaiset kuulumiset Instagramissa <a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">@rentunruusu</a>.</span>
-            </div>
-            <div class="contact-row">
-              <span class="label">saapuminen</span>
-              <span class="value">Talon edessä on omat parkkipaikat. Sisäänkäynti pihan puolelta.</span>
+            <div class="field full">
+              <label for="cf-message">viesti</label>
+              <textarea id="cf-message" name="message" required
+                placeholder="Kerro toivottu päivä, vierasmäärä ja muut ajatukset…"></textarea>
             </div>
           </div>
-        </div>
+          <!-- hunajapurkki roskapostiboteille -->
+          <input type="text" name="_honey" id="cf-honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div style="margin-top: 1.5rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+            <button type="submit" class="btn btn-gold" id="cf-submit">Lähetä</button>
+            <span class="form-note">tai kirjoita suoraan:
+              <a href="mailto:rentunruusu16@gmail.com" style="color: var(--rr-gold);">rentunruusu16@gmail.com</a></span>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
 
         <figure class="map-frame reveal" style="margin:0;">
           <iframe
@@ -87,46 +87,38 @@
       </div>
     </section>
 
-    <!-- LOMAKE -->
+    <!-- YHTEYSTIEDOT -->
     <section class="section on-dark">
       <div class="rose-blot" style="bottom:-14rem; right:-12rem;"></div>
       <div class="wrap" style="max-width: 56rem; position: relative;">
         <div class="section-head center reveal">
-          <p class="eyebrow">varauskysely</p>
-          <h2>Kerro juhlistasi <em>meille</em></h2>
-          <p>Lomake avaa valmiiksi täytetyn sähköpostin omassa sähköpostiohjelmassasi —
-            vastaamme yleensä jo samana päivänä.</p>
+          <p class="eyebrow">rentun ruusu</p>
+          <h2>Löydät meidät <em>Kauppakujalta</em></h2>
         </div>
-
-        <form class="form-card reveal" id="contact-form">
-          <div class="form-grid">
-            <div class="field">
-              <label for="cf-name">nimi</label>
-              <input type="text" id="cf-name" name="name" required autocomplete="name">
+        <div class="contact-card reveal">
+          <div class="contact-rows" style="margin-top: 0;">
+            <div class="contact-row">
+              <span class="label">käyntiosoite</span>
+              <span class="value">Kauppakuja 16, 14200 Turenki</span>
             </div>
-            <div class="field">
-              <label for="cf-email">oma sähköposti</label>
-              <input type="email" id="cf-email" name="email" required autocomplete="email">
+            <div class="contact-row">
+              <span class="label">sähköposti</span>
+              <span class="value"><a href="mailto:rentunruusu16@gmail.com">rentunruusu16@gmail.com</a></span>
             </div>
-            <div class="field">
-              <label for="cf-date">toivottu päivämäärä</label>
-              <input type="date" id="cf-date" name="date">
+            <div class="contact-row">
+              <span class="label">instagram</span>
+              <span class="value"><a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">@rentunruusu</a></span>
             </div>
-            <div class="field">
-              <label for="cf-type">tilaisuuden luonne</label>
-              <input type="text" id="cf-type" name="type" placeholder="esim. syntymäpäivät, häät, kokous">
+            <div class="contact-row">
+              <span class="label">aukiolo</span>
+              <span class="value">Avoinna tapahtumien ja varausten mukaan — ajankohtaiset kuulumiset Instagramissa <a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">@rentunruusu</a>.</span>
             </div>
-            <div class="field full">
-              <label for="cf-message">viesti</label>
-              <textarea id="cf-message" name="message" required
-                placeholder="Kerro vieras­määrä, toiveet tarjoiluista ja muut ajatukset…"></textarea>
+            <div class="contact-row">
+              <span class="label">saapuminen</span>
+              <span class="value">Talon edessä on omat parkkipaikat. Sisäänkäynti pihan puolelta.</span>
             </div>
           </div>
-          <div style="margin-top: 1.6rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
-            <button type="submit" class="btn btn-gold">Lähetä viesti</button>
-            <span class="form-note">tai kirjoita suoraan: info@rentunruusu.vip</span>
-          </div>
-        </form>
+        </div>
       </div>
     </section>
 
@@ -164,28 +156,63 @@
 
   <script src="js/main.js"></script>
   <script>
-    /* Varauskysely: koostaa sähköpostin ja avaa sen käyttäjän omassa
-       sähköpostiohjelmassa (toimii ilman palvelinta). */
+    /* Yhteydenottolomake: lähettää viestin FormSubmit-palvelun kautta
+       osoitteeseen rentunruusu16@gmail.com (toimii ilman omaa palvelinta).
+       HUOM: ensimmäinen lähetys laukaisee FormSubmitin vahvistussähköpostin
+       tuohon osoitteeseen — vahvista linkistä kerran, sen jälkeen viestit
+       tulevat suoraan perille. */
     (function () {
-      var EMAIL = "info@rentunruusu.vip"; /* PÄIVITÄ tarvittaessa */
+      var ENDPOINT = "https://formsubmit.co/ajax/rentunruusu16@gmail.com";
       var form = document.getElementById("contact-form");
+      var status = document.getElementById("form-status");
+      var submit = document.getElementById("cf-submit");
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
+
         var name = document.getElementById("cf-name").value.trim();
         var email = document.getElementById("cf-email").value.trim();
-        var date = document.getElementById("cf-date").value;
-        var type = document.getElementById("cf-type").value.trim();
         var msg = document.getElementById("cf-message").value.trim();
 
-        var subject = "Varauskysely" + (type ? ": " + type : "") + (date ? " (" + date + ")" : "");
-        var body = "Hei,\n\n" + msg + "\n\n" +
-          (date ? "Toivottu päivämäärä: " + date + "\n" : "") +
-          (type ? "Tilaisuus: " + type + "\n" : "") +
-          "\nTerveisin\n" + name + "\n" + email;
+        if (!name || !email || !msg || !/.+@.+\..+/.test(email)) {
+          status.className = "form-status err";
+          status.textContent = "Täytä kaikki kentät ja tarkista sähköpostiosoite.";
+          return;
+        }
 
-        window.location.href = "mailto:" + EMAIL +
-          "?subject=" + encodeURIComponent(subject) +
-          "&body=" + encodeURIComponent(body);
+        submit.disabled = true;
+        status.className = "form-status";
+        status.textContent = "Lähetetään…";
+
+        fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: msg,
+            _subject: "Yhteydenotto verkkosivuilta: " + name,
+            _template: "table",
+            _captcha: "false",
+            _honey: document.getElementById("cf-honey").value
+          })
+        })
+          .then(function (r) {
+            if (!r.ok) throw new Error("http " + r.status);
+            return r.json();
+          })
+          .then(function () {
+            status.className = "form-status ok";
+            status.textContent = "Kiitos viestistäsi! Palaamme asiaan pian.";
+            form.reset();
+          })
+          .catch(function () {
+            status.className = "form-status err";
+            status.textContent = "Lähetys ei onnistunut. Kokeile hetken päästä uudelleen tai kirjoita suoraan: rentunruusu16@gmail.com";
+          })
+          .finally(function () {
+            submit.disabled = false;
+          });
       });
     })();
   </script>
