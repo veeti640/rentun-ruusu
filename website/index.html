@@ -17,13 +17,12 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="index.html">
-        <span class="brand-name">Rentun <span class="amp">✦</span> Ruusu</span>
+        <img class="brand-logo" src="assets/img/logo.png" alt="Rentun Ruusu">
         <span class="brand-town">Turenki</span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Valikko ☰</button>
       <nav class="site-nav" id="site-nav">
         <a href="index.html" class="active">Etusivu</a>
-        <a href="tapahtumat.html">Tapahtumat</a>
         <a href="galleria.html">Galleria</a>
         <a href="yhteystiedot.html">Yhteystiedot</a>
       </nav>
@@ -43,8 +42,8 @@
         <p class="lead">Punainen puutalo Kauppakujalla, jossa vanha piano soi, kaakeliuuni lämmittää
           ja pitkät pöydät katetaan pitsiliinoin. Häihin, syntymäpäiviin, tansseihin ja muistotilaisuuksiin.</p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="tapahtumat.html">Katso tapahtumat</a>
-          <a class="btn btn-ghost" href="yhteystiedot.html">Varaa omat juhlasi</a>
+          <a class="btn btn-gold" href="yhteystiedot.html">Varaa omat juhlasi</a>
+          <a class="btn btn-ghost" href="galleria.html">Tutustu tiloihin</a>
         </div>
       </div>
       <a class="hero-scroll" href="#tervetuloa">selaa ↓</a>
@@ -101,7 +100,7 @@
         </div>
         <div class="room-grid">
           <a class="room-card reveal" href="galleria.html">
-            <img src="assets/img/koti-lava.jpg" alt="Juhlasalin näyttämö ja samettiverhot" loading="lazy">
+            <img src="assets/img/gallery/sali-02.jpg" alt="Juhlasalin pitkät pöydät ja näyttämö" loading="lazy">
             <div class="room-card-body">
               <h3>Juhlasali</h3>
               <p>Pitkät pöydät, oma näyttämö ja samettiesirippu — tanssit, häät ja suuret juhlat.</p>
@@ -124,20 +123,6 @@
               <span class="room-more">katso kuvat ✦</span>
             </div>
           </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TULEVAT TAPAHTUMAT -->
-    <section class="section on-light alt">
-      <div class="wrap">
-        <div class="section-head center reveal">
-          <p class="eyebrow">kalenterissa seuraavaksi</p>
-          <h2 class="on-light">Tulevat <em>tapahtumat</em></h2>
-        </div>
-        <div class="event-list" id="home-events"></div>
-        <div style="text-align:center; margin-top: 2.4rem;">
-          <a class="btn btn-navy" href="tapahtumat.html">Kaikki tapahtumat</a>
         </div>
       </div>
     </section>
@@ -170,7 +155,6 @@
         <p class="footer-head">sivut</p>
         <ul>
           <li><a href="index.html">Etusivu</a></li>
-          <li><a href="tapahtumat.html">Tapahtumat</a></li>
           <li><a href="galleria.html">Galleria</a></li>
           <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
         </ul>
@@ -190,23 +174,6 @@
     </div>
   </footer>
 
-  <script src="js/events-data.js"></script>
-  <script>
-    /* Etusivun tapahtumanosto: kolme seuraavaa tapahtumaa */
-    document.addEventListener("DOMContentLoaded", function () {
-      var wrap = document.getElementById("home-events");
-      var split = RR.splitEvents(RR_EVENTS);
-      if (split.upcoming.length) {
-        wrap.innerHTML = split.upcoming.slice(0, 3).map(RR.eventTicketHTML).join("");
-      } else {
-        wrap.innerHTML = '<div class="events-empty">Uusia tapahtumia ei ole juuri nyt kalenterissa — ' +
-          'seuraa meitä Instagramissa <strong>@rentunruusu</strong>!</div>';
-      }
-      wrap.querySelectorAll(".reveal").forEach(function (el, i) {
-        setTimeout(function () { el.classList.add("shown"); }, 120 * i + 80);
-      });
-    });
-  </script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

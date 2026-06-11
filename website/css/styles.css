@@ -196,6 +196,16 @@ p { margin: 0 0 1.1em; }
   line-height: 1;
 }
 
+.brand-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .brand-logo { height: 36px; }
+}
+
 .brand-name {
   font-family: var(--rr-font-display);
   font-weight: 600;
@@ -626,174 +636,6 @@ p { margin: 0 0 1.1em; }
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   color: var(--rr-rose);
-}
-
-/* ---------- Tapahtumaliput ---------- */
-
-.event-list {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.event-ticket {
-  position: relative;
-  display: grid;
-  grid-template-columns: 9.5rem 1fr auto;
-  align-items: center;
-  background: #fdfbf6;
-  background-image: var(--rr-grain);
-  border: 1px solid rgba(192, 138, 87, 0.45);
-  box-shadow: 0 14px 34px -18px rgba(26, 34, 48, 0.4);
-}
-
-.event-ticket::before, .event-ticket::after {
-  content: "";
-  position: absolute;
-  width: 1.4rem;
-  height: 1.4rem;
-  border-radius: 50%;
-  background: var(--rr-lace);
-  border: 1px solid rgba(192, 138, 87, 0.45);
-  top: 50%;
-}
-
-.event-ticket::before { left: -0.78rem; transform: translateY(-50%); border-left-color: transparent; }
-.event-ticket::after { right: -0.78rem; transform: translateY(-50%); border-right-color: transparent; }
-
-.on-dark .event-ticket::before, .on-dark .event-ticket::after { background: var(--rr-navy); }
-
-.event-date {
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.1rem;
-  padding: 1.4rem 1rem;
-  border-right: 1px dashed rgba(192, 138, 87, 0.6);
-  color: var(--rr-navy);
-  text-align: center;
-}
-
-.event-date .day {
-  font-family: var(--rr-font-display);
-  font-weight: 600;
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
-.event-date .month {
-  font-family: var(--rr-font-caps);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
-  color: var(--rr-rose-deep);
-}
-
-.event-date .year {
-  font-family: var(--rr-font-caps);
-  font-size: 0.74rem;
-  letter-spacing: 0.18em;
-  color: var(--rr-brass);
-}
-
-.event-info { padding: 1.4rem 1.6rem; min-width: 0; }
-
-.event-info h3 { margin-bottom: 0.3rem; color: var(--rr-night); }
-
-.event-info .event-desc { color: rgba(34, 43, 60, 0.82); font-size: 0.99rem; margin: 0; }
-
-.event-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.4rem;
-  margin-top: 0.7rem;
-  font-family: var(--rr-font-caps);
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  color: var(--rr-rose-deep);
-}
-
-.event-side {
-  padding: 1.4rem 1.6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.6rem;
-}
-
-.event-price {
-  font-family: var(--rr-font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--rr-rose-deep);
-  white-space: nowrap;
-}
-
-.event-poster-link {
-  font-family: var(--rr-font-caps);
-  font-weight: 700;
-  font-size: 0.76rem;
-  letter-spacing: 0.16em;
-  color: var(--rr-brass);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-@media (max-width: 720px) {
-  .event-ticket { grid-template-columns: 1fr; }
-  .event-date {
-    flex-direction: row;
-    gap: 0.6rem;
-    border-right: none;
-    border-bottom: 1px dashed rgba(192, 138, 87, 0.6);
-    padding: 0.9rem 1rem;
-  }
-  .event-side { align-items: flex-start; padding-top: 0; }
-  .event-ticket::before, .event-ticket::after { display: none; }
-}
-
-/* Menneet tapahtumat */
-.past-events {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1.5rem;
-}
-
-.past-card {
-  background: #fdfbf6;
-  padding: 0.65rem 0.65rem 1.1rem;
-  box-shadow: 0 14px 30px -16px rgba(26, 34, 48, 0.4);
-  transform: rotate(-1deg);
-  transition: transform 0.25s ease;
-}
-
-.past-card:nth-child(even) { transform: rotate(1.2deg); }
-.past-card:hover { transform: rotate(0) scale(1.02); }
-
-.past-card img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; }
-
-.past-card figcaption {
-  font-family: var(--rr-font-caps);
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
-  color: var(--rr-rose-deep);
-  text-align: center;
-  margin-top: 0.7rem;
-}
-
-.events-empty {
-  border: 1px dashed rgba(192, 138, 87, 0.6);
-  padding: 2.2rem;
-  text-align: center;
-  font-size: 1.05rem;
-  color: rgba(34, 43, 60, 0.8);
-  background: rgba(253, 251, 246, 0.7);
 }
 
 /* ---------- Galleria ---------- */

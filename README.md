@@ -6,7 +6,7 @@ Juhla- ja tapahtumatalo Rentun Ruusun brändi ja verkkosivusto.
 
 | Polku | Kuvaus |
 |---|---|
-| [`website/`](website/) | Valmis staattinen verkkosivusto (etusivu, tapahtumat, galleria, yhteystiedot) — ks. [website/README.md](website/README.md) |
+| [`website/`](website/) | Valmis staattinen verkkosivusto (etusivu, galleria, yhteystiedot) — ks. [website/README.md](website/README.md) |
 | [`brand-guidelines.md`](brand-guidelines.md) | Brändiohjeisto: värit, typografia, logo, graafiset elementit |
 | `saal/`, `cafe/`, `flur/`, `küche/`, `außen/`, `toilette/` | Alkuperäiset miljöökuvat huoneittain |
 | `events/` | Tapahtumajulisteet ja -materiaalit |
@@ -17,5 +17,3 @@ Juhla- ja tapahtumatalo Rentun Ruusun brändi ja verkkosivusto.
 `website/`-kansio on julkaisuvalmis sellaisenaan: lataa sen sisältö
 webhotellin juureen (esim. rentunruusu.vip). Ei riippuvuuksia, ei
 build-vaihetta.
-
-Tapahtumien päivitys: muokkaa [`website/js/events-data.js`](website/js/events-data.js).
