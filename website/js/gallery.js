@@ -62,7 +62,6 @@
     return (
       '<figure class="gallery-item" data-cat="' + p.cat + '" data-index="' + i + '">' +
         '<img src="assets/img/gallery/' + p.id + '_t.jpg" alt="' + p.caption + '" loading="lazy">' +
-        "<figcaption>" + p.caption + "</figcaption>" +
       "</figure>"
     );
   }).join("");
