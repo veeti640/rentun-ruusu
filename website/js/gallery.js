@@ -32,9 +32,7 @@
     { id: "wc-02", cat: "wc", caption: "Kultakehyksinen peili" },
     { id: "wc-03", cat: "wc", caption: "WC-tilojen aula" },
     { id: "piha-01", cat: "piha", caption: "Rentun Ruusu kesäpäivänä" },
-    { id: "piha-02", cat: "piha", caption: "Talo Kauppakujalta" },
-    { id: "piha-03", cat: "piha", caption: "Punainen puutalo" },
-    { id: "piha-04", cat: "piha", caption: "Kauppakuja 16" }
+    { id: "piha-02", cat: "piha", caption: "Punaisen puutalon ikkuna" }
   ];
 
   var CATS = {
