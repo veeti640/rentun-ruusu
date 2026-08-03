@@ -499,6 +499,7 @@ p { margin: 0 0 1.1em; }
 .section.on-dark {
   background: var(--rr-navy);
   color: var(--rr-ivory);
+  overflow: hidden; /* ruusu-siluetti ei saa venyttää sivua vaakasuunnassa */
 }
 
 .section-head { max-width: 44rem; margin-bottom: 3rem; }
@@ -1052,3 +1053,453 @@ p { margin: 0 0 1.1em; }
 .contact-grid .map-frame iframe { flex: 1; height: auto; min-height: 430px; }
 
 .footer-logo { height: 62px; }
+
+/* =============================================================
+   PÄÄSYLIPPU — avoimet ovet
+   Lippumainen reuna (ks. brand-guidelines.md §5.4): kaksiosainen
+   lippu, katkoviivainen perforaatio ja pyöreät lovet reunoissa.
+   ============================================================= */
+
+.ticket {
+  --tk-notch: 7px;
+  display: inline-flex;
+  align-items: stretch;
+  text-decoration: none;
+  background: var(--rr-gold);
+  color: var(--rr-night-deep);
+  border-radius: 3px;
+  line-height: 1;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+/* Todelliset lovet reunoissa — vain jos selain tukee maskeja */
+@supports ((mask-composite: intersect) or (-webkit-mask-composite: source-in)) {
+  .ticket {
+    -webkit-mask-image:
+      radial-gradient(circle at left center, transparent var(--tk-notch), #000 calc(var(--tk-notch) + 0.5px)),
+      radial-gradient(circle at right center, transparent var(--tk-notch), #000 calc(var(--tk-notch) + 0.5px));
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-image:
+      radial-gradient(circle at left center, transparent var(--tk-notch), #000 calc(var(--tk-notch) + 0.5px)),
+      radial-gradient(circle at right center, transparent var(--tk-notch), #000 calc(var(--tk-notch) + 0.5px));
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+  }
+}
+
+.ticket:hover { background: #f0c69d; transform: translateY(-2px); }
+.ticket:active { transform: translateY(0); }
+
+/* Maski leikkaisi ulkoreunuksen, joten tarkennus piirretään sisään */
+.ticket:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--rr-night-deep);
+}
+
+.ticket-stub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.85rem 0.5rem 1.15rem;
+}
+
+.ticket-day {
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: lowercase;
+  color: rgba(34, 43, 60, 0.68);
+}
+
+.ticket-date {
+  font-family: var(--rr-font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticket-perf {
+  flex: none;
+  width: 0;
+  border-left: 1px dashed rgba(34, 43, 60, 0.45);
+  margin-block: 0.42rem;
+}
+
+.ticket-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.28rem;
+  padding: 0.5rem 1.15rem 0.5rem 0.85rem;
+}
+
+.ticket-label {
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+}
+
+.ticket-time {
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  color: rgba(34, 43, 60, 0.72);
+}
+
+/* Iso lippu — etusivun nosto ja alisivun kutsu */
+.ticket-lg { --tk-notch: 10px; }
+.ticket-lg .ticket-stub { padding: 0.9rem 1.15rem 0.9rem 1.55rem; gap: 0.3rem; }
+.ticket-lg .ticket-date { font-size: 1.4rem; }
+.ticket-lg .ticket-day { font-size: 0.64rem; }
+.ticket-lg .ticket-perf { margin-block: 0.7rem; }
+.ticket-lg .ticket-body { padding: 0.9rem 1.55rem 0.9rem 1.15rem; }
+.ticket-lg .ticket-label { font-size: 0.94rem; letter-spacing: 0.16em; }
+.ticket-lg .ticket-time { font-size: 0.8rem; }
+
+/* Nykyinen sivu: lippu on jo "leimattu" */
+.ticket[aria-current="page"] {
+  background: transparent;
+  color: var(--rr-gold);
+  box-shadow: inset 0 0 0 1px rgba(230, 180, 136, 0.6);
+}
+
+.ticket[aria-current="page"] .ticket-day,
+.ticket[aria-current="page"] .ticket-time { color: rgba(230, 180, 136, 0.75); }
+
+.ticket[aria-current="page"] .ticket-perf { border-left-color: rgba(230, 180, 136, 0.5); }
+
+.ticket[aria-current="page"]:hover { background: rgba(230, 180, 136, 0.12); }
+
+/* ---------- Lippu ylätunnisteessa ---------- */
+
+.site-header .wrap { justify-content: flex-start; }
+.site-header .brand { margin-right: auto; }
+.site-header .site-nav { order: 2; }
+.site-header .header-ticket { order: 3; }
+
+@media (max-width: 780px) {
+  .site-header .wrap { gap: 0.7rem; }
+  .site-header .header-ticket { order: 1; }
+  .site-header .nav-toggle { order: 2; }
+}
+
+@media (max-width: 620px) {
+  .header-ticket .ticket-stub,
+  .header-ticket .ticket-perf,
+  .header-ticket .ticket-time { display: none; }
+  .header-ticket .ticket-body { padding-inline: 1rem; }
+  .nav-toggle-text { display: none; }
+}
+
+@media (max-width: 400px) {
+  .header-ticket .ticket-label { font-size: 0.72rem; letter-spacing: 0.1em; }
+  .header-ticket .ticket-body { padding-inline: 0.8rem; }
+}
+
+/* ---------- Avoimet ovet -nosto etusivulla ---------- */
+
+.openday-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(200px, 0.3fr) 1fr;
+  background: var(--rr-navy);
+  color: var(--rr-ivory);
+  border: 1px solid rgba(230, 180, 136, 0.42);
+  outline: 1px solid rgba(230, 180, 136, 0.16);
+  outline-offset: 5px;
+  box-shadow: var(--rr-shadow);
+  overflow: hidden;
+}
+
+.openday-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.15rem;
+  padding: 2.6rem 1.5rem;
+  border-right: 1px dashed rgba(230, 180, 136, 0.45);
+  background: linear-gradient(165deg, rgba(26, 34, 48, 0.55), rgba(26, 34, 48, 0));
+}
+
+/* Perforaation päätelovet — sävy sama kuin sektion pohja */
+.openday-stub::before,
+.openday-stub::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--rr-lace-dim);
+}
+
+.openday-stub::before { top: 0; transform: translate(50%, -50%); }
+.openday-stub::after { bottom: 0; transform: translate(50%, 50%); }
+
+.openday-dow,
+.openday-free {
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+  color: var(--rr-rose);
+}
+
+.openday-date {
+  font-family: var(--rr-font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(2.8rem, 6vw, 3.7rem);
+  line-height: 1;
+  color: var(--rr-gold);
+  font-variant-numeric: tabular-nums;
+  margin: 0.35rem 0 0.15rem;
+}
+
+.openday-time {
+  font-family: var(--rr-font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--rr-ivory);
+}
+
+.openday-free { margin-top: 0.9rem; color: rgba(233, 226, 212, 0.6); }
+
+.openday-body { padding: 2.6rem 2.6rem 2.8rem; }
+
+.openday-card .eyebrow { color: var(--rr-gold); }
+.section.on-light .openday-card h2 { color: var(--rr-ivory); margin-bottom: 0.55rem; }
+.section.on-light .openday-card h2 em { color: var(--rr-gold); }
+
+.openday-body .lead { color: rgba(233, 226, 212, 0.85); max-width: 44rem; }
+
+.openday-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem 1.5rem;
+  margin-top: 1.6rem;
+}
+
+.openday-where {
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  color: rgba(233, 226, 212, 0.6);
+}
+
+@media (max-width: 820px) {
+  .openday-card { grid-template-columns: 1fr; }
+
+  .openday-stub {
+    border-right: 0;
+    border-bottom: 1px dashed rgba(230, 180, 136, 0.45);
+    padding: 2.1rem 1.5rem 1.9rem;
+  }
+
+  .openday-stub::before,
+  .openday-stub::after { top: auto; bottom: 0; right: auto; }
+  .openday-stub::before { left: 0; transform: translate(-50%, 50%); }
+  .openday-stub::after { right: 0; transform: translate(50%, 50%); }
+
+  .openday-body { padding: 2.1rem 1.6rem 2.3rem; }
+}
+
+/* ---------- Avoimet ovet -sivu: julistehero ---------- */
+
+.poster-hero {
+  position: relative;
+  min-height: min(90vh, 860px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--rr-ivory);
+  background: var(--rr-night-deep);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Juliste tarvitsee syvemmän kalvon kuin etusivun hero (ks. §4.3) */
+.poster-hero .hero-veil {
+  background:
+    radial-gradient(ellipse at 50% 112%, rgba(180, 120, 118, 0.3), transparent 52%),
+    radial-gradient(ellipse at 50% 45%, rgba(26, 34, 48, 0.42), rgba(26, 34, 48, 0.82) 78%),
+    linear-gradient(180deg, rgba(26, 34, 48, 0.82) 0%, rgba(34, 43, 60, 0.66) 45%, rgba(26, 34, 48, 0.9) 100%);
+}
+
+.poster-hero .hero-bg { filter: saturate(0.78) contrast(0.95); }
+
+.poster-logo {
+  height: 68px;
+  width: auto;
+  margin: 0 auto 1.4rem;
+}
+
+@media (max-width: 560px) { .poster-logo { height: 52px; } }
+
+.poster-hero .eyebrow { justify-content: center; color: var(--rr-gold); }
+.poster-hero .eyebrow::after {
+  content: "";
+  width: 2.2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.poster-title {
+  font-size: clamp(3.4rem, 13vw, 7.2rem);
+  line-height: 0.92;
+  margin: 0.2em 0 0.35em;
+}
+
+.poster-title span { display: block; font-weight: 500; letter-spacing: -0.015em; }
+
+.poster-title em {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.86em;
+  color: var(--rr-gold);
+}
+
+.poster-hero .star-divider { color: var(--rr-gold); margin: 0 0 1.5rem; }
+
+.poster-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.1rem, 4vw, 2.4rem);
+  max-width: 34rem;
+  margin: 0 auto 1rem;
+  padding-block: 1rem;
+  border-block: 1px solid rgba(230, 180, 136, 0.35);
+}
+
+.pd-cell {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-family: var(--rr-font-display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.pd-cell i { font-style: normal; font-weight: 500; font-size: 0.62em; color: rgba(233, 226, 212, 0.85); }
+
+.pd-accent { font-style: italic; font-weight: 600; color: var(--rr-gold); }
+
+.pd-rule { width: 1px; height: 2.4rem; background: rgba(230, 180, 136, 0.45); }
+
+.poster-sub {
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: rgba(233, 226, 212, 0.72);
+  margin-bottom: 2rem;
+}
+
+/* ---------- Avoimet ovet -sivu: sisältö ---------- */
+
+.od-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 3rem;
+}
+
+.od-col {
+  padding: 0 2rem;
+  text-align: center;
+  border-left: 1px solid rgba(192, 138, 87, 0.35);
+}
+
+.od-col:first-child { border-left: 0; }
+
+.od-col .od-star { display: block; color: var(--rr-rose); font-size: 0.85rem; margin-bottom: 0.9rem; }
+
+.od-col h3 { color: var(--rr-navy); font-size: 1.24rem; margin-bottom: 0.5rem; text-wrap: balance; }
+
+.od-col .od-note {
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  color: var(--rr-brass);
+  margin: 0;
+}
+
+@media (max-width: 780px) {
+  .od-cols { grid-template-columns: 1fr; gap: 2.2rem; }
+  .od-col { padding: 0; border-left: 0; }
+  .od-col + .od-col { border-top: 1px solid rgba(192, 138, 87, 0.35); padding-top: 2.2rem; }
+}
+
+.od-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.2rem;
+}
+
+@media (max-width: 780px) { .od-photos { grid-template-columns: 1fr; } }
+
+.od-photos figure {
+  margin: 0;
+  background: #fdfbf6;
+  padding: 0.55rem 0.55rem 0.9rem;
+  box-shadow: 0 14px 32px -18px rgba(26, 34, 48, 0.5);
+}
+
+.od-photos img { width: 100%; height: 235px; object-fit: cover; }
+
+.od-photos figcaption {
+  font-family: var(--rr-font-caps);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--rr-rose-deep);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+.od-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 58rem;
+  margin: 0 auto 2.8rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) { .od-facts { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+.od-fact .label {
+  display: block;
+  font-family: var(--rr-font-caps);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: var(--rr-gold);
+  margin-bottom: 0.35rem;
+}
+
+.od-fact .value { font-size: 1.02rem; color: rgba(233, 226, 212, 0.9); }
+
+.od-fact .value a { color: rgba(233, 226, 212, 0.9); text-underline-offset: 3px; }
+.od-fact .value a:hover { color: var(--rr-gold); }

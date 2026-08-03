@@ -20,7 +20,21 @@
         <img class="brand-logo" src="assets/img/logo.png" alt="Rentun Ruusu">
         <span class="brand-town">Turenki</span>
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Valikko ☰</button>
+      <a class="ticket header-ticket" href="avoimet-ovet.html"
+         aria-label="Avoimet ovet torstaina 13.8. klo 16–18">
+        <span class="ticket-stub" aria-hidden="true">
+          <span class="ticket-day">to</span>
+          <span class="ticket-date">13.8.</span>
+        </span>
+        <span class="ticket-perf" aria-hidden="true"></span>
+        <span class="ticket-body" aria-hidden="true">
+          <span class="ticket-label">avoimet ovet</span>
+          <span class="ticket-time">klo 16–18</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Valikko">
+        <span class="nav-toggle-text">Valikko</span> ☰
+      </button>
       <nav class="site-nav" id="site-nav">
         <a href="index.html" class="active">Etusivu</a>
         <a href="galleria.html">Galleria</a>
@@ -58,6 +72,42 @@
         <span>kahvila</span><span>kokoukset</span><span>muistotilaisuudet</span><span>pikkujoulut</span>
       </div>
     </div>
+
+    <!-- AVOIMET OVET -->
+    <section class="section on-light alt" id="avoimet-ovet">
+      <div class="wrap">
+        <div class="openday-card reveal">
+          <div class="openday-stub">
+            <span class="openday-dow">torstaina</span>
+            <span class="openday-date">13.8.</span>
+            <span class="openday-time">klo 16–18</span>
+            <span class="openday-free">vapaa pääsy</span>
+          </div>
+          <div class="openday-body">
+            <p class="eyebrow">avoimet ovet</p>
+            <h2>Ovet auki kaikille, <em>kahvit valmiina</em></h2>
+            <p class="lead">Torstaina 13. elokuuta kierrät juhlasalin näyttämöineen, Pianotuvan
+              ja aulan omaan tahtiisi. Kahvia, mehua ja virvokkeita on tarjolla koko illan.
+              Ei ilmoittautumista, piipahda paikalle.</p>
+            <div class="openday-actions">
+              <a class="ticket ticket-lg" href="avoimet-ovet.html"
+                 aria-label="Tutustu avoimiin oviin: torstai 13.8. klo 16–18">
+                <span class="ticket-stub" aria-hidden="true">
+                  <span class="ticket-day">to</span>
+                  <span class="ticket-date">13.8.</span>
+                </span>
+                <span class="ticket-perf" aria-hidden="true"></span>
+                <span class="ticket-body" aria-hidden="true">
+                  <span class="ticket-label">tutustu avoimiin oviin</span>
+                  <span class="ticket-time">klo 16–18 · vapaa pääsy</span>
+                </span>
+              </a>
+              <span class="openday-where">Kauppakuja 16, Turenki</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- TERVETULOA -->
     <section class="section on-light" id="tervetuloa">
@@ -201,6 +251,7 @@
         <p class="footer-head">sivut</p>
         <ul>
           <li><a href="index.html">Etusivu</a></li>
+          <li><a href="avoimet-ovet.html">Avoimet ovet 13.8.</a></li>
           <li><a href="galleria.html">Galleria</a></li>
           <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
         </ul>

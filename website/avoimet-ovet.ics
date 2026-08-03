@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Rentun Ruusu//Avoimet ovet//FI
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:avoimet-ovet-20260813@rentunruusu.com
+DTSTAMP:20260803T060000Z
+DTSTART:20260813T130000Z
+DTEND:20260813T150000Z
+SUMMARY:Avoimet ovet - Rentun Ruusu
+LOCATION:Kauppakuja 16\, 14200 Turenki
+DESCRIPTION:Rentun Ruusun ovet ovat auki kaikille klo 16-18. Kahvia\, mehua ja virvokkeita\, vapaa kierros juhlasaliin\, Pianotupaan ja aulaan. Vapaa paasy\, ei ilmoittautumista.
+URL:https://rentunruusu.com/avoimet-ovet
+END:VEVENT
+END:VCALENDAR

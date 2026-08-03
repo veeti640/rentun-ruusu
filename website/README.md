@@ -10,8 +10,21 @@ repon juuren `vercel.json`-tiedostossa.
 | Tiedosto | Sivu |
 |---|---|
 | `index.html` | Etusivu |
+| `avoimet-ovet.html` | Avoimet ovet to 13.8.2026 klo 16–18 (julistesivu) |
 | `galleria.html` | Galleria (suodatus + kuvien suurennos) |
 | `yhteystiedot.html` | Yhteystiedot, kartta ja varauskysely |
+
+## Avoimet ovet -tapahtuma
+
+Tapahtuman tiedot ovat kolmessa paikassa — muista päivittää kaikki, jos
+päivä tai kellonaika muuttuu:
+
+1. `avoimet-ovet.html` (julistehero, faktarivi ja sivun JSON-LD-tapahtumadata)
+2. `avoimet-ovet.ics` (kalenteritiedosto, ajat UTC:nä — kesäaikaan −3 h)
+3. Lippunappi ylätunnisteessa ja etusivun nosto (`index.html`)
+
+Kun tapahtuma on ohi: poista lippunappi `header`-osiosta kaikilta neljältä
+sivulta, etusivun `#avoimet-ovet`-sektio ja linkit alatunnisteista.
 
 ## Gallerian päivitys
 
