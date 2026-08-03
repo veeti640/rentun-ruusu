@@ -10,7 +10,7 @@ repon juuren `vercel.json`-tiedostossa.
 | Tiedosto | Sivu |
 |---|---|
 | `index.html` | Etusivu |
-| `avoimet-ovet.html` | Avoimet ovet to 13.8.2026 klo 16–18 (julistesivu) |
+| `avoimet-ovet.html` | Avoimet ovet to 6.8.2026 klo 16–18 (julistesivu) |
 | `galleria.html` | Galleria (suodatus + kuvien suurennos) |
 | `yhteystiedot.html` | Yhteystiedot, kartta ja varauskysely |
 
