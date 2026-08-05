@@ -950,6 +950,59 @@ p { margin: 0 0 1.1em; }
 
 .footer-bottom .star { color: var(--rr-rose); padding-inline: 0.6rem; }
 
+/* ---------- Tapahtumat ---------- */
+
+.events-page-hero { padding-bottom: 4.5rem; }
+
+.events-section { padding-top: 0; }
+
+.event-card {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.83fr) minmax(0, 1.17fr);
+  max-width: 940px;
+  margin: -1.8rem auto 0;
+  background: #fffaf0;
+  border: 1px solid rgba(192, 138, 87, 0.4);
+  border-radius: var(--rr-radius);
+  box-shadow: var(--rr-shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+.event-poster-link { background: var(--rr-night); display: block; }
+
+.event-poster {
+  width: 100%;
+  height: auto;
+}
+
+.event-card-body { padding: clamp(2rem, 5vw, 4.4rem); align-self: center; }
+
+.event-card-body h2 { color: var(--rr-navy); }
+
+.event-subtitle {
+  font-family: var(--rr-font-caps);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--rr-rose-deep);
+}
+
+.event-details { margin: 1.8rem 0; border-block: 1px solid var(--rr-lace-dim); }
+
+.event-details div { display: grid; grid-template-columns: 5.4rem 1fr; gap: 1rem; padding: 0.8rem 0; }
+.event-details div + div { border-top: 1px solid var(--rr-lace-dim); }
+.event-details dt { font-family: var(--rr-font-caps); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; color: var(--rr-brass); text-transform: lowercase; }
+.event-details dd { margin: 0; font-weight: 700; color: var(--rr-navy); }
+
+.event-actions { justify-content: flex-start; margin-top: 1.7rem; }
+.event-poster-text { font-family: var(--rr-font-caps); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: lowercase; }
+
+@media (max-width: 700px) {
+  .event-card { grid-template-columns: 1fr; margin-top: -1.4rem; }
+}
+
 /* ---------- Paljastusanimaatiot ---------- */
 
 .reveal {
