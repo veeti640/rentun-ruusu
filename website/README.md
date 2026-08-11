@@ -10,21 +10,24 @@ repon juuren `vercel.json`-tiedostossa.
 | Tiedosto | Sivu |
 |---|---|
 | `index.html` | Etusivu |
-| `avoimet-ovet.html` | Avoimet ovet to 6.8.2026 klo 16–18 (julistesivu) |
+| `tapahtumat.html` | Tapahtumat (tulevat tapahtumat julisteineen) |
 | `galleria.html` | Galleria (suodatus + kuvien suurennos) |
 | `yhteystiedot.html` | Yhteystiedot, kartta ja varauskysely |
 
-## Avoimet ovet -tapahtuma
+## Tapahtumasivu
 
-Tapahtuman tiedot ovat kolmessa paikassa — muista päivittää kaikki, jos
-päivä tai kellonaika muuttuu:
+Tapahtumat listataan `tapahtumat.html`-sivulla. Yhden tapahtuman tiedot ovat
+kahdessa paikassa — muista päivittää molemmat:
 
-1. `avoimet-ovet.html` (julistehero, faktarivi ja sivun JSON-LD-tapahtumadata)
-2. `avoimet-ovet.ics` (kalenteritiedosto, ajat UTC:nä — kesäaikaan −3 h)
-3. Lippunappi ylätunnisteessa ja etusivun nosto (`index.html`)
+1. `article.event-card` (juliste, päivä, kellonaika ja lippujen hinta)
+2. Sivun JSON-LD-tapahtumadata `head`-osiossa
 
-Kun tapahtuma on ohi: poista lippunappi `header`-osiosta kaikilta neljältä
-sivulta, etusivun `#avoimet-ovet`-sektio ja linkit alatunnisteista.
+Julisteet: `assets/img/events/`. Kun tapahtuma on ohi, poista sen
+`article.event-card` ja vastaava JSON-LD-lohko.
+
+Aiempi ylätunnisteen lippunappi (`.ticket.header-ticket`) ja etusivun
+tapahtumanosto (`.openday-card`) on poistettu, mutta niiden tyylit ovat
+yhä `css/styles.css`-tiedostossa seuraavaa tapahtumaa varten.
 
 ## Gallerian päivitys
 
