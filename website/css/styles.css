@@ -969,6 +969,8 @@ p { margin: 0 0 1.1em; }
   position: relative;
 }
 
+.event-card + .event-card { margin-top: clamp(2.4rem, 5vw, 3.8rem); }
+
 .event-poster-link { background: var(--rr-night); display: block; }
 
 .event-poster {
@@ -996,11 +998,14 @@ p { margin: 0 0 1.1em; }
 .event-details dt { font-family: var(--rr-font-caps); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; color: var(--rr-brass); text-transform: lowercase; }
 .event-details dd { margin: 0; font-weight: 700; color: var(--rr-navy); }
 
+.event-note { font-size: 0.9rem; color: rgba(43, 54, 74, 0.72); margin-top: 0.8rem; }
+
 .event-actions { justify-content: flex-start; margin-top: 1.7rem; }
 .event-poster-text { font-family: var(--rr-font-caps); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: lowercase; }
 
 @media (max-width: 700px) {
   .event-card { grid-template-columns: 1fr; margin-top: -1.4rem; }
+  .event-card + .event-card { margin-top: 2.2rem; }
 }
 
 /* ---------- Paljastusanimaatiot ---------- */
