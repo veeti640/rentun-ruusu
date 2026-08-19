@@ -3,3 +3,6 @@
 
 # Suuret videotallenteet (eivät kuulu repoon)
 *.mov
+
+# Laskut sisältävät asiakastietoja — ei versionhallintaan
+laskut/
