@@ -1,9 +1,9 @@
 # Rentun Ruusu
 
 > Rentun Ruusu on juhla- ja tapahtumatalo Turengissa, Janakkalassa. Punaisessa
-> puutalossa Kauppakuja 16:ssa on juhlasali näyttämöineen, vintage-henkinen
-> Pianotupa, aula ja täysi keittiö. Tiloja vuokrataan yksityisjuhliin ja
-> talolla järjestetään myös yleisötapahtumia.
+> puutalossa Kauppakuja 16:ssa on juhlasali näyttämöineen (enintään 100 henkeä),
+> vintage-henkinen Pianotupa (enintään 30 henkeä), aula ja täysi keittiö.
+> Tiloja vuokrataan yksityisjuhliin ja talolla järjestetään myös yleisötapahtumia.
 
 ## Perustiedot
 
@@ -19,13 +19,15 @@
 - Facebook: https://www.facebook.com/p/Rentun-Ruusu-61559462117911/
 - Kieli: suomi
 - Aukiolo: avoinna tapahtumien ja varausten mukaan, ei päivittäisiä aukioloaikoja
+- Vierasmäärä: juhlasali enintään 100 henkeä, Pianotupa enintään 30 henkeä
 
 ## Tilat
 
-- **Juhlasali** — pitkät pöydät, oma näyttämö ja samettiesirippu. Sopii tansseihin,
-  häihin ja suuriin juhliin.
-- **Pianotupa** — vintage-kahvilatila, jossa pitsiverhot, vanha piano, kaakeliuuni
-  ja seinäkello. Sopii rippijuhliin, valmistujaisiin ja pieniin seurueisiin.
+- **Juhlasali** — enintään 100 henkeä. Pitkät pöydät, oma näyttämö ja
+  samettiesirippu. Sopii tansseihin, häihin ja suuriin juhliin.
+- **Pianotupa** — enintään 30 henkeä. Vintage-kahvilatila, jossa pitsiverhot,
+  vanha piano, kaakeliuuni ja seinäkello. Sopii rippijuhliin, valmistujaisiin
+  ja pieniin seurueisiin.
 - **Aula** — punasamettiset nojatuolit, käytetään vastaanottotilana.
 - **Keittiö** — täysi keittiö omille tai pitopalvelun tarjoiluille.
 
@@ -51,8 +53,11 @@ kaksi pysäköintialuetta.
 **Voiko tiloihin tutustua etukäteen?** Kyllä, esittelyaika sovitaan
 yhteydenottolomakkeella.
 
-**Mitä tilojen vuokra maksaa ja kuinka monta vierasta taloon mahtuu?**
-Hinnat ja vierasmäärät sovitaan tapauskohtaisesti — kysy suoraan omistajilta.
+**Kuinka monta vierasta taloon mahtuu?** Juhlasaliin mahtuu enintään 100 henkeä
+ja Pianotupaan enintään 30 henkeä. Tilat voi varata yhdessä tai erikseen.
+
+**Mitä tilojen vuokra maksaa?** Hinnat sovitaan tapauskohtaisesti — kysy suoraan
+omistajilta.
 
 **Missä Rentun Ruusu sijaitsee?** Turengin keskustassa osoitteessa
 Kauppakuja 16, 14200 Turenki. Turenki on Janakkalan kunnan taajama

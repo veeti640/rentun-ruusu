@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juhlatila Turengissa · Rentun Ruusu · Juhla- ja tapahtumatalo</title>
-  <meta name="description" content="Rentun Ruusu on juhla- ja tapahtumatalo Turengissa: juhlasali näyttämöineen, vintage-henkinen Pianotupa ja täysi keittiö. Vuokraa tilat häihin, merkkipäiviin ja pikkujouluihin.">
+  <meta name="description" content="Rentun Ruusu on juhla- ja tapahtumatalo Turengissa: juhlasali enintään 100 hengelle, Pianotupa 30 hengelle ja täysi keittiö. Vuokraa tilat häihin, merkkipäiviin ja pikkujouluihin.">
   <link rel="canonical" href="https://rentunruusu.com/">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#2b364a">
@@ -17,7 +17,7 @@
   <meta property="og:site_name" content="Rentun Ruusu">
   <meta property="og:locale" content="fi_FI">
   <meta property="og:title" content="Juhlatila Turengissa · Rentun Ruusu">
-  <meta property="og:description" content="Juhla- ja tapahtumatalo Turengissa: juhlasali näyttämöineen, vintage-henkinen Pianotupa ja täysi keittiö. Juhlat kuin ennen vanhaan.">
+  <meta property="og:description" content="Juhla- ja tapahtumatalo Turengissa: juhlasali enintään 100 hengelle, Pianotupa 30 hengelle ja täysi keittiö. Juhlat kuin ennen vanhaan.">
   <meta property="og:url" content="https://rentunruusu.com/">
   <meta property="og:image" content="https://rentunruusu.com/assets/img/og-rentun-ruusu.jpg">
   <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
   <meta property="og:image:alt" content="Rentun Ruusun juhlasali katettuna, näyttämö ja samettiverhot taustalla.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Juhlatila Turengissa · Rentun Ruusu">
-  <meta name="twitter:description" content="Juhla- ja tapahtumatalo Turengissa: juhlasali näyttämöineen, Pianotupa ja täysi keittiö.">
+  <meta name="twitter:description" content="Juhla- ja tapahtumatalo Turengissa: juhlasali 100 hengelle, Pianotupa 30 hengelle ja täysi keittiö.">
   <meta name="twitter:image" content="https://rentunruusu.com/assets/img/og-rentun-ruusu.jpg">
 
   <link rel="icon" type="image/png" href="favicon.png">
@@ -39,10 +39,13 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LocalBusiness", "EventVenue"],
+        "@type": [
+          "LocalBusiness",
+          "EventVenue"
+        ],
         "@id": "https://rentunruusu.com/#venue",
         "name": "Rentun Ruusu",
-        "description": "Rentun Ruusu on juhla- ja tapahtumatalo Turengissa, Janakkalassa. Punaisessa puutalossa on juhlasali näyttämöineen, vintage-henkinen Pianotupa, aula ja täysi keittiö. Tiloja vuokrataan yksityisjuhliin ja talolla järjestetään yleisötapahtumia.",
+        "description": "Rentun Ruusu on juhla- ja tapahtumatalo Turengissa, Janakkalassa. Punaisessa puutalossa on juhlasali näyttämöineen (enintään 100 henkeä), vintage-henkinen Pianotupa (enintään 30 henkeä), aula ja täysi keittiö. Tiloja vuokrataan yksityisjuhliin ja talolla järjestetään yleisötapahtumia.",
         "url": "https://rentunruusu.com/",
         "image": [
           "https://rentunruusu.com/assets/img/hero-sali.jpg",
@@ -69,9 +72,18 @@
         "knowsLanguage": "fi",
         "currenciesAccepted": "EUR",
         "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Janakkala" },
-          { "@type": "City", "name": "Hämeenlinna" },
-          { "@type": "AdministrativeArea", "name": "Kanta-Häme" }
+          {
+            "@type": "AdministrativeArea",
+            "name": "Janakkala"
+          },
+          {
+            "@type": "City",
+            "name": "Hämeenlinna"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kanta-Häme"
+          }
         ],
         "sameAs": [
           "https://instagram.com/rentunruusu",
@@ -95,12 +107,36 @@
           }
         ],
         "amenityFeature": [
-          { "@type": "LocationFeatureSpecification", "name": "Näyttämö ja samettiesirippu", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Piano", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Täysi keittiö tarjoiluja varten", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Omat tarjoilut ja pitopalvelu sallittu", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Maksuton pysäköinti", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Piha-alue", "value": true }
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Näyttämö ja samettiesirippu",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Piano",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Täysi keittiö tarjoiluja varten",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Omat tarjoilut ja pitopalvelu sallittu",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Maksuton pysäköinti",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Piha-alue",
+            "value": true
+          }
         ],
         "makesOffer": [
           {
@@ -108,7 +144,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Juhlasalin vuokraus",
-              "description": "Juhlasali pitkine pöytineen, oma näyttämö ja samettiesirippu. Tanssit, häät ja suuret juhlat."
+              "description": "Juhlasali pitkine pöytineen, oma näyttämö ja samettiesirippu. Tanssit, häät ja suuret juhlat. Saliin mahtuu enintään 100 henkeä."
             }
           },
           {
@@ -116,7 +152,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Pianotuvan vuokraus",
-              "description": "Vintage-henkinen kahvilatila, jossa pitsiverhot, vanha piano ja kaakeliuuni. Rippijuhlat, valmistujaiset ja pienet seurueet."
+              "description": "Vintage-henkinen kahvilatila, jossa pitsiverhot, vanha piano ja kaakeliuuni. Rippijuhlat, valmistujaiset ja pienet seurueet. Pianotupaan mahtuu enintään 30 henkeä."
             }
           },
           {
@@ -132,7 +168,38 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Koko talon vuokraus",
-              "description": "Sali, Pianotupa, aula ja keittiö yhdessä koko talon juhliin."
+              "description": "Sali, Pianotupa, aula ja keittiö yhdessä koko talon juhliin. Yhteensä enintään 100 henkeä."
+            }
+          }
+        ],
+        "maximumAttendeeCapacity": 100,
+        "containsPlace": [
+          {
+            "@type": [
+              "Room",
+              "EventVenue"
+            ],
+            "@id": "https://rentunruusu.com/#juhlasali",
+            "name": "Juhlasali",
+            "description": "Juhlasali pitkine pöytineen, oma näyttämö ja samettiesirippu. Tanssit, häät ja suuret juhlat.",
+            "maximumAttendeeCapacity": 100,
+            "image": "https://rentunruusu.com/assets/img/gallery/sali-01.jpg",
+            "containedInPlace": {
+              "@id": "https://rentunruusu.com/#venue"
+            }
+          },
+          {
+            "@type": [
+              "Room",
+              "EventVenue"
+            ],
+            "@id": "https://rentunruusu.com/#pianotupa",
+            "name": "Pianotupa",
+            "description": "Vintage-henkinen kahvilatila, jossa pitsiverhot, vanha piano ja kaakeliuuni. Rippijuhlat, valmistujaiset ja pienet seurueet.",
+            "maximumAttendeeCapacity": 30,
+            "image": "https://rentunruusu.com/assets/img/gallery/kahvila-02.jpg",
+            "containedInPlace": {
+              "@id": "https://rentunruusu.com/#venue"
             }
           }
         ]
@@ -143,7 +210,9 @@
         "url": "https://rentunruusu.com/",
         "name": "Rentun Ruusu",
         "inLanguage": "fi-FI",
-        "publisher": { "@id": "https://rentunruusu.com/#venue" }
+        "publisher": {
+          "@id": "https://rentunruusu.com/#venue"
+        }
       },
       {
         "@type": "WebPage",
@@ -151,15 +220,21 @@
         "url": "https://rentunruusu.com/",
         "name": "Juhlatila Turengissa · Rentun Ruusu · Juhla- ja tapahtumatalo",
         "description": "Rentun Ruusu on juhla- ja tapahtumatalo Turengissa: juhlasali näyttämöineen, vintage-henkinen Pianotupa ja täysi keittiö.",
-        "isPartOf": { "@id": "https://rentunruusu.com/#website" },
-        "about": { "@id": "https://rentunruusu.com/#venue" },
+        "isPartOf": {
+          "@id": "https://rentunruusu.com/#website"
+        },
+        "about": {
+          "@id": "https://rentunruusu.com/#venue"
+        },
         "primaryImageOfPage": "https://rentunruusu.com/assets/img/hero-sali.jpg",
         "inLanguage": "fi-FI"
       },
       {
         "@type": "FAQPage",
         "@id": "https://rentunruusu.com/#faq",
-        "isPartOf": { "@id": "https://rentunruusu.com/#webpage" },
+        "isPartOf": {
+          "@id": "https://rentunruusu.com/#webpage"
+        },
         "inLanguage": "fi-FI",
         "mainEntity": [
           {
@@ -200,6 +275,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Totta kai — sovi esittelyaika yhteydenottolomakkeella, niin keitetään pannu kahvia valmiiksi."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kuinka monta vierasta taloon mahtuu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Juhlasaliin mahtuu enintään 100 henkeä ja Pianotupaan enintään 30 henkeä. Tilat voi varata yhdessä tai erikseen, joten kokonaisuus rakennetaan vierasmäärän mukaan. Kerro yhteydenotossa arvioitu vierasmäärä, niin katsotaan sopiva ratkaisu."
             }
           },
           {
@@ -247,7 +330,8 @@
         <p class="eyebrow">juhla- ja tapahtumatalo · turenki</p>
         <h1>Juhlat kuin <em>ennen vanhaan</em>.</h1>
         <p class="lead">Punainen puutalo Kauppakujalla, jossa vanha piano soi ja pitkät pöydät katetaan
-          valkein puuvillaliinoin. Häihin, syntymäpäiviin, rippijuhliin jne.</p>
+          valkein puuvillaliinoin. Juhlasaliin mahtuu enintään 100 henkeä, Pianotupaan 30.
+          Häihin, syntymäpäiviin, rippijuhliin jne.</p>
         <div class="hero-actions">
           <a class="btn btn-gold" href="/yhteystiedot">Varaa omat juhlasi</a>
           <a class="btn btn-ghost" href="/galleria">Tutustu tiloihin</a>
@@ -277,8 +361,8 @@
             vanha piano ja kaakeliuuni, aulassa punasamettiset nojatuolit.</p>
           <p>Vuokraamme tiloja yksityisjuhliin — pienistä kahvihetkistä koko talon juhliin.</p>
           <ul class="intro-points">
-            <li>Juhlasali pitkine pöytineen ja näyttämöineen</li>
-            <li>Tunnelmallinen vintage-kahvila. Pianotupa</li>
+            <li>Juhlasali pitkine pöytineen ja näyttämöineen — enintään 100 henkeä</li>
+            <li>Tunnelmallinen vintage-kahvila. Pianotupa — enintään 30 henkeä</li>
             <li>Täysi keittiö tarjoiluja varten</li>
             <li>Oma piha ja hyvät parkkitilat vieressä</li>
           </ul>
@@ -309,7 +393,8 @@
             <img src="assets/img/gallery/sali-01.jpg" alt="Juhlasalin pitkät pöydät ja näyttämö" loading="lazy">
             <div class="room-card-body">
               <h3>Juhlasali</h3>
-              <p>Pitkät pöydät, oma näyttämö ja samettiesirippu — tanssit, häät ja suuret juhlat.</p>
+              <p>Pitkät pöydät, oma näyttämö ja samettiesirippu — tanssit, häät ja suuret juhlat.
+                Saliin mahtuu enintään 100 henkeä.</p>
               <span class="room-more">katso kuvat ✦</span>
             </div>
           </a>
@@ -317,7 +402,8 @@
             <img src="assets/img/gallery/kahvila-01.jpg" alt="Kahvilan pöydät ja pitsiverhot" loading="lazy">
             <div class="room-card-body">
               <h3>Pianotupa</h3>
-              <p>Pitsiverhot, vanha piano ja seinäkello — rippijuhlat, valmistujaiset ja pienet seurueet.</p>
+              <p>Pitsiverhot, vanha piano ja seinäkello — rippijuhlat, valmistujaiset ja pienet seurueet.
+                Pianotupaan mahtuu enintään 30 henkeä.</p>
               <span class="room-more">katso kuvat ✦</span>
             </div>
           </a>
@@ -389,6 +475,15 @@
             <div class="faq-body">
               <p>Totta kai — sovi esittelyaika <a href="/yhteystiedot">yhteydenottolomakkeella</a>,
                 niin keitetään pannu kahvia valmiiksi.</p>
+            </div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Kuinka monta vierasta taloon mahtuu?</summary>
+            <div class="faq-body">
+              <p>Juhlasaliin mahtuu enintään 100 henkeä ja Pianotupaan enintään 30 henkeä.
+                Tilat voi varata yhdessä tai erikseen, joten kokonaisuus rakennetaan
+                vierasmäärän mukaan. Kerro <a href="/yhteystiedot">yhteydenotossa</a>
+                arvioitu vierasmäärä, niin katsotaan sopiva ratkaisu.</p>
             </div>
           </details>
           <details class="faq-item reveal">
