@@ -38,6 +38,26 @@ Sali, Pianotupa ja keittiö voidaan varata yhdessä tai erikseen.
 Häät, syntymäpäivät ja merkkipäivät, rippijuhlat, valmistujaiset,
 muistotilaisuudet, pikkujoulut, kokoukset sekä tanssi- ja musiikki-illat.
 
+## Saapuminen ja sijainti suhteessa Hämeenlinnaan
+
+Rentun Ruusu ei sijaitse Hämeenlinnassa vaan Turengissa, Janakkalan kunnassa,
+noin 15 km Hämeenlinnasta etelään. Käytännössä talo palvelee myös
+hämeenlinnalaisia juhlia, koska junayhteys on poikkeuksellisen lyhyt:
+
+- Turenki on Hämeenlinnan eteläinen naapuriasema Riihimäki–Tampere-radalla.
+- Junamatka Hämeenlinna–Turenki kestää noin 7 minuuttia (VR:n taajamajuna,
+  yksi pysäkki, ei vaihtoja). Vuoroja kulkee päivällä noin kahden tunnin välein.
+- Turengin asemalta on juhlatilalle noin 400 metriä eli reilun viiden minuutin
+  kävely. Taksia tai kyytiä ei tarvita.
+- Myöhäisiä paluuvuoroja on: elokuun 2026 aikataulussa lauantaisin Turengista
+  Hämeenlinnaan klo 22.30, 00.00 ja 01.52. Aikataulut vaihtuvat kesäkuussa ja
+  joulukuussa, joten ajantasaiset vuorot kannattaa tarkistaa osoitteesta vr.fi.
+- Autolla väli on noin 14 km ja noin 17 minuuttia. Talon edessä on omat
+  parkkipaikat ja vieressä kaksi pysäköintialuetta.
+
+Käytännön seuraus: hämeenlinnalainen juhlaseurue pääsee paikalle ja kotiin
+junalla, joten kenenkään ei tarvitse toimia autonkuljettajana.
+
 ## Usein kysyttyä
 
 **Miten tilat varataan?** Ota yhteyttä yhteydenottolomakkeella osoitteessa
@@ -69,6 +89,7 @@ Kanta-Hämeessä, noin 15 km Hämeenlinnasta etelään.
 - [Tapahtumat](https://rentunruusu.com/tapahtumat): tulevat yleisötapahtumat, liput ja julisteet.
 - [Galleria](https://rentunruusu.com/galleria): valokuvat juhlasalista, Pianotuvasta, aulasta, keittiöstä, wc-tiloista ja pihasta.
 - [Yhteystiedot](https://rentunruusu.com/yhteystiedot): yhteydenottolomake, kartta, puhelinnumerot ja saapumisohjeet.
+- [Juhlatila Hämeenlinnan lähellä](https://rentunruusu.com/juhlatila-hameenlinna): junayhteys Hämeenlinnasta, matka-ajat, myöhäiset paluuvuorot ja mitä talo tarjoaa hämeenlinnalaiselle juhlaseurueelle.
 
 ## Ajankohtaiset tapahtumat (päivitetty 25.8.2026)
 
