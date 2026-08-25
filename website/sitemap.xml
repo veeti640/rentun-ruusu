@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://rentunruusu.com/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/hero-sali.jpg</image:loc>
+      <image:title>Rentun Ruusun juhlasali näyttämöineen, Turenki</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/koti-talo.jpg</image:loc>
+      <image:title>Rentun Ruusun punainen puutalo Kauppakujalla</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rentunruusu.com/tapahtumat</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/events/sillalailla-poster.png</image:loc>
+      <image:title>Sillä lailla – Lauluja vuosikymmenten takaa vol. 4</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/events/luntatupaan-poster.jpg</image:loc>
+      <image:title>Lunta tupaan – Timo Lavikainen ja Pasi Karppi</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rentunruusu.com/galleria</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/gallery/sali-01.jpg</image:loc>
+      <image:title>Juhlasali katettuna – Rentun Ruusu, Turenki</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/gallery/kahvila-02.jpg</image:loc>
+      <image:title>Pianotuvan piano ja kaakeliuuni – Rentun Ruusu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/gallery/aula-01.jpg</image:loc>
+      <image:title>Aulan punasamettiset nojatuolit – Rentun Ruusu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/gallery/keittio-01.jpg</image:loc>
+      <image:title>Täysi keittiö tarjoiluja varten – Rentun Ruusu</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rentunruusu.com/yhteystiedot</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

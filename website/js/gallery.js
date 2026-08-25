@@ -3,68 +3,19 @@
 (function () {
   "use strict";
 
-  /* Kuvat: tiedostot assets/img/gallery/-kansiossa.
-     Jokaisesta kuvasta on pikkukuva (_t.jpg) ja iso versio (.jpg). */
-  var PHOTOS = [
-    { id: "sali-01", cat: "sali", caption: "Juhlasali katettuna" },
-    { id: "sali-02", cat: "sali", caption: "Pöytärivi kohti näyttämöä" },
-    { id: "sali-03", cat: "sali", caption: "Pitkät pöydät ja samettiverhot" },
-    { id: "sali-04", cat: "sali", caption: "Katettu sali" },
-    { id: "sali-05", cat: "sali", caption: "Salin yksityiskohdat" },
-    { id: "kahvila-01", cat: "kahvila", caption: "Kahvilan tunnelmaa" },
-    { id: "kahvila-02", cat: "kahvila", caption: "Piano ja kaakeliuuni" },
-    { id: "kahvila-03", cat: "kahvila", caption: "Vanha piano ja seinäkello" },
-    { id: "kahvila-04", cat: "kahvila", caption: "Antiikkisenkki ja taulut" },
-    { id: "kahvila-05", cat: "kahvila", caption: "Pitsiverhojen nurkkaus" },
-    { id: "kahvila-06", cat: "kahvila", caption: "Saksofoni seinällä" },
-    { id: "kahvila-07", cat: "kahvila", caption: "Pöytä taulun alla" },
-    { id: "kahvila-08", cat: "kahvila", caption: "Kahvilan kattauspöytä" },
-    { id: "kahvila-09", cat: "kahvila", caption: "Nojatuolit ja senkki" },
-    { id: "kahvila-10", cat: "kahvila", caption: "Kahvilan pöydät ja buffet" },
-    { id: "aula-01", cat: "aula", caption: "Aulan nojatuolit" },
-    { id: "aula-02", cat: "aula", caption: "Vanha kaappi aulassa" },
-    { id: "aula-03", cat: "aula", caption: "Aulan istuinryhmä" },
-    { id: "aula-04", cat: "aula", caption: "Samettituolit" },
-    { id: "keittio-01", cat: "keittio", caption: "Keittiön työtilat" },
-    { id: "keittio-02", cat: "keittio", caption: "Keittiö" },
-    { id: "keittio-03", cat: "keittio", caption: "Uunit ja liedet" },
-    { id: "wc-01", cat: "wc", caption: "WC ja Coca-Cola-kyltti" },
-    { id: "wc-02", cat: "wc", caption: "Kultakehyksinen peili" },
-    { id: "wc-03", cat: "wc", caption: "WC-tilojen aula" },
-    { id: "piha-01", cat: "piha", caption: "Rentun Ruusu kesäpäivänä" },
-    { id: "piha-02", cat: "piha", caption: "Punaisen puutalon ikkuna" }
-  ];
-
-  var CATS = {
-    kaikki: "Kaikki",
-    sali: "Juhlasali",
-    kahvila: "Kahvila",
-    aula: "Aula",
-    keittio: "Keittiö",
-    wc: "WC-tilat",
-    piha: "Piha"
-  };
-
+  /* Kuvat ovat galleria.html:ssä valmiina HTML:nä, jotta haku- ja
+     tekoälyrobotit näkevät ne ilman JavaScriptiä. Tämä tiedosto lukee
+     ne DOMista ja lisää päälle suodatuksen sekä valoboksin. */
   var grid = document.getElementById("gallery-grid");
   var bar = document.getElementById("filter-bar");
   if (!grid || !bar) return;
 
-  /* Rakenna suodatusnapit */
-  bar.innerHTML = Object.keys(CATS).map(function (key) {
-    return '<button class="filter-btn' + (key === "kaikki" ? " active" : "") +
-      '" data-cat="' + key + '">' + CATS[key] + "</button>";
-  }).join("");
-
-  /* Rakenna ruudukko */
-  grid.innerHTML = PHOTOS.map(function (p, i) {
-    return (
-      '<figure class="gallery-item" data-cat="' + p.cat + '" data-index="' + i + '">' +
-        '<img src="assets/img/gallery/' + p.id + '_t.jpg" alt="' + p.caption + '" loading="lazy">' +
-      "</figure>"
-    );
-  }).join("");
-
   var items = Array.prototype.slice.call(grid.querySelectorAll(".gallery-item"));
+  if (!items.length) return;
+
+  var PHOTOS = items.map(function (el) {
+    return { id: el.dataset.id, caption: el.dataset.caption || "" };
+  });
 
   /* Suodatus */
   bar.addEventListener("click", function (e) {

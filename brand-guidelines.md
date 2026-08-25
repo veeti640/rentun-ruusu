@@ -170,7 +170,7 @@ alareunaan ennen vaaleaa tekstiä.
 | **Verkkosivut** | Tämä ohjeisto toteutettuna `website/`-kansiossa — toimii referenssitoteutuksena |
 | **Julisteet** | Yönsininen pohja, Fraunces-otsikot persikkakullalla, ruusu-siluetit kulmissa, logo kehysversiona ylhäällä |
 | **Some (IG @rentunruusu)** | Kuvapostaukset 4:5; tapahtumanostot yönsinisellä pohjalla; stories-korostevärit paletista |
-| **Sähköpostit** | Allekirjoitus: yönsininen logo­tiili + ”Rentun Ruusu · Kauppakuja 16, Turenki · rentunruusu.vip” |
+| **Sähköpostit** | Allekirjoitus: yönsininen logo­tiili + ”Rentun Ruusu · Kauppakuja 16, Turenki · rentunruusu.com” |
 | **Opasteet** | Norsunluu yönsinisellä; Alegreya Sans SC -kapiteelit |
 
 ---

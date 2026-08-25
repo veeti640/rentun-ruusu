@@ -692,7 +692,7 @@ p { margin: 0 0 1.1em; }
   box-shadow: 0 20px 40px -16px rgba(26, 34, 48, 0.55);
 }
 
-.gallery-item img { width: 100%; }
+.gallery-item img { width: 100%; height: auto; display: block; }
 
 .gallery-item figcaption {
   font-family: var(--rr-font-caps);

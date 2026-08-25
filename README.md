@@ -15,5 +15,6 @@ Juhla- ja tapahtumatalo Rentun Ruusun brändi ja verkkosivusto.
 ## Sivuston julkaisu
 
 `website/`-kansio on julkaisuvalmis sellaisenaan: lataa sen sisältö
-webhotellin juureen (esim. rentunruusu.vip). Ei riippuvuuksia, ei
+webhotellin juureen. Tuotannossa sivusto on osoitteessa
+https://rentunruusu.com. Ei riippuvuuksia, ei
 build-vaihetta.
