@@ -1542,3 +1542,9 @@ p { margin: 0 0 1.1em; }
 .city-row { scroll-margin-top: 6rem; }
 .city-row:target .label { color: var(--rr-rose-deep); }
 .city-row:target { background: rgba(192, 138, 87, 0.09); }
+
+/* Seutukartta: korkeampi kehys, jotta Hämeenlinna ja Riihimäki mahtuvat kuvaan */
+.map-frame.is-region iframe { height: 640px; }
+@media (max-width: 700px) {
+  .map-frame.is-region iframe { height: 600px; }
+}
