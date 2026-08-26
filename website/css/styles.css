@@ -1372,3 +1372,64 @@ p { margin: 0 0 1.1em; }
 
   .openday-body { padding: 2.1rem 1.6rem 2.3rem; }
 }
+
+/* ── Matkan etapit: Hämeenlinna → asema → talo ───────────────────── */
+.journey {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: start;
+  margin: 2.8rem auto 0;
+  max-width: 52rem;
+}
+.journey-stop { text-align: center; padding: 0 0.5rem; }
+.journey-stop .mark {
+  display: block;
+  color: var(--rr-gold);
+  font-size: 0.95rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.journey-stop .name {
+  display: block;
+  font-family: var(--rr-font-caps);
+  letter-spacing: 0.13em;
+  font-size: 0.92rem;
+  line-height: 1.32;
+  color: var(--rr-lace);
+}
+.journey-stop.is-goal .name { color: var(--rr-gold); }
+.journey-stop .note {
+  display: block;
+  margin-top: 0.32rem;
+  font-size: 0.84rem;
+  color: rgba(244, 239, 229, 0.6);
+}
+/* kaksirivinen korkeus pitää alaotsikot samalla viivalla, vaikka nimi rivittyisi */
+@media (min-width: 781px) {
+  .journey-stop .name { min-height: 2.64em; }
+}
+.journey-leg { min-width: 7rem; padding: 0 0.5rem; text-align: center; }
+.journey-leg .line {
+  display: block;
+  height: 1px;
+  margin: 0.42rem 0 0.55rem;
+  background: repeating-linear-gradient(to right,
+    var(--rr-brass) 0 6px, transparent 6px 13px);
+}
+.journey-leg .t {
+  font-family: var(--rr-font-caps);
+  letter-spacing: 0.12em;
+  font-size: 0.79rem;
+  color: var(--rr-gold);
+}
+@media (max-width: 780px) {
+  .journey { grid-template-columns: 1fr; max-width: 22rem; }
+  .journey-leg { min-width: 0; padding: 0.85rem 0; }
+  .journey-leg .line {
+    height: 24px;
+    width: 1px;
+    margin: 0 auto 0.45rem;
+    background: repeating-linear-gradient(to bottom,
+      var(--rr-brass) 0 5px, transparent 5px 11px);
+  }
+}
