@@ -55,6 +55,19 @@ hämeenlinnalaisia juhlia, koska junayhteys on poikkeuksellisen lyhyt:
 - Autolla väli on noin 14 km ja noin 17 minuuttia. Talon edessä on omat
   parkkipaikat ja vieressä kaksi pysäköintialuetta.
 
+Turenki on Helsinki–Tampere-pääradan varrella, joten myös muualta radan
+varrelta pääsee perille ilman vaihtoa. Suorat junayhteydet Turenkiin
+(aikataulutilanne 8/2026, noin kymmenen vuoroa lauantaisin):
+
+- Hämeenlinna 7 min
+- Ryttylä 7 min
+- Parola 13 min
+- Riihimäki 14 min
+- Hyvinkää 25 min
+- Toijala 30 min
+- Tampere 54 min
+- Helsinki 71 min
+
 Käytännön seuraus: hämeenlinnalainen juhlaseurue pääsee paikalle ja kotiin
 junalla, joten kenenkään ei tarvitse toimia autonkuljettajana.
 
