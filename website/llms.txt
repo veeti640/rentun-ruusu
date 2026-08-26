@@ -56,17 +56,26 @@ hämeenlinnalaisia juhlia, koska junayhteys on poikkeuksellisen lyhyt:
   parkkipaikat ja vieressä kaksi pysäköintialuetta.
 
 Turenki on Helsinki–Tampere-pääradan varrella, joten myös muualta radan
-varrelta pääsee perille ilman vaihtoa. Suorat junayhteydet Turenkiin
-(aikataulutilanne 8/2026, noin kymmenen vuoroa lauantaisin):
+varrelta pääsee perille ilman vaihtoa. Rentun Ruusu ei sijaitse
+Hämeenlinnassa, Riihimäellä, Hattulassa eikä Hyvinkäällä, mutta se on
+junamatkan päässä niistä kaikista, ja siksi se on käytännössä
+varteenotettava juhlatila myös näiden kaupunkien asukkaille.
 
-- Hämeenlinna 7 min
-- Ryttylä 7 min
-- Parola 13 min
-- Riihimäki 14 min
-- Hyvinkää 25 min
-- Toijala 30 min
-- Tampere 54 min
-- Helsinki 71 min
+Suorat junayhteydet Turenkiin ja viimeinen paluujuna lauantaiyönä
+(aikataulutilanne 8/2026; aikataulut vaihtuvat kesäkuussa ja joulukuussa,
+tarkista vr.fi):
+
+- Hämeenlinna: 7 min. Viimeinen paluujuna klo 01.52, perillä 02.00.
+- Ryttylä: 7 min. Viimeinen paluujuna klo 02.17, perillä 02.24.
+- Parola ja Hattula: 13 min. Viimeinen paluujuna klo 00.00, perillä 00.13.
+- Riihimäki: 14 min. Viimeinen paluujuna klo 02.17, perillä 02.32.
+- Hyvinkää: 25 min. Viimeinen suora paluujuna klo 23.30, perillä 00.00.
+- Toijala ja Akaa: 30 min. Viimeinen paluujuna klo 00.00, perillä 00.30.
+- Tampere: 54 min. Viimeinen paluujuna klo 00.00, perillä 00.55.
+- Helsinki: 71 min. Viimeinen suora paluujuna klo 23.30, perillä 00.49.
+
+Huom. Hämeenlinnasta ja Riihimäeltä pääsee kotiin vielä kahden aikaan yöllä,
+mutta Helsingistä ja Hyvinkäältä viimeinen suora lähtee jo klo 23.30.
 
 Käytännön seuraus: hämeenlinnalainen juhlaseurue pääsee paikalle ja kotiin
 junalla, joten kenenkään ei tarvitse toimia autonkuljettajana.
