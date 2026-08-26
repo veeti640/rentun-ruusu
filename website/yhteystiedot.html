@@ -90,6 +90,7 @@
         <a href="/">Etusivu</a>
         <a href="/tapahtumat">Tapahtumat</a>
         <a href="/galleria">Galleria</a>
+        <a href="/meista">Meistä</a>
         <a href="/yhteystiedot" class="active" aria-current="page">Yhteystiedot</a>
       </nav>
     </div>
@@ -133,7 +134,7 @@
           <div style="margin-top: 1.5rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
             <button type="submit" class="btn btn-gold" id="cf-submit">Lähetä</button>
             <span class="form-note">tai kirjoita suoraan:
-              <a href="mailto:rentunruusu16@gmail.com" style="color: var(--rr-gold);">rentunruusu16@gmail.com</a></span>
+              <a href="mailto:info@rentunruusu.com" style="color: var(--rr-gold);">info@rentunruusu.com</a></span>
           </div>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
@@ -176,7 +177,7 @@
             </div>
             <div class="contact-row">
               <span class="label">sähköposti</span>
-              <span class="value"><a href="mailto:rentunruusu16@gmail.com">rentunruusu16@gmail.com</a></span>
+              <span class="value"><a href="mailto:info@rentunruusu.com">info@rentunruusu.com</a></span>
             </div>
             <div class="contact-row">
               <span class="label">instagram</span>
@@ -220,6 +221,7 @@
           <li><a href="/">Etusivu</a></li>
           <li><a href="/tapahtumat">Tapahtumat</a></li>
           <li><a href="/galleria">Galleria</a></li>
+          <li><a href="/meista">Meistä</a></li>
           <li><a href="/yhteystiedot">Yhteystiedot</a></li>
           <li><a href="/juhlatila-hameenlinna">Juhlatila Hämeenlinnan lähellä</a></li>
         </ul>
@@ -228,6 +230,7 @@
         <p class="footer-head">löydät meidät</p>
         <ul>
           <li>Kauppakuja 16, 14200 Turenki</li>
+          <li><a href="mailto:info@rentunruusu.com">info@rentunruusu.com</a></li>
           <li><a href="https://instagram.com/rentunruusu" target="_blank" rel="noopener">Instagram @rentunruusu</a></li>
           <li><a href="https://www.facebook.com/p/Rentun-Ruusu-61559462117911/" target="_blank" rel="noopener">Facebook Rentun Ruusu</a></li>
           <li><a href="tel:+358407244622">Minna · 040 724 4622</a></li>
@@ -244,12 +247,13 @@
   <script src="js/main.js"></script>
   <script>
     /* Yhteydenottolomake: lähettää viestin FormSubmit-palvelun kautta
-       osoitteeseen rentunruusu16@gmail.com (toimii ilman omaa palvelinta).
-       HUOM: ensimmäinen lähetys laukaisee FormSubmitin vahvistussähköpostin
-       tuohon osoitteeseen — vahvista linkistä kerran, sen jälkeen viestit
-       tulevat suoraan perille. */
+       osoitteeseen info@rentunruusu.com (toimii ilman omaa palvelinta).
+       HUOM: osoite vaihdettiin 27.8.2026 Gmailista domain-osoitteeseen.
+       FormSubmit vaatii uudelle osoitteelle kertavahvistuksen: ensimmäinen
+       lähetys laukaisee vahvistusviestin info@rentunruusu.com -postilaatikkoon.
+       Ennen kuin se on klikattu, lomake EI toimita viestejä perille. */
     (function () {
-      var ENDPOINT = "https://formsubmit.co/ajax/rentunruusu16@gmail.com";
+      var ENDPOINT = "https://formsubmit.co/ajax/info@rentunruusu.com";
       var form = document.getElementById("contact-form");
       var status = document.getElementById("form-status");
       var submit = document.getElementById("cf-submit");
@@ -295,7 +299,7 @@
           })
           .catch(function () {
             status.className = "form-status err";
-            status.textContent = "Lähetys ei onnistunut. Kokeile hetken päästä uudelleen tai kirjoita suoraan: rentunruusu16@gmail.com";
+            status.textContent = "Lähetys ei onnistunut. Kokeile hetken päästä uudelleen tai kirjoita suoraan: info@rentunruusu.com";
           })
           .finally(function () {
             submit.disabled = false;

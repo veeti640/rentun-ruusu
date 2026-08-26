@@ -56,6 +56,17 @@
   </url>
 
   <url>
+    <loc>https://rentunruusu.com/meista</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://rentunruusu.com/assets/img/koti-talo.jpg</image:loc>
+      <image:title>Rentun Ruusu, entinen Turengin työväentalo vuodelta 1910</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://rentunruusu.com/yhteystiedot</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>yearly</changefreq>

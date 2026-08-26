@@ -13,7 +13,7 @@
 - Kunta: Janakkala, Kanta-Häme
 - Koordinaatit: 60.92024, 24.64094
 - Puhelin: Minna +358 40 724 4622, Olli +358 50 420 1707
-- Sähköposti: rentunruusu16@gmail.com
+- Sähköposti: info@rentunruusu.com
 - Verkkosivu: https://rentunruusu.com
 - Instagram: https://instagram.com/rentunruusu
 - Facebook: https://www.facebook.com/p/Rentun-Ruusu-61559462117911/
@@ -32,6 +32,19 @@
 - **Keittiö** — täysi keittiö omille tai pitopalvelun tarjoiluille.
 
 Sali, Pianotupa ja keittiö voidaan varata yhdessä tai erikseen.
+
+## Talon historia ja omistajat
+
+Rakennus on vuonna 1910 valmistunut Turengin työväentalo, jossa on aito näyttämö
+samettiesirippuineen, kahvila, aula ja yläkerran huoneet. Janakkalan
+Sosialidemokraatit ry piti taloa yllä vuosikymmeniä talkoovoimin ja myi sen
+keväällä 2024. Ostajat olivat janakkalalaiset Olli Hurskainen ja Minna Stolt,
+jotka halusivat säilyttää talon käytössä ja jatkavat sen vuokraamista juhla- ja
+tapahtumatalona. Nimi Rentun Ruusu viittaa Irwin Goodmaniin ja hämäläiseen
+kulttuuriperinteeseen.
+
+Lehtijuttu kaupasta: Hämeenlinnan Kaupunkiuutiset 21.5.2024,
+https://www.hameenlinnankaupunkiuutiset.fi/paikalliset/6782331
 
 ## Millaisiin tilaisuuksiin talo sopii
 
@@ -83,7 +96,7 @@ junalla, joten kenenkään ei tarvitse toimia autonkuljettajana.
 ## Usein kysyttyä
 
 **Miten tilat varataan?** Ota yhteyttä yhteydenottolomakkeella osoitteessa
-https://rentunruusu.com/yhteystiedot, sähköpostilla rentunruusu16@gmail.com tai
+https://rentunruusu.com/yhteystiedot, sähköpostilla info@rentunruusu.com tai
 Instagramissa. Kerro toivottu päivä, vierasmäärä ja tilaisuuden luonne.
 
 **Saako omat tarjoilut tai pitopalvelun tuoda?** Kyllä. Omat juomat ja tarjoilut
@@ -110,6 +123,7 @@ Kanta-Hämeessä, noin 15 km Hämeenlinnasta etelään.
 - [Etusivu](https://rentunruusu.com/): talon esittely, tilat ja usein kysytyt kysymykset.
 - [Tapahtumat](https://rentunruusu.com/tapahtumat): tulevat yleisötapahtumat, liput ja julisteet.
 - [Galleria](https://rentunruusu.com/galleria): valokuvat juhlasalista, Pianotuvasta, aulasta, keittiöstä, wc-tiloista ja pihasta.
+- [Meistä](https://rentunruusu.com/meista): talon historia vuodesta 1910, omistajat ja lehtijutut.
 - [Yhteystiedot](https://rentunruusu.com/yhteystiedot): yhteydenottolomake, kartta, puhelinnumerot ja saapumisohjeet.
 - [Juhlatila Hämeenlinnan lähellä](https://rentunruusu.com/juhlatila-hameenlinna): junayhteys Hämeenlinnasta, matka-ajat, myöhäiset paluuvuorot ja mitä talo tarjoaa hämeenlinnalaiselle juhlaseurueelle.
 
