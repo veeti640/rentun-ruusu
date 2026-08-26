@@ -1434,63 +1434,7 @@ p { margin: 0 0 1.1em; }
   }
 }
 
-/* ── Rataviiva: Turenki päärata Helsinki–Tampere ─────────────────── */
-.railline { margin: 2.6rem auto 0; max-width: 60rem; }
-.railline-track {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  position: relative;
-}
-.railline-track::before {
-  content: "";
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  top: 7px;
-  height: 2px;
-  background: rgba(192, 138, 87, 0.45);
-}
-.railline-stop { position: relative; text-align: center; padding: 0 0.15rem; }
-.railline-stop .dot {
-  display: block;
-  width: 10px;
-  height: 10px;
-  margin: 2px auto 0.85rem;
-  border-radius: 50%;
-  background: var(--rr-brass);
-  box-shadow: 0 0 0 5px var(--rr-lace);
-  position: relative;
-  z-index: 1;
-}
-.railline-stop .n {
-  display: block;
-  font-family: var(--rr-font-caps);
-  letter-spacing: 0.07em;
-  font-size: 0.78rem;
-  line-height: 1.25;
-  color: var(--rr-navy);
-}
-.railline-stop .t {
-  display: block;
-  margin-top: 0.28rem;
-  font-size: 0.79rem;
-  color: var(--rr-rose-deep);
-}
-.railline-stop.is-here .dot {
-  width: 17px;
-  height: 17px;
-  margin-top: -1px;
-  background: var(--rr-rose-deep);
-  box-shadow: 0 0 0 5px var(--rr-lace), 0 0 0 7px rgba(142, 91, 89, 0.28);
-}
-.railline-stop.is-here .n {
-  font-size: 0.92rem;
-  color: var(--rr-rose-deep);
-}
+/* Huomautusteksti matkakartan alla */
 .railline-note {
   margin: 1.5rem auto 0;
   max-width: 40rem;
@@ -1498,53 +1442,132 @@ p { margin: 0 0 1.1em; }
   font-size: 0.9rem;
   color: rgba(43, 54, 74, 0.72);
 }
+
+/* ── Matkakartta: lähtökaupungin valinta ─────────────────────────── */
+.matka { margin: 2.6rem 0 0; }
+
+.matka-napit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.2rem;
+}
+.matka-nappi {
+  font-family: var(--rr-font-caps);
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  color: var(--rr-navy);
+  background: transparent;
+  border: 1px solid rgba(192, 138, 87, 0.55);
+  border-radius: 999px;
+  padding: 0.44rem 0.95rem;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.matka-nappi:hover { border-color: var(--rr-brass); background: rgba(192, 138, 87, 0.12); }
+.matka-nappi.is-active {
+  background: var(--rr-rose-deep);
+  border-color: var(--rr-rose-deep);
+  color: var(--rr-lace);
+}
+
+.matka-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+.matka-kartta svg { display: block; width: 100%; height: auto; }
+
+/* Rata */
+.rata-tausta {
+  fill: none;
+  stroke: rgba(43, 54, 74, 0.2);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.rata-jatko {
+  fill: none;
+  stroke: rgba(43, 54, 74, 0.2);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 7 7;
+}
+.rata-korostus {
+  fill: none;
+  stroke: var(--rr-rose-deep);
+  stroke-width: 5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: none;
+}
+.asema circle { fill: var(--rr-navy); }
+.asema text {
+  font-family: var(--rr-font-caps);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  fill: var(--rr-navy);
+}
+.asema.is-lahto circle { fill: var(--rr-rose-deep); r: 8; }
+.asema.is-lahto text { fill: var(--rr-rose-deep); }
+.asema-maali circle { fill: var(--rr-rose-deep); }
+.asema-maali text { fill: var(--rr-rose-deep); font-size: 17px; }
+.rata-paa {
+  font-family: var(--rr-font-caps);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  fill: rgba(43, 54, 74, 0.6);
+}
+
+/* Kaupunkikortit */
+.matka-kortti {
+  border-left: 2px solid var(--rr-brass);
+  padding: 0.2rem 0 0.2rem 1.3rem;
+}
+.matka-kaupunki {
+  font-family: var(--rr-font-caps);
+  letter-spacing: 0.12em;
+  font-size: 0.86rem;
+  color: var(--rr-rose-deep);
+  margin: 0;
+}
+.matka-aika {
+  font-family: var(--rr-font-display);
+  font-size: 2.6rem;
+  line-height: 1.05;
+  color: var(--rr-navy);
+  margin: 0.35rem 0 0.7rem;
+}
+.matka-rivi { margin: 0 0 0.5rem; font-size: 0.98rem; }
+.matka-rivi:last-child { margin-bottom: 0; }
+.matka-huom { color: rgba(43, 54, 74, 0.7); font-size: 0.92rem; }
+
+/* Ilman JS:ää kaikki kortit näkyvät listana; JS:n kanssa vain valittu. */
+.matka:not(.js-kaytossa) .matka-kortti + .matka-kortti { margin-top: 1.6rem; }
+.matka.js-kaytossa .matka-kortti { display: none; }
+.matka.js-kaytossa .matka-kortti.is-active { display: block; }
+
 @media (max-width: 820px) {
-  .railline-track {
-    grid-auto-flow: row;
-    grid-auto-columns: auto;
-    justify-items: start;
-    max-width: 20rem;
-    margin: 0 auto;
-  }
-  .railline-track::before {
-    left: 7px;
-    right: auto;
-    top: 8px;
-    bottom: 8px;
-    height: auto;
-    width: 2px;
-  }
-  .railline-stop {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: baseline;
-    gap: 0.85rem;
-    width: 100%;
-    text-align: left;
-    padding: 0.42rem 0;
-  }
-  .railline-stop .dot { margin: 0.35rem 0 0; }
-  .railline-stop.is-here .dot { margin: 0.15rem -3px 0 -3px; }
-  .railline-stop .t { margin-top: 0; }
+  .matka-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .matka-kartta { max-width: 26rem; margin: 0 auto; }
+  .matka-aika { font-size: 2.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .matka-nappi { transition: none; }
 }
 
-/* Rataviivan kaupungit linkkeinä kaupunkikohtaisiin tietoihin */
-.railline-stop a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px dotted rgba(192, 138, 87, 0.6);
-  padding-bottom: 1px;
+.asema-ali {
+  font-family: var(--rr-font-caps);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  fill: var(--rr-rose-deep);
 }
-.railline-stop a:hover,
-.railline-stop a:focus-visible { color: var(--rr-rose-deep); border-bottom-color: currentColor; }
-
-/* Ankkurit eivät saa jäädä tarttuvan ylapalkin alle */
-.city-row { scroll-margin-top: 6rem; }
-.city-row:target .label { color: var(--rr-rose-deep); }
-.city-row:target { background: rgba(192, 138, 87, 0.09); }
-
-/* Seutukartta: korkeampi kehys, jotta Hämeenlinna ja Riihimäki mahtuvat kuvaan */
-.map-frame.is-region iframe { height: 640px; }
-@media (max-width: 700px) {
-  .map-frame.is-region iframe { height: 600px; }
+/* Kapealla näytöllä SVG skaalautuu pieneksi: kasvatetaan tekstit luettaviksi. */
+@media (max-width: 820px) {
+  .asema text { font-size: 20px; }
+  .asema-maali text { font-size: 22px; }
+  .asema-ali { font-size: 17px; }
+  .rata-paa { font-size: 17px; }
 }

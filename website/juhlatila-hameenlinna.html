@@ -301,101 +301,125 @@
           varrella. Sama juna tuo vieraat Hämeenlinnasta, Riihimäeltä ja kauempaakin
           ilman yhtäkään vaihtoa.</p>
 
-        <figure class="map-frame is-region reveal" style="margin: 2.4rem 0 0;">
-          <iframe
-            src="https://www.google.com/maps?q=Turenki&amp;z=10&amp;hl=fi&amp;output=embed"
-            title="Kartta: Turenki Hämeenlinnan ja Riihimäen välissä, Kanta-Hämeessä"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <figcaption>hämeenlinna ✦ turenki ✦ riihimäki — samalla radalla ✦
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Rentun%20Ruusu%2C%20Kauppakuja%2016%2C%2014200%20Turenki"
-               target="_blank" rel="noopener">avaa isompi kartta</a>
-          </figcaption>
-        </figure>
+        <div class="matka reveal" data-matkakartta>
+          <div class="matka-napit" role="group" aria-label="Valitse mistä vieraat tulevat">
+            <button type="button" class="matka-nappi is-active"
+                    data-kaupunki-nappi="hameenlinna" aria-pressed="true">Hämeenlinna</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="ryttyla" aria-pressed="false">Ryttylä</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="parola" aria-pressed="false">Parola</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="riihimaki" aria-pressed="false">Riihimäki</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="hyvinkaa" aria-pressed="false">Hyvinkää</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="toijala" aria-pressed="false">Toijala</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="tampere" aria-pressed="false">Tampere</button>
+            <button type="button" class="matka-nappi"
+                    data-kaupunki-nappi="helsinki" aria-pressed="false">Helsinki</button>
+          </div>
 
-        <div class="railline reveal" style="margin-top: 3rem;">
-          <ol class="railline-track">
-            <li class="railline-stop">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n"><a href="#helsinki">Helsinki</a></span><span class="t">71 min</span>
-            </li>
-            <li class="railline-stop">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n"><a href="#riihimaki">Riihimäki</a></span><span class="t">14 min</span>
-            </li>
-            <li class="railline-stop">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n"><a href="#ryttyla">Ryttylä</a></span><span class="t">7 min</span>
-            </li>
-            <li class="railline-stop is-here">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n">Turenki</span><span class="t">Rentun Ruusu</span>
-            </li>
-            <li class="railline-stop">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n"><a href="#hameenlinna">Hämeenlinna</a></span><span class="t">7 min</span>
-            </li>
-            <li class="railline-stop">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n"><a href="#parola">Parola</a></span><span class="t">13 min</span>
-            </li>
-            <li class="railline-stop">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="n"><a href="#tampere">Tampere</a></span><span class="t">54 min</span>
-            </li>
-          </ol>
-        </div>
-        <p class="railline-note">Ajat ovat suoria junayhteyksiä Turenkiin, ilman vaihtoa.
-          Sama juna pysähtyy myös <a href="#hyvinkaa">Hyvinkäällä</a> ja
-          <a href="#toijala">Toijalassa</a>. Napauta kaupunkia, niin näet sen omat
-          vuorot ja viimeisen paluujunan.</p>
+          <div class="matka-grid">
+            <div class="matka-kartta">
+              <svg viewBox="0 0 620 700" role="img"
+                   aria-label="Rata Toijalasta Hyvinkäälle: Turenki sijaitsee Hämeenlinnan ja Riihimäen välissä.">
+                <polyline class="rata-tausta"
+                  points="64.0,76.2 313.6,198.7 369.1,247.0 448.0,332.3 507.0,434.1 518.4,517.4 556.0,623.8"/>
+                <path class="rata-jatko" d="M64.0,76.2 L28.1,58.6"/>
+                <path class="rata-jatko" d="M556.0,623.8 L571.0,666.2"/>
+                <polyline class="rata-korostus" data-korostus points=""/>
+                <text class="rata-paa" x="20" y="36">Tampere 54 min ↖</text>
+                <text class="rata-paa" x="600" y="690" text-anchor="end">↘ Helsinki 71 min</text>
+          <g class="asema" data-asema="toijala">
+            <circle cx="64.0" cy="76.2" r="5"/>
+            <text x="80.0" y="81.2" text-anchor="start">Toijala</text>
+          </g>
+          <g class="asema" data-asema="parola">
+            <circle cx="313.6" cy="198.7" r="5"/>
+            <text x="329.6" y="203.7" text-anchor="start">Parola</text>
+          </g>
+          <g class="asema" data-asema="hameenlinna">
+            <circle cx="369.1" cy="247.0" r="5"/>
+            <text x="385.1" y="252.0" text-anchor="start">Hämeenlinna</text>
+          </g>
+          <g class="asema" data-asema="ryttyla">
+            <circle cx="507.0" cy="434.1" r="5"/>
+            <text x="523.0" y="439.1" text-anchor="start">Ryttylä</text>
+          </g>
+          <g class="asema" data-asema="riihimaki">
+            <circle cx="518.4" cy="517.4" r="5"/>
+            <text x="534.4" y="522.4" text-anchor="start">Riihimäki</text>
+          </g>
+          <g class="asema" data-asema="hyvinkaa">
+            <circle cx="556.0" cy="623.8" r="5"/>
+            <text x="540.0" y="628.8" text-anchor="end">Hyvinkää</text>
+          </g>
+                <g class="asema asema-maali">
+                  <circle cx="448.0" cy="332.3" r="9"/>
+                  <text x="466" y="330">Turenki</text>
+                  <text class="asema-ali" x="466" y="351">Rentun Ruusu</text>
+                </g>
+              </svg>
+            </div>
 
-        <div class="contact-card reveal" style="margin-top: 2.4rem;">
-          <div class="contact-rows" style="margin-top: 0;">
-            <div class="contact-row city-row" id="hameenlinna">
-              <span class="label">Hämeenlinnasta</span>
-              <span class="value">7 minuuttia. Viimeinen paluujuna lauantaiyönä
-                klo 01.52, perillä 02.00.</span>
-            </div>
-            <div class="contact-row city-row" id="ryttyla">
-              <span class="label">Ryttylästä</span>
-              <span class="value">7 minuuttia. Viimeinen paluujuna lauantaiyönä
-                klo 02.17, perillä 02.24.</span>
-            </div>
-            <div class="contact-row city-row" id="parola">
-              <span class="label">Parolasta ja Hattulasta</span>
-              <span class="value">13 minuuttia. Viimeinen paluujuna lauantaiyönä
-                klo 00.00, perillä 00.13.</span>
-            </div>
-            <div class="contact-row city-row" id="riihimaki">
-              <span class="label">Riihimäeltä</span>
-              <span class="value">14 minuuttia. Viimeinen paluujuna lauantaiyönä
-                klo 02.17, perillä 02.32 — myöhemmin kuin Hämeenlinnaan.</span>
-            </div>
-            <div class="contact-row city-row" id="hyvinkaa">
-              <span class="label">Hyvinkäältä</span>
-              <span class="value">25 minuuttia. Viimeinen suora paluujuna lähtee jo
-                klo 23.30, perillä 00.00.</span>
-            </div>
-            <div class="contact-row city-row" id="toijala">
-              <span class="label">Toijalasta ja Akaasta</span>
-              <span class="value">30 minuuttia. Viimeinen paluujuna lauantaiyönä
-                klo 00.00, perillä 00.30.</span>
-            </div>
-            <div class="contact-row city-row" id="tampere">
-              <span class="label">Tampereelta</span>
-              <span class="value">54 minuuttia. Viimeinen paluujuna lauantaiyönä
-                klo 00.00, perillä 00.55.</span>
-            </div>
-            <div class="contact-row city-row" id="helsinki">
-              <span class="label">Helsingistä</span>
-              <span class="value">71 minuuttia. Viimeinen suora paluujuna lähtee jo
-                klo 23.30, perillä 00.49 — Helsingin vieraille kannattaa varata yöpyminen,
-                jos juhlat jatkuvat pitkään.</span>
+            <div class="matka-tiedot">
+          <div class="matka-kortti is-active" data-kaupunki-kortti="hameenlinna" id="hameenlinna">
+            <p class="matka-kaupunki">Hämeenlinnasta</p>
+            <p class="matka-aika">7 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 01.52, perillä 02.00.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="ryttyla" id="ryttyla">
+            <p class="matka-kaupunki">Ryttylästä</p>
+            <p class="matka-aika">7 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 02.17, perillä 02.24.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="parola" id="parola">
+            <p class="matka-kaupunki">Parolasta ja Hattulasta</p>
+            <p class="matka-aika">13 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 00.00, perillä 00.13.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="riihimaki" id="riihimaki">
+            <p class="matka-kaupunki">Riihimäeltä</p>
+            <p class="matka-aika">14 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 02.17, perillä 02.32.</p>
+            <p class="matka-rivi matka-huom">Myöhäisempi paluu kuin Hämeenlinnaan.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="hyvinkaa" id="hyvinkaa">
+            <p class="matka-kaupunki">Hyvinkäältä</p>
+            <p class="matka-aika">25 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 23.30, perillä 00.00.</p>
+            <p class="matka-rivi matka-huom">Viimeinen suora lähtee jo illalla.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="toijala" id="toijala">
+            <p class="matka-kaupunki">Toijalasta ja Akaasta</p>
+            <p class="matka-aika">30 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 00.00, perillä 00.30.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="tampere" id="tampere">
+            <p class="matka-kaupunki">Tampereelta</p>
+            <p class="matka-aika">54 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 00.00, perillä 00.55.</p>
+          </div>
+          <div class="matka-kortti" data-kaupunki-kortti="helsinki" id="helsinki">
+            <p class="matka-kaupunki">Helsingistä</p>
+            <p class="matka-aika">71 min</p>
+            <p class="matka-rivi">Suora juna Turenkiin, ei vaihtoa. Asemalta talolle 450 metriä.</p>
+            <p class="matka-rivi">Viimeinen paluujuna lauantaiyönä klo 23.30, perillä 00.49.</p>
+            <p class="matka-rivi matka-huom">Viimeinen suora lähtee jo illalla — pitkiin juhliin kannattaa varata yöpyminen.</p>
+          </div>
             </div>
           </div>
         </div>
+
         <p class="railline-note">Vuorot ovat lauantailta 8/2026 ja ne vaihtuvat kesäkuussa
           ja joulukuussa, joten tarkistakaa oman juhlapäivänne aikataulu osoitteesta
           <a href="https://www.vr.fi/" target="_blank" rel="noopener">vr.fi</a>.</p>
@@ -574,5 +598,6 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/matka.js" defer></script>
 </body>
 </html>
