@@ -247,13 +247,21 @@
   <script src="js/main.js"></script>
   <script>
     /* Yhteydenottolomake: lähettää viestin FormSubmit-palvelun kautta
-       osoitteeseen info@rentunruusu.com (toimii ilman omaa palvelinta).
-       HUOM: osoite vaihdettiin 27.8.2026 Gmailista domain-osoitteeseen.
-       FormSubmit vaatii uudelle osoitteelle kertavahvistuksen: ensimmäinen
-       lähetys laukaisee vahvistusviestin info@rentunruusu.com -postilaatikkoon.
-       Ennen kuin se on klikattu, lomake EI toimita viestejä perille. */
+       (toimii ilman omaa palvelinta).
+
+       TARKOITUKSELLINEN ERO — älä "korjaa" tätä:
+       Sivulla näkyvä osoite on info@rentunruusu.com, mutta lomakkeen
+       vastaanottaja on edelleen vanha Gmail-osoite. Syy: FormSubmit vaatii
+       jokaiselle uudelle vastaanottajalle kertavahvistuksen sähköpostitse,
+       eikä lomake toimita viestejä ennen kuin linkkiä on klikattu. Gmail on
+       jo vahvistettu, joten lomake toimii keskeytyksettä. Vastaanottaja ei
+       näy käyttäjälle missään.
+
+       Jos vastaanottaja joskus vaihdetaan info@rentunruusu.com-osoitteeseen:
+       lähetä lomake kerran itse ja klikkaa vahvistusviesti siitä
+       postilaatikosta, muuten yhteydenotot katoavat huomaamatta. */
     (function () {
-      var ENDPOINT = "https://formsubmit.co/ajax/info@rentunruusu.com";
+      var ENDPOINT = "https://formsubmit.co/ajax/rentunruusu16@gmail.com";
       var form = document.getElementById("contact-form");
       var status = document.getElementById("form-status");
       var submit = document.getElementById("cf-submit");
