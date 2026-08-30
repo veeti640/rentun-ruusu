@@ -64,12 +64,26 @@ erillistä kuvalistaa.
 
 ## Google-arvostelut
 
-Etusivulla on kaksi linkitystä Googlen yritysprofiiliin:
+Etusivulla arvostelut näkyvät kahdessa kohdassa:
 
-1. **Herossa** nappien alla arvostelunosto (`.hero-arvio`): tähtipalkki,
-   keskiarvo ja arvostelujen määrä.
-2. **Arvosteluosiossa** (`#arvostelut`) kaksi nappia: arvostelujen lukeminen ja
-   oman arvostelun jättäminen.
+1. **Herossa** nappien alla pieni nosto (`.hero-arvio`): tähtipalkki, keskiarvo
+   ja arvostelujen määrä.
+2. **Oma osio** (`#arvostelut`) tilaesittelyn ja varaus-CTA:n välissä: otsikko
+   ”Ruusuja, ei risuja”, iso arvosanalohko (`.arvio-summa`, koko lohko on linkki
+   profiiliin), vieraiden arvostelut kortteina ja kaksi nappia.
+
+Osion paikka on tarkoituksellinen: se on juuri ennen varaus-CTA:ta, eli vieras
+lukee kokemukset ennen kuin häntä pyydetään ottamaan yhteyttä. Otsikko nojaa
+sanontaan ”risut ja ruusut”, ja seuraavan osion ”Haluaisitko ruusun poskille?”
+jatkaa samaa kuvaa. Jos toista muutetaan, katso toinenkin.
+
+### Arvostelukorttien lisääminen
+
+Kortit ovat `#arvostelut`-osiossa HTML-kommentin sisällä valmiina mallina. Poista
+kommenttimerkit ja täytä kortit, kun arvosteluja kopioidaan profiilista. Kopioi
+teksti ja etunimi **sellaisenaan**, älä tiivistä tai korjaile kieltä. Kortin
+tähtipalkin täyttö on kyseisen arvostelun oma arvosana: 5★ = `100%`,
+4★ = `80%`, 3★ = `60%`.
 
 Talon Google-tunnisteet (älä keksi näitä uudelleen — Google antaa ne itse
 karttaupotuksen datassa):
@@ -81,14 +95,17 @@ karttaupotuksen datassa):
 | Lue arvostelut | `https://search.google.com/local/reviews?placeid=<Place ID>` |
 | Jätä arvostelu | `https://search.google.com/local/writereview?placeid=<Place ID>` |
 
-**Lukujen päivitys.** Keskiarvo ja määrä ovat sivustolla vain yhdessä paikassa,
-`index.html`-tiedoston `.hero-arvio`-lohkossa. Kun luvut muuttuvat, päivitä
-kaikki kolme kohtaa samalla kertaa:
+**Lukujen päivitys.** Keskiarvo ja määrä ovat `index.html`-tiedostossa **kahdessa
+lohkossa**: `.hero-arvio` (hero) ja `.arvio-summa` (arvosteluosio). Päivitä
+molemmat samalla kertaa, ja kummassakin kaikki kolme kohtaa:
 
-- tähtipalkin täyttö `<i style="width:…%">` — **keskiarvo / 5 prosentteina**
+- tähtipalkin täyttö `<i style="width:…%">`, eli **keskiarvo / 5 prosentteina**
   (esim. 4,7 / 5 = `94%`),
-- `<strong>`-luku (keskiarvo) ja sitä seuraava arvostelujen määrä,
+- näkyvä keskiarvo ja sen perässä arvostelujen määrä,
 - linkin `aria-label`, jossa samat luvut sanallisesti ruudunlukijoille.
+
+Tähtipalkki `.tahdet` on yhteinen komponentti (herossa lisäksi `.tahdet-dark`
+tummaa taustaa varten), joten tähtien ulkoasua ei tarvitse tehdä kahdesti.
 
 Ajantasaiset luvut näkee Googlen omasta datasta:
 

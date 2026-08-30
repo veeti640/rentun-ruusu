@@ -414,27 +414,9 @@ p { margin: 0 0 1.1em; }
   color: var(--rr-ivory);
 }
 
-/* Tähtipalkki: himmeä pohja, jonka päälle kullanvärinen täyttö rajataan
-   leveysprosentilla (asetetaan i-elementin inline-tyylissä). */
-.hero-arvio-tahdet {
-  position: relative;
-  display: inline-block;
+.hero-arvio .tahdet {
   flex: none;
   font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  color: rgba(233, 226, 212, 0.32);
-}
-
-.hero-arvio-tahdet::before,
-.hero-arvio-tahdet i::before { content: "★★★★★"; }
-
-.hero-arvio-tahdet i {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  color: var(--rr-gold);
 }
 
 .hero-arvio-teksti {
@@ -1582,6 +1564,82 @@ p { margin: 0 0 1.1em; }
 }
 
 /* ── Arvostelut ──────────────────────────────────────────────────── */
+
+/* Osittain täytettävä tähtipalkki. Himmeä ★★★★★ pohjana, päällä samat
+   tähdet korostusvärillä leikattuna: i-elementin inline-leveys = arvosana / 5
+   prosentteina. Merkki ja letter-spacing toistuvat tasavälein, joten
+   prosentti osuu oikeaan kohtaan myös puolikkailla tähdillä. */
+.tahdet {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: rgba(43, 54, 74, 0.22);
+}
+
+.tahdet::before,
+.tahdet i::before { content: "★★★★★"; }
+
+.tahdet i {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--rr-brass);
+}
+
+/* Tummalle taustalle (hero) */
+.tahdet-dark { color: rgba(233, 226, 212, 0.32); }
+.tahdet-dark i { color: var(--rr-gold); }
+
+.arvio-lead {
+  text-align: center;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+/* Iso arvosanalohko, kokonaisuudessaan linkki Googlen profiiliin */
+.arvio-summa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.3rem;
+  width: fit-content;
+  margin: 2.6rem auto 0;
+  padding: 1.4rem 2.2rem;
+  background: #fdfbf6;
+  border: 1px solid rgba(192, 138, 87, 0.4);
+  box-shadow: var(--rr-shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.arvio-summa:hover,
+.arvio-summa:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--rr-brass);
+}
+
+.arvio-summa-luku {
+  font-family: var(--rr-font-display);
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  color: var(--rr-navy);
+}
+
+.arvio-summa .tahdet { font-size: 1.25rem; }
+
+.arvio-summa-meta {
+  display: block;
+  margin-top: 0.45rem;
+  font-family: var(--rr-font-caps);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--rr-rose-deep);
+}
+
 .arvostelut {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -1594,11 +1652,9 @@ p { margin: 0 0 1.1em; }
   padding: 1.6rem 1.5rem 1.3rem;
   box-shadow: var(--rr-shadow);
 }
-.arvostelu-tahdet {
-  color: var(--rr-brass);
-  letter-spacing: 0.22em;
+.arvostelu .tahdet {
   font-size: 0.95rem;
-  margin: 0 0 0.7rem;
+  margin-bottom: 0.85rem;
 }
 .arvostelu blockquote {
   margin: 0 0 0.9rem;

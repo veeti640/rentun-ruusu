@@ -354,7 +354,7 @@
         <a class="hero-arvio" rel="noopener" target="_blank"
            href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
            aria-label="Lue Google-arvostelut: 4,7 tähteä viidestä, 20 arvostelua">
-          <span class="hero-arvio-tahdet" aria-hidden="true"><i style="width:94%"></i></span>
+          <span class="tahdet tahdet-dark" aria-hidden="true"><i style="width:94%"></i></span>
           <span class="hero-arvio-teksti" aria-hidden="true">
             <strong>4,7</strong>/5 · 20 arvostelua Googlessa
           </span>
@@ -446,6 +446,53 @@
       </div>
     </section>
 
+    <!-- ARVOSTELUT -->
+    <section class="section on-light alt" id="arvostelut">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <p class="eyebrow">vieraiden sanomaa</p>
+          <h2 class="on-light">Ruusuja, ei <em>risuja</em></h2>
+        </div>
+        <p class="lead arvio-lead">Suomeksi palautetta annetaan risuina ja ruusuina.
+          Talon nimeen katsoen olisi ollut kiusallista saada väärää lajia.</p>
+
+        <!-- Arvosanan luvut: ks. myös heron .hero-arvio. Tähtipalkin täyttö =
+             keskiarvo / 5 prosentteina (4,7 / 5 = 94 %). -->
+        <a class="arvio-summa reveal" rel="noopener" target="_blank"
+           href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
+           aria-label="Lue Google-arvostelut: keskiarvo 4,7 tähteä viidestä, 20 arvostelua">
+          <span class="arvio-summa-luku" aria-hidden="true">4,7</span>
+          <span aria-hidden="true">
+            <span class="tahdet"><i style="width:94%"></i></span>
+            <span class="arvio-summa-meta">20 arvostelua Googlessa</span>
+          </span>
+        </a>
+
+        <!-- Aidot Google-arvostelut. Kopioi teksti ja etunimi profiilista
+             sellaisenaan, älä tiivistä tai kaunistele. Tähtipalkin täyttö:
+             5★ = 100%, 4★ = 80%, 3★ = 60%.
+             HUOM: älä lisää AggregateRating-schemaa omiin arvosteluihin,
+             Google ei hyväksy itse julkaistua tähtimerkintää itsestään.
+        <div class="arvostelut">
+          <figure class="arvostelu reveal">
+            <span class="tahdet" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
+            <blockquote>Arvostelun teksti tähän sellaisenaan.</blockquote>
+            <figcaption>Etunimi · kuukausi 2026</figcaption>
+          </figure>
+        </div>
+        -->
+
+        <p class="arvostelu-cta">
+          <a class="btn btn-navy"
+             href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
+             target="_blank" rel="noopener">Lue arvostelut Googlessa</a>
+          <a class="btn btn-ghost btn-ghost-dark"
+             href="https://search.google.com/local/writereview?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
+             target="_blank" rel="noopener">Jätä oma arvostelu</a>
+        </p>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-band">
       <div class="rose-blot" style="bottom:-14rem; left:-12rem;"></div>
@@ -524,42 +571,6 @@
             </div>
           </details>
         </div>
-      </div>
-    </section>
-
-    <!-- ARVOSTELUT -->
-    <section class="section on-light alt" id="arvostelut">
-      <div class="wrap" style="max-width: 54rem;">
-        <div class="section-head center reveal">
-          <p class="eyebrow">vieraiden sanomaa</p>
-          <h2 class="on-light">Kokemuksia <em>talosta</em></h2>
-        </div>
-        <p class="lead" style="text-align:center;">Paras kuva talosta tulee niiltä, jotka
-          ovat jo juhlineet täällä. Arvostelut ovat Googlessa, ja jos olette pitäneet
-          juhlanne meillä, oma kokemuksenne auttaa seuraavaa juhlaparia enemmän kuin
-          mikään mitä me itse kirjoitamme.</p>
-
-        <!-- Aidot Google-arvostelut lisätään tähän sitä mukaa kuin niitä kertyy.
-             Malli yhdelle: kopioi arvostelun teksti ja etunimi sellaisenaan.
-             HUOM: älä lisää AggregateRating-schemaa omiin arvosteluihin —
-             Google ei hyväksy itse kerättyä tähtimerkintää LocalBusinessille.
-        <div class="arvostelut">
-          <figure class="arvostelu reveal">
-            <p class="arvostelu-tahdet" aria-label="5 tähteä">★★★★★</p>
-            <blockquote>Arvostelun teksti tähän.</blockquote>
-            <figcaption>Etunimi · kuukausi 2026</figcaption>
-          </figure>
-        </div>
-        -->
-
-        <p class="arvostelu-cta">
-          <a class="btn btn-navy"
-             href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
-             target="_blank" rel="noopener">Lue arvostelut Googlessa</a>
-          <a class="btn btn-ghost btn-ghost-dark"
-             href="https://search.google.com/local/writereview?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
-             target="_blank" rel="noopener">Jätä oma arvostelu</a>
-        </p>
       </div>
     </section>
 
