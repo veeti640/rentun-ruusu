@@ -95,7 +95,8 @@
         ],
         "sameAs": [
           "https://instagram.com/rentunruusu",
-          "https://www.facebook.com/p/Rentun-Ruusu-61559462117911/"
+          "https://www.facebook.com/p/Rentun-Ruusu-61559462117911/",
+          "https://maps.google.com/?cid=6384835120680424145"
         ],
         "contactPoint": [
           {
@@ -345,6 +346,19 @@
           <a class="btn btn-gold" href="/yhteystiedot">Varaa omat juhlasi</a>
           <a class="btn btn-ghost" href="/galleria">Tutustu tiloihin</a>
         </div>
+
+        <!-- Google-arvostelut. Tähtipalkin täyttö = keskiarvo / 5 prosentteina
+             (4,7 / 5 = 94 %). Kun luvut muuttuvat, päivitä KOLME kohtaa täältä:
+             i-elementin width, <strong>-luku ja arvostelujen määrä — sekä
+             aria-label. Luvut näkyvät sivustolla vain tässä yhdessä paikassa. -->
+        <a class="hero-arvio" rel="noopener" target="_blank"
+           href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
+           aria-label="Lue Google-arvostelut: 4,7 tähteä viidestä, 20 arvostelua">
+          <span class="hero-arvio-tahdet" aria-hidden="true"><i style="width:94%"></i></span>
+          <span class="hero-arvio-teksti" aria-hidden="true">
+            <strong>4,7</strong>/5 · 20 arvostelua Googlessa
+          </span>
+        </a>
       </div>
       <a class="hero-scroll" href="#tervetuloa">selaa ↓</a>
     </section>
@@ -514,7 +528,7 @@
     </section>
 
     <!-- ARVOSTELUT -->
-    <section class="section on-light alt">
+    <section class="section on-light alt" id="arvostelut">
       <div class="wrap" style="max-width: 54rem;">
         <div class="section-head center reveal">
           <p class="eyebrow">vieraiden sanomaa</p>
@@ -540,8 +554,11 @@
 
         <p class="arvostelu-cta">
           <a class="btn btn-navy"
-             href="https://www.google.com/maps/search/?api=1&amp;query=Rentun%20Ruusu%2C%20Kauppakuja%2016%2C%2014200%20Turenki"
-             target="_blank" rel="noopener">Lue ja jätä arvostelu Googlessa</a>
+             href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
+             target="_blank" rel="noopener">Lue arvostelut Googlessa</a>
+          <a class="btn btn-ghost btn-ghost-dark"
+             href="https://search.google.com/local/writereview?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
+             target="_blank" rel="noopener">Jätä oma arvostelu</a>
         </p>
       </div>
     </section>

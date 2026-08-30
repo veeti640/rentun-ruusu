@@ -160,6 +160,14 @@ p { margin: 0 0 1.1em; }
 
 .btn-ghost:hover { background: rgba(233, 226, 212, 0.1); border-color: var(--rr-ivory); }
 
+/* Ghost-napin vaalean taustan versio (esim. arvosteluosion toissijainen nappi) */
+.btn-ghost-dark {
+  color: var(--rr-navy);
+  border-color: rgba(43, 54, 74, 0.35);
+}
+
+.btn-ghost-dark:hover { background: rgba(43, 54, 74, 0.07); border-color: var(--rr-navy); }
+
 .btn-navy {
   background: var(--rr-navy);
   color: var(--rr-ivory);
@@ -380,6 +388,65 @@ p { margin: 0 0 1.1em; }
   gap: 1rem;
   justify-content: center;
   margin-top: 2.2rem;
+}
+
+/* Google-arvostelunosto herossa */
+.hero-arvio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.7rem;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid rgba(233, 226, 212, 0.32);
+  border-radius: 999px;
+  background: rgba(26, 34, 48, 0.62);
+  color: rgba(233, 226, 212, 0.92);
+  text-decoration: none;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.hero-arvio:hover,
+.hero-arvio:focus-visible {
+  border-color: rgba(230, 180, 136, 0.75);
+  background: rgba(26, 34, 48, 0.78);
+  color: var(--rr-ivory);
+}
+
+/* Tähtipalkki: himmeä pohja, jonka päälle kullanvärinen täyttö rajataan
+   leveysprosentilla (asetetaan i-elementin inline-tyylissä). */
+.hero-arvio-tahdet {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: rgba(233, 226, 212, 0.32);
+}
+
+.hero-arvio-tahdet::before,
+.hero-arvio-tahdet i::before { content: "★★★★★"; }
+
+.hero-arvio-tahdet i {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--rr-gold);
+}
+
+.hero-arvio-teksti {
+  font-family: var(--rr-font-caps);
+  font-size: 0.78rem;
+  letter-spacing: 0.11em;
+}
+
+.hero-arvio-teksti strong {
+  font-size: 0.95rem;
+  color: var(--rr-gold);
+  letter-spacing: 0.04em;
 }
 
 .hero-scroll {
@@ -1033,6 +1100,7 @@ p { margin: 0 0 1.1em; }
 .hero-inner > *:nth-child(2) { animation-delay: 0.22s; }
 .hero-inner > *:nth-child(3) { animation-delay: 0.36s; }
 .hero-inner > *:nth-child(4) { animation-delay: 0.5s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.62s; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-inner > * { animation: none; }
@@ -1543,4 +1611,10 @@ p { margin: 0 0 1.1em; }
   font-size: 0.76rem;
   color: var(--rr-rose-deep);
 }
-.arvostelu-cta { text-align: center; margin-top: 2.2rem; }
+.arvostelu-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  margin-top: 2.2rem;
+}

@@ -62,6 +62,45 @@ erillistä kuvalistaa.
 3. Päivitä kuvamäärä `galleria.html`-sivun `description`-metatiedossa ja
    JSON-LD-lohkon `associatedMedia`-listassa.
 
+## Google-arvostelut
+
+Etusivulla on kaksi linkitystä Googlen yritysprofiiliin:
+
+1. **Herossa** nappien alla arvostelunosto (`.hero-arvio`): tähtipalkki,
+   keskiarvo ja arvostelujen määrä.
+2. **Arvosteluosiossa** (`#arvostelut`) kaksi nappia: arvostelujen lukeminen ja
+   oman arvostelun jättäminen.
+
+Talon Google-tunnisteet (älä keksi näitä uudelleen — Google antaa ne itse
+karttaupotuksen datassa):
+
+| Tunniste | Arvo |
+|---|---|
+| Place ID | `ChIJu1qup21pjkYR0VKYxbZ9m1g` |
+| CID (JSON-LD:n `sameAs`) | `6384835120680424145` |
+| Lue arvostelut | `https://search.google.com/local/reviews?placeid=<Place ID>` |
+| Jätä arvostelu | `https://search.google.com/local/writereview?placeid=<Place ID>` |
+
+**Lukujen päivitys.** Keskiarvo ja määrä ovat sivustolla vain yhdessä paikassa,
+`index.html`-tiedoston `.hero-arvio`-lohkossa. Kun luvut muuttuvat, päivitä
+kaikki kolme kohtaa samalla kertaa:
+
+- tähtipalkin täyttö `<i style="width:…%">` — **keskiarvo / 5 prosentteina**
+  (esim. 4,7 / 5 = `94%`),
+- `<strong>`-luku (keskiarvo) ja sitä seuraava arvostelujen määrä,
+- linkin `aria-label`, jossa samat luvut sanallisesti ruudunlukijoille.
+
+Ajantasaiset luvut näkee Googlen omasta datasta:
+
+```sh
+curl -s "https://www.google.com/maps?q=Rentun%20Ruusu,%20Kauppakuja%2016,%2014200%20Turenki&output=embed&hl=fi" \
+  | grep -o '.\{40\}arvostelua'
+```
+
+**Älä lisää `aggregateRating`-skeemaa.** Google ei hyväksy yrityksen omilla
+sivuilla julkaistua tähtimerkintää omasta itsestään (self-serving review), joten
+tähdet näytetään vain näkyvänä sisältönä — ei rakenteisena datana.
+
 ## Yhteydenottolomake
 
 Lomake (`yhteystiedot.html`) lähettää viestit **FormSubmit**-palvelun kautta
