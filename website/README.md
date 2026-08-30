@@ -68,22 +68,46 @@ Etusivulla arvostelut näkyvät kahdessa kohdassa:
 
 1. **Herossa** nappien alla pieni nosto (`.hero-arvio`): tähtipalkki, keskiarvo
    ja arvostelujen määrä.
-2. **Oma osio** (`#arvostelut`) tilaesittelyn ja varaus-CTA:n välissä: otsikko
-   ”Ruusuja, ei risuja”, iso arvosanalohko (`.arvio-summa`, koko lohko on linkki
-   profiiliin), vieraiden arvostelut kortteina ja kaksi nappia.
+2. **Oma osio** (`#arvostelut`) heti heron ja nauhan jälkeen, ennen
+   ”Tervetuloa taloon” -osiota: otsikko ”Ruusuja, ei risuja” ja sen alla
+   Google-paneeli (`.google-panel`).
 
-Osion paikka on tarkoituksellinen: se on juuri ennen varaus-CTA:ta, eli vieras
-lukee kokemukset ennen kuin häntä pyydetään ottamaan yhteyttä. Otsikko nojaa
-sanontaan ”risut ja ruusut”, ja seuraavan osion ”Haluaisitko ruusun poskille?”
+Osio on tarkoituksella heti heron perässä: arvostelut ovat vahvin yksittäinen
+myyntiargumentti, joten ne luetaan ennen muuta sisältöä. Otsikko nojaa sanontaan
+”risut ja ruusut”, ja sivun myöhemmän varausosion ”Haluaisitko ruusun poskille?”
 jatkaa samaa kuvaa. Jos toista muutetaan, katso toinenkin.
+
+### Google-paneeli
+
+`.google-panel` on tarkoituksella eri näköinen kuin muu sivusto: valkoinen pohja,
+pyöristetyt kulmat, Googlen nelivärinen G, Googlen keltaiset tähdet (`#fbbc04`,
+luokka `.tahdet-google`) ja sininen tekstilinkki. Sen **kuuluu** näyttää
+upotetulta Googlen moduulilta, jotta lukija näkee heti mistä arvostelut ovat
+peräisin. Älä siis ”korjaa” sitä brändiväreihin. Leipäteksti käyttää silti
+sivuston omaa kirjasinta, jottei sivulle tule neljättä fonttia.
+
+Paneelissa on kolme osaa: tunniste- ja arvosanarivi (`.google-panel-head`),
+arvostelukortit (`.google-arvostelut`) ja napit (`.google-panel-cta`).
 
 ### Arvostelukorttien lisääminen
 
-Kortit ovat `#arvostelut`-osiossa HTML-kommentin sisällä valmiina mallina. Poista
-kommenttimerkit ja täytä kortit, kun arvosteluja kopioidaan profiilista. Kopioi
-teksti ja etunimi **sellaisenaan**, älä tiivistä tai korjaile kieltä. Kortin
-tähtipalkin täyttö on kyseisen arvostelun oma arvosana: 5★ = `100%`,
-4★ = `80%`, 3★ = `60%`.
+Kortit ovat oikeita Googlen arvosteluja, kopioituna profiilista. Säännöt:
+
+- Teksti, kirjoittajan nimi ja **kirjoitusasu kopioidaan sellaisenaan**: ei
+  tiivistämistä, ei kielenhuoltoa, ei emojien poistoa. Nimi kirjoitetaan niin
+  kuin arvostelija on sen itse kirjoittanut, myös pienellä alkukirjaimella.
+- Vieraskielinen arvostelu jätetään omalle kielelleen ja merkitään
+  `lang`-attribuutilla (`<blockquote lang="en">`). Älä käännä sitä.
+- Tähtipalkin täyttö on **kyseisen arvostelun oma** arvosana: 5★ = `100%`,
+  4★ = `80%`, 3★ = `60%`. Sama luku myös `aria-label`-tekstiin.
+- Avatar on nimen alkukirjain. Väri valitaan luokalla `.google-avatar-rose`,
+  `-navy` tai `-brass`, jotta vierekkäiset kortit erottuvat.
+- **Ikä kirjoitetaan kuukautena ja vuotena** (”joulukuu 2025”), vaikka Google
+  näyttää sen suhteellisena (”8 kuukautta sitten”). Staattisella sivulla
+  suhteellinen aika vanhenee itsestään vääräksi.
+
+Arvostelujen tekstejä ei voi hakea automaattisesti: Google estää sekä
+`listugcposts`-rajapinnan (403) että sivun raapimisen. Ne kopioidaan käsin.
 
 Talon Google-tunnisteet (älä keksi näitä uudelleen — Google antaa ne itse
 karttaupotuksen datassa):
@@ -96,8 +120,8 @@ karttaupotuksen datassa):
 | Jätä arvostelu | `https://search.google.com/local/writereview?placeid=<Place ID>` |
 
 **Lukujen päivitys.** Keskiarvo ja määrä ovat `index.html`-tiedostossa **kahdessa
-lohkossa**: `.hero-arvio` (hero) ja `.arvio-summa` (arvosteluosio). Päivitä
-molemmat samalla kertaa, ja kummassakin kaikki kolme kohtaa:
+lohkossa**: `.hero-arvio` (hero) ja `.google-panel-head` (paneelin yläreuna).
+Päivitä molemmat samalla kertaa, ja kummassakin kaikki kolme kohtaa:
 
 - tähtipalkin täyttö `<i style="width:…%">`, eli **keskiarvo / 5 prosentteina**
   (esim. 4,7 / 5 = `94%`),
@@ -128,6 +152,10 @@ siinä olevaa Activate-linkkiä kerran, minkä jälkeen viestit tulevat perille.
 ## Tarkista ennen julkaisua
 
 - [ ] FormSubmit-vahvistus klikattu (ks. yllä).
+- [ ] **sanni nymanin arvostelun tähtimäärä tarkistettu Googlesta.** Kortissa on
+      nyt 5★, mutta arvosana ei tullut mukaan tekstiä kopioitaessa, toisin kuin
+      kahdessa muussa. Jos se on jokin muu, korjaa kortin `width`-prosentti ja
+      `aria-label`.
 - [ ] Osoite: sivustolla **Kauppakuja 16, 14200 Turenki** (talon kyltin
       mukaan). Korjaa, jos virallinen osoite on eri.
 
