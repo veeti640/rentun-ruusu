@@ -29,3 +29,46 @@ test("jokainen @font-face osoittaa olemassa olevaan woff2-tiedostoon", () => {
     assert.match(body, /font-display:\s*swap/);
   }
 });
+
+const isLocal = (src) => src && !/^(https?:|data:)/.test(src);
+const file = (src) => join(ROOT, src.split("?")[0]);
+
+test("jokaisella kuvalla on width ja height", () => {
+  for (const f of PAGES)
+    for (const t of tags(page(f), "img")) {
+      if (!attr(t, "src")) continue; // galleria-valoboksin tyhjä <img>
+      assert.ok(attr(t, "width") && attr(t, "height"), `${f}: ${t}`);
+    }
+});
+
+test("kaikki kuvatiedostot ja srcset-versiot ovat olemassa", () => {
+  for (const f of PAGES)
+    for (const t of [...tags(page(f), "img"), ...tags(page(f), "source")]) {
+      const src = attr(t, "src");
+      if (isLocal(src)) assert.ok(existsSync(file(src)), `${f}: ${src}`);
+      for (const part of (attr(t, "srcset") || "").split(",").filter(Boolean)) {
+        const url = part.trim().split(/\s+/)[0];
+        assert.ok(existsSync(file(url)), `${f}: ${url}`);
+      }
+    }
+});
+
+test("yli 30 kt:n kuvat tarjotaan myös WebP:nä", () => {
+  for (const f of PAGES) {
+    const p = page(f);
+    const covered = new Set();
+    for (const [, inner] of p.matchAll(/<picture\b[^>]*>([\s\S]*?)<\/picture>/gi))
+      if (/<source\b[^>]*type="image\/webp"/i.test(inner)) tags(inner, "img").forEach((t) => covered.add(t));
+    for (const t of tags(p, "img")) {
+      const src = attr(t, "src");
+      if (isLocal(src) && statSync(file(src)).size > 30 * 1024)
+        assert.ok(covered.has(t), `${f}: ${src} ilman WebP-versiota`);
+    }
+  }
+});
+
+test("alatunnisteen kuvat latautuvat laiskasti", () => {
+  for (const f of PAGES)
+    for (const t of tags(page(f), "img"))
+      if (/class="(footer-house|brand-logo footer-logo)"/.test(t)) assert.equal(attr(t, "loading"), "lazy", `${f}: ${t}`);
+});

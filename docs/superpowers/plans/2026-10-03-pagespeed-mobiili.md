@@ -238,7 +238,7 @@ for f in gallery/*_t.jpg; do
 done
 ```
 
-Run it: `chmod +x tools/optimoi-kuvat.sh && tools/optimoi-kuvat.sh && find website/assets/img -name '*.webp' | wc -l` → expect 51. Open `website/assets/img/hero-sali-p-900.webp` with the Read tool and check the crop keeps the stage centred.
+Run it: `chmod +x tools/optimoi-kuvat.sh && tools/optimoi-kuvat.sh && find website/assets/img -name '*.webp' | wc -l` → expect 52. Open `website/assets/img/hero-sali-p-900.webp` with the Read tool and check the crop keeps the stage centred.
 
 - [ ] **Step 4: Add to `website/css/styles.css`** after the `.visually-hidden` block:
 
