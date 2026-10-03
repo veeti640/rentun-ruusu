@@ -72,3 +72,12 @@ test("alatunnisteen kuvat latautuvat laiskasti", () => {
     for (const t of tags(page(f), "img"))
       if (/class="(footer-house|brand-logo footer-logo)"/.test(t)) assert.equal(attr(t, "loading"), "lazy", `${f}: ${t}`);
 });
+
+test("etusivun LCP-kuva on <img>, ei taustakuva, ja latautuu heti", () => {
+  const p = page("index.html");
+  assert.doesNotMatch(p, /style="[^"]*background-image/i);
+  const hero = tags(p, "img").find((t) => /class="hero-bg"/.test(t));
+  assert.ok(hero, "hero-bg-kuva puuttuu");
+  assert.equal(attr(hero, "fetchpriority"), "high");
+  assert.notEqual(attr(hero, "loading"), "lazy");
+});

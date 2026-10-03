@@ -333,7 +333,15 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg" style="background-image: url('assets/img/hero-sali.jpg');"></div>
+      <!-- Hero on img-elementti eikä taustakuva: selain löytää sen heti HTML:stä ja
+           lataa sen ensimmäisenä (fetchpriority). Puhelimille pystyrajaus. -->
+      <picture>
+        <source media="(max-aspect-ratio: 3/4)" type="image/webp"
+                srcset="assets/img/hero-sali-p-600.webp 600w, assets/img/hero-sali-p-900.webp 900w" sizes="69vh">
+        <source type="image/webp"
+                srcset="assets/img/hero-sali-960.webp 960w, assets/img/hero-sali-1600.webp 1600w" sizes="100vw">
+        <img class="hero-bg" src="assets/img/hero-sali.jpg" alt="" width="1600" height="1200" fetchpriority="high">
+      </picture>
       <div class="hero-veil"></div>
       <div class="hero-frame" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i><i>✦</i></div>
       <div class="hero-inner">
@@ -499,11 +507,17 @@
         </div>
         <div class="photo-stack reveal" aria-hidden="false">
           <figure>
-            <img src="assets/img/koti-kahvila.jpg" alt="Kahvilan vanha piano ja kaakeliuuni">
+            <picture>
+              <source type="image/webp" srcset="assets/img/koti-kahvila-480.webp 480w, assets/img/koti-kahvila-800.webp 800w" sizes="(max-width: 900px) 70vw, 340px">
+              <img src="assets/img/koti-kahvila.jpg" alt="Kahvilan vanha piano ja kaakeliuuni" width="1200" height="1600" loading="lazy" decoding="async">
+            </picture>
             <figcaption>kahvilan piano &amp; kaakeliuuni</figcaption>
           </figure>
           <figure>
-            <img src="assets/img/koti-talo.jpg" alt="Rentun Ruusun punainen puutalo kesäpäivänä">
+            <picture>
+              <source type="image/webp" srcset="assets/img/koti-talo-480.webp 480w, assets/img/koti-talo-800.webp 800w" sizes="(max-width: 900px) 70vw, 340px">
+              <img src="assets/img/koti-talo.jpg" alt="Rentun Ruusun punainen puutalo kesäpäivänä" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
             <figcaption>talo kauppakujalla</figcaption>
           </figure>
         </div>
@@ -520,7 +534,10 @@
         </div>
         <div class="room-grid">
           <a class="room-card reveal" href="/galleria">
-            <img src="assets/img/gallery/sali-01.jpg" alt="Juhlasalin pitkät pöydät ja näyttämö" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="assets/img/gallery/sali-01-480.webp 480w, assets/img/gallery/sali-01-800.webp 800w, assets/img/gallery/sali-01-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 380px">
+              <img src="assets/img/gallery/sali-01.jpg" alt="Juhlasalin pitkät pöydät ja näyttämö" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
             <div class="room-card-body">
               <h3>Juhlasali</h3>
               <p>Pitkät pöydät, oma näyttämö ja samettiesirippu — tanssit, häät ja suuret juhlat.
@@ -529,7 +546,10 @@
             </div>
           </a>
           <a class="room-card reveal" href="/galleria">
-            <img src="assets/img/gallery/kahvila-01.jpg" alt="Kahvilan pöydät ja pitsiverhot" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="assets/img/gallery/kahvila-01-480.webp 480w, assets/img/gallery/kahvila-01-800.webp 800w, assets/img/gallery/kahvila-01-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 380px">
+              <img src="assets/img/gallery/kahvila-01.jpg" alt="Kahvilan pöydät ja pitsiverhot" width="1600" height="1200" loading="lazy" decoding="async">
+            </picture>
             <div class="room-card-body">
               <h3>Pianotupa</h3>
               <p>Pitsiverhot, vanha piano ja seinäkello — rippijuhlat, valmistujaiset ja pienet seurueet.
@@ -538,7 +558,10 @@
             </div>
           </a>
           <a class="room-card reveal" href="/galleria">
-            <img src="assets/img/koti-aula.jpg" alt="Aulan punasamettiset nojatuolit" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="assets/img/koti-aula-480.webp 480w, assets/img/koti-aula-800.webp 800w, assets/img/koti-aula-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 380px">
+              <img src="assets/img/koti-aula.jpg" alt="Aulan punasamettiset nojatuolit" width="1400" height="1050" loading="lazy" decoding="async">
+            </picture>
             <div class="room-card-body">
               <h3>Aula &amp; keittiö</h3>
               <p>Samettituolit vastaanottoon ja täysi keittiö omille tai pitopalvelun tarjoiluille.</p>
