@@ -1,4 +1,5 @@
 {
   "outputDirectory": "website",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "buildCommand": "npx --yes lightningcss-cli@1.33.0 --minify website/css/styles.css -o website/css/styles.css"
 }

@@ -26,8 +26,12 @@ kolmessa paikassa — muista päivittää kaikki:
 2. Sivun JSON-LD-tapahtumadata `head`-osiossa
 3. `llms.txt`-tiedoston "Ajankohtaiset tapahtumat" -osio (tekoälyhakuja varten)
 
-Julisteet: `assets/img/events/`. Kun tapahtuma on ohi, poista sen
-`article.event-card` ja vastaava JSON-LD-lohko.
+Julisteet: `assets/img/events/`. Uudelle julisteelle lisää rivi
+`tools/optimoi-kuvat.sh`-skriptin julisteosioon, aja skripti ja käytä
+`<picture>`-merkintää kuten nykyisissä korteissa (`width`/`height` = julisteen
+todelliset mitat). Sivun ensimmäinen juliste saa `fetchpriority="high"`, muut
+`loading="lazy"`. Kun tapahtuma on ohi, poista sen `article.event-card` ja
+vastaava JSON-LD-lohko.
 
 Aiempi ylätunnisteen lippunappi (`.ticket.header-ticket`) ja etusivun
 tapahtumanosto (`.openday-card`) on poistettu, mutta niiden tyylit ovat
@@ -42,14 +46,19 @@ erillistä kuvalistaa.
 
 1. Lisää kuva kansioon `assets/img/gallery/` kahtena kokona:
    `nimi.jpg` (iso, n. 1600 px leveä) ja `nimi_t.jpg` (pikkukuva, n. 640 px).
+   Aja sitten `tools/optimoi-kuvat.sh` repon juuresta: se tekee pikkukuvasta
+   WebP-version `nimi_t.webp`.
 2. Lisää `galleria.html`-tiedoston `#gallery-grid`-lohkoon uusi rivi:
 
    ```html
    <figure class="gallery-item" data-cat="sali" data-index="27"
            data-id="nimi" data-caption="Lyhyt kuvateksti">
-     <img src="assets/img/gallery/nimi_t.jpg"
-          alt="Kuvaava alt-teksti hakukoneille"
-          width="640" height="480" loading="lazy" decoding="async">
+     <picture>
+       <source type="image/webp" srcset="assets/img/gallery/nimi_t.webp">
+       <img src="assets/img/gallery/nimi_t.jpg"
+            alt="Kuvaava alt-teksti hakukoneille"
+            width="640" height="480" loading="lazy" decoding="async">
+     </picture>
    </figure>
    ```
 
@@ -99,7 +108,8 @@ Kortit ovat oikeita Googlen arvosteluja, kopioituna profiilista. Säännöt:
 - Vieraskielinen arvostelu jätetään omalle kielelleen ja merkitään
   `lang`-attribuutilla (`<blockquote lang="en">`). Älä käännä sitä.
 - Tähtipalkin täyttö on **kyseisen arvostelun oma** arvosana: 5★ = `100%`,
-  4★ = `80%`, 3★ = `60%`. Sama luku myös `aria-label`-tekstiin.
+  4★ = `80%`, 3★ = `60%`. Sama luku myös `aria-label`-tekstiin. Tähtien
+  `span` tarvitsee `role="img"`, muuten `aria-label` ei ole sallittu.
 - Avatar on nimen alkukirjain. Väri valitaan luokalla `.google-avatar-rose`,
   `-navy` tai `-brass`, jotta vierekkäiset kortit erottuvat.
 - **Ikä kirjoitetaan kuukautena ja vuotena** (”joulukuu 2025”), vaikka Google
@@ -126,7 +136,10 @@ Päivitä molemmat samalla kertaa, ja kummassakin kaikki kolme kohtaa:
 - tähtipalkin täyttö `<i style="width:…%">`, eli **keskiarvo / 5 prosentteina**
   (esim. 4,7 / 5 = `94%`),
 - näkyvä keskiarvo ja sen perässä arvostelujen määrä,
-- linkin `aria-label`, jossa samat luvut sanallisesti ruudunlukijoille.
+- paneelissa lisäksi ruudunlukijoille piilotettu teksti (`.visually-hidden`).
+
+Heron linkillä **ei ole** `aria-labelia`: sen nimi on sen näkyvä teksti, jotta
+puheohjauksen käyttäjä voi sanoa sen mitä näkee (WCAG 2.5.3).
 
 Tähtipalkki `.tahdet` on yhteinen komponentti (herossa lisäksi `.tahdet-dark`
 tummaa taustaa varten), joten tähtien ulkoasua ei tarvitse tehdä kahdesti.
@@ -158,6 +171,20 @@ siinä olevaa Activate-linkkiä kerran, minkä jälkeen viestit tulevat perille.
       `aria-label`.
 - [ ] Osoite: sivustolla **Kauppakuja 16, 14200 Turenki** (talon kyltin
       mukaan). Korjaa, jos virallinen osoite on eri.
+
+## Nopeus (PageSpeed)
+
+- **Fontit** ovat omalla palvelimella (`assets/fonts/`, SIL OFL -lisenssit
+  samassa kansiossa). Älä palauta Google Fonts -linkkiä: se oli sivun hitain
+  renderöintiä estävä pyyntö.
+- **Kuvat:** jokaisella yli 30 kt:n kuvalla on WebP-versio `<picture>`-elementissä.
+  Alkuperäinen JPG/PNG jää varakuvaksi. Kun vaihdat kuvan, aja
+  `tools/optimoi-kuvat.sh` repon juuresta (vaatii `brew install webp`).
+- Jokaisella `<img>`-elementillä on `width` ja `height` (kuvan todelliset mitat),
+  ja kaikki näkymän alapuolella olevat kuvat ladataan `loading="lazy"`.
+- **CSS** minimoidaan vasta Vercelin buildissa (`vercel.json` → `buildCommand`).
+  Muokkaa `css/styles.css`-tiedostoa normaalisti.
+- Tarkistukset: `node --test` repon juuresta (`tests/sivusto.test.mjs`).
 
 ## Brändi
 
