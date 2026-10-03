@@ -81,3 +81,9 @@ test("etusivun LCP-kuva on <img>, ei taustakuva, ja latautuu heti", () => {
   assert.equal(attr(hero, "fetchpriority"), "high");
   assert.notEqual(attr(hero, "loading"), "lazy");
 });
+
+test("tapahtumasivun ensimmäinen juliste latautuu heti korkealla prioriteetilla", () => {
+  const first = tags(page("tapahtumat.html"), "img").find((t) => /class="event-poster"/.test(t));
+  assert.equal(attr(first, "fetchpriority"), "high");
+  assert.notEqual(attr(first, "loading"), "lazy");
+});
