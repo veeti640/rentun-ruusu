@@ -3,6 +3,17 @@
    Paletti ja typografia: ks. brand-guidelines.md
    ============================================================= */
 
+/* Fontit omalta palvelimelta (latin-osajoukot, SIL OFL — ks. assets/fonts/OFL-*.txt).
+   Googlen fonttipalvelin oli renderöintiä estävä ketju toiseen verkkotunnukseen. */
+@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../assets/fonts/fraunces-latin.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 400 700; font-display: swap; src: url("../assets/fonts/fraunces-italic-latin.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/alegreya-sans-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-style: italic; font-weight: 400; font-display: swap; src: url("../assets/fonts/alegreya-sans-400-italic-latin.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/alegreya-sans-500-latin.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/alegreya-sans-700-latin.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans SC"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/alegreya-sans-sc-500-latin.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans SC"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/alegreya-sans-sc-700-latin.woff2") format("woff2"); }
+
 :root {
   /* Brändivärit */
   --rr-navy: #2b364a;
