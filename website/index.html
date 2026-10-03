@@ -357,13 +357,12 @@
 
         <!-- Google-arvostelut. Tähtipalkin täyttö = keskiarvo / 5 prosentteina
              (4,7 / 5 = 94 %). Kun luvut muuttuvat, päivitä KOLME kohtaa täältä:
-             i-elementin width, <strong>-luku ja arvostelujen määrä — sekä
-             aria-label. Luvut näkyvät sivustolla vain tässä yhdessä paikassa. -->
+             i-elementin width, <strong>-luku ja arvostelujen määrä. Linkin nimi
+             on sen näkyvä teksti (ei aria-labelia), jotta puheohjaus löytää sen. -->
         <a class="hero-arvio" rel="noopener" target="_blank"
-           href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g"
-           aria-label="Lue Google-arvostelut: 4,7 tähteä viidestä, 20 arvostelua">
+           href="https://search.google.com/local/reviews?placeid=ChIJu1qup21pjkYR0VKYxbZ9m1g">
           <span class="tahdet tahdet-dark" aria-hidden="true"><i style="width:94%"></i></span>
-          <span class="hero-arvio-teksti" aria-hidden="true">
+          <span class="hero-arvio-teksti">
             <strong>4,7</strong>/5 · 20 arvostelua Googlessa
           </span>
         </a>
@@ -432,7 +431,7 @@
                   <span class="google-aika">joulukuu 2025</span>
                 </span>
               </header>
-              <span class="tahdet tahdet-google" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
+              <span class="tahdet tahdet-google" role="img" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
               <blockquote>Upea juhla/tapahtumatila missä on säilytetty vanhan talon
                 tunnelma. Helppo saavutettavuus myös HKI-TRE radanvarsiasukkaile, koska
                 juna-asema löytyy aivan kivenheiton päästä. Ja kaiken kruunaa kerrassaan
@@ -447,7 +446,7 @@
                   <span class="google-aika">lokakuu 2025</span>
                 </span>
               </header>
-              <span class="tahdet tahdet-google" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
+              <span class="tahdet tahdet-google" role="img" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
               <blockquote lang="en">Rentuntuusu is a really nice and atmospheric party
                 space right next to Tureng railway station, easy to get to! The premises
                 are adaptable to many things: works great for weddings, children's
@@ -464,7 +463,7 @@
                   <span class="google-aika">elokuu 2026</span>
                 </span>
               </header>
-              <span class="tahdet tahdet-google" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
+              <span class="tahdet tahdet-google" role="img" aria-label="5 tähteä viidestä"><i style="width:100%"></i></span>
               <blockquote>Loistava paikka juhlille. Tilaa on, puitteet kunnossa ja
                 sijainti mitä mainioin. Omistajan kanssa kommunikointi on vaivatonta ja
                 helppoa. Ehdottomasti pidän jatkossakin Turengin juhlani Rentussa!</blockquote>

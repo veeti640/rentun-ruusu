@@ -87,3 +87,56 @@ test("tapahtumasivun ensimmäinen juliste latautuu heti korkealla prioriteetilla
   assert.equal(attr(first, "fetchpriority"), "high");
   assert.notEqual(attr(first, "loading"), "lazy");
 });
+
+test("aria-label vain elementeillä, joilla on rooli", () => {
+  for (const f of PAGES)
+    for (const t of tags(page(f), "(?:span|div|i|p)"))
+      if (attr(t, "aria-label") !== null) assert.ok(attr(t, "role"), `${f}: ${t}`);
+});
+
+test("heron arvostelulinkin nimi on sen näkyvä teksti", () => {
+  const a = tags(page("index.html"), "a").find((t) => /class="hero-arvio"/.test(t));
+  assert.equal(attr(a, "aria-label"), null);
+});
+
+test("otsikkotasot etenevät ilman hyppyjä", () => {
+  for (const f of PAGES) {
+    const lv = [...page(f).matchAll(/<h([1-6])\b/gi)].map((m) => +m[1]);
+    lv.forEach((l, i) => i && assert.ok(l <= lv[i - 1] + 1, `${f}: h${lv[i - 1]} → h${l}`));
+  }
+});
+
+const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+const lum = (c) => {
+  const [r, g, b] = c.map((v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const ratio = (a, b) => {
+  const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
+const tokens = Object.fromEntries([...css.matchAll(/(--rr-[\w-]+):\s*(#[0-9a-f]{6})/gi)].map((m) => [m[1], m[2]]));
+const colorOf = (selector, bg) => {
+  const esc = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const blocks = [...css.matchAll(new RegExp(`(?:^|\\n|\\})\\s*${esc}\\s*\\{([^}]*)\\}`, "g"))];
+  assert.ok(blocks.length, `sääntöä ${selector} ei löydy`);
+  let v = blocks.at(-1)[1].match(/(?:^|[;{\s])color:\s*([^;]+)/)[1].trim();
+  const t = v.match(/^var\((--rr-[\w-]+)\)$/);
+  if (t) v = tokens[t[1]];
+  const a = v.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/);
+  return a ? [1, 2, 3].map((i, k) => Math.round(+a[4] * +a[i] + (1 - +a[4]) * bg[k])) : rgb(v);
+};
+
+test("pienen tekstin kontrasti on vähintään 4,5:1", () => {
+  for (const [sel, bg] of [
+    [".ticker span", "#f4efe5"],
+    [".event-details dt", "#fffaf0"],
+    [".on-light .eyebrow", "#ece5d6"], // tummin vaalea pohja (.alt-osiot)
+    [".form-card .eyebrow", "#2b364a"],
+    [".footer-bottom", "#2b364a"],
+    [".room-card .room-more", "#222b3c"],
+  ]) {
+    const r = ratio(colorOf(sel, rgb(bg)), rgb(bg));
+    assert.ok(r >= 4.5, `${sel} ${r.toFixed(2)}:1`);
+  }
+});

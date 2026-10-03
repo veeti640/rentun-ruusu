@@ -92,6 +92,10 @@ Noin **60 %** yönsininen/syvä yö · **30 %** vanha pitsi/norsunluu ·
 - Yönsininen vanhalla pitsillä — kontrasti ≈ 9.9:1 ✅
 - Persikkakultaa **ei** käytetä pitkissä teksteissä vaalealla pohjalla
   (kontrasti ei riitä) — vain tummalla pohjalla tai koristeena.
+- Messinki `#C08A57` jää vaalealla pohjalla 2,3–2,9:1:een, joten **tekstinä**
+  (yläotsikot, nauha, tapahtumien tiedot) käytetään tummaa messinkiä
+  **`#825C33`** (4,6–5,8:1 kaikilla vaaleilla pohjilla, CSS `--rr-brass-ink`).
+  Alkuperäinen messinki jää viivoihin, kehyksiin ja koristeisiin.
 
 ---
 

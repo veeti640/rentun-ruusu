@@ -26,6 +26,7 @@
   --rr-rose-deep: #8e5b59;
   --rr-gold: #e6b488;
   --rr-brass: #c08a57;
+  --rr-brass-ink: #825c33; /* messinki tekstinä vaalealla pohjalla (≥ 4,6:1) */
 
   --rr-font-display: "Fraunces", "Georgia", serif;
   --rr-font-body: "Alegreya Sans", "Trebuchet MS", sans-serif;
@@ -131,6 +132,10 @@ p { margin: 0 0 1.1em; }
 }
 
 .on-dark .eyebrow { color: var(--rr-gold); }
+
+/* Messinki jää vaalealla pohjalla 2,6:1:een — tekstinä tummempi sävy */
+.on-light .eyebrow { color: var(--rr-brass-ink); }
+.form-card .eyebrow { color: var(--rr-gold); }
 
 .star-divider {
   display: flex;
@@ -544,7 +549,7 @@ p { margin: 0 0 1.1em; }
   font-size: 0.85rem;
   letter-spacing: 0.26em;
   text-transform: lowercase;
-  color: var(--rr-brass);
+  color: var(--rr-brass-ink);
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -717,7 +722,7 @@ p { margin: 0 0 1.1em; }
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.18em;
-  color: var(--rr-rose);
+  color: var(--rr-gold); /* ruusu jäi yönsinisellä 4,0:1:een */
 }
 
 /* ---------- Galleria ---------- */
@@ -1026,7 +1031,7 @@ p { margin: 0 0 1.1em; }
   padding: 1.2rem 0 1.4rem;
   text-align: center;
   font-size: 0.85rem;
-  color: rgba(233, 226, 212, 0.5);
+  color: rgba(233, 226, 212, 0.7);
 }
 
 .footer-bottom .star { color: var(--rr-rose); padding-inline: 0.6rem; }
@@ -1076,7 +1081,7 @@ p { margin: 0 0 1.1em; }
 
 .event-details div { display: grid; grid-template-columns: 5.4rem 1fr; gap: 1rem; padding: 0.8rem 0; }
 .event-details div + div { border-top: 1px solid var(--rr-lace-dim); }
-.event-details dt { font-family: var(--rr-font-caps); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; color: var(--rr-brass); text-transform: lowercase; }
+.event-details dt { font-family: var(--rr-font-caps); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; color: var(--rr-brass-ink); text-transform: lowercase; }
 .event-details dd { margin: 0; font-weight: 700; color: var(--rr-navy); }
 
 .event-note { font-size: 0.9rem; color: rgba(43, 54, 74, 0.72); margin-top: 0.8rem; }
@@ -1177,7 +1182,7 @@ p { margin: 0 0 1.1em; }
 
 .form-card .eyebrow { color: var(--rr-gold); }
 
-.form-card h3 { color: var(--rr-gold); }
+.form-card-title { font-size: 1.35rem; color: var(--rr-gold); }
 
 .form-status {
   margin: 1rem 0 0;

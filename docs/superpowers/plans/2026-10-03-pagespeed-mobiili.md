@@ -567,3 +567,11 @@ test("pienen tekstin kontrasti on vähintään 4,5:1", () => {
 - [ ] A11y pass with `.reveal` forced visible (scratch copy only — axe skips `opacity: 0` content, which hid most brass eyebrows from the original report).
 - [ ] Before/after full-page screenshots (Lighthouse `full-page-screenshot`) for index + tapahtumat; desktop 1440 px screenshot of index.
 - [ ] After push: Vercel deployment `READY`, live `styles.css` is minified, live WebP served, Lighthouse mobile + desktop on live index.
+
+---
+
+## Execution notes (2026-10-03)
+
+- **Task 2:** adding `width`/`height` attributes turned them into fixed CSS heights where a class sets only `width` — the footer house rendered 640×450. Fixed globally: `img { max-width: 100%; height: auto; display: block; }`. Classes with their own height still win.
+- **Task 5:** a Lighthouse pass with `.reveal` forced visible found one more failure the original report could not see: `.room-card .room-more` (rose on night, 3.98:1) → gold (7.6:1). Added to the contrast test table.
+- `node --test tests/` does not work on Node 26 (directory treated as a module); use plain `node --test`.
