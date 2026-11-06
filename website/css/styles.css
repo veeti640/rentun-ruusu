@@ -1035,6 +1035,7 @@ p { margin: 0 0 1.1em; }
 }
 
 .footer-bottom .star { color: var(--rr-rose); padding-inline: 0.6rem; }
+.footer-bottom .credit { white-space: nowrap; }
 
 /* ---------- Tapahtumat ---------- */
 

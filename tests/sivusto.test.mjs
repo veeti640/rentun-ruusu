@@ -140,3 +140,11 @@ test("pienen tekstin kontrasti on vähintään 4,5:1", () => {
     assert.ok(r >= 4.5, `${sel} ${r.toFixed(2)}:1`);
   }
 });
+
+test("jokaisen sivun alatunniste kertoo sivujen tekijän", () => {
+  for (const f of PAGES) {
+    const bottom = page(f).match(/<div class="footer-bottom">([\s\S]*?)<\/div>/);
+    assert.ok(bottom, `${f}: footer-bottom puuttuu`);
+    assert.match(bottom[1], /<a href="https:\/\/veetihurskainen\.com\/fi\/">Veeti Hurskainen<\/a>/, f);
+  }
+});
