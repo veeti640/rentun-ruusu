@@ -18,3 +18,13 @@ Juhla- ja tapahtumatalo Rentun Ruusun brändi ja verkkosivusto.
 webhotellin juureen. Tuotannossa sivusto on osoitteessa
 https://rentunruusu.com. Ei riippuvuuksia, ei
 build-vaihetta.
+
+### Laskutyökalu `/lasku` on salasanan takana
+
+`middleware.js` (Vercel Routing Middleware) suojaa `/lasku`-polun ja kaiken
+sen alla HTTP Basic Authilla. Salasana on **vain** Vercelin
+ympäristömuuttujassa `LASKU_SALASANA` (repo on julkinen, ei koskaan tänne).
+Käyttäjänimellä ei ole väliä. Ilman muuttujaa kaikki saavat 401:n, ja
+muuttujan muutos tulee voimaan vasta uudessa deployssa. Suojaus toimii vain
+Vercelissä: pelkkä `website/`-kansio muualle ladattuna jättää `/lasku`-polun
+auki.
