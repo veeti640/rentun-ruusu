@@ -22,9 +22,19 @@ build-vaihetta.
 ### Laskutyökalu `/lasku` on salasanan takana
 
 `middleware.js` (Vercel Routing Middleware) suojaa `/lasku`-polun ja kaiken
-sen alla HTTP Basic Authilla. Salasana on **vain** Vercelin
-ympäristömuuttujassa `LASKU_SALASANA` (repo on julkinen, ei koskaan tänne).
-Käyttäjänimellä ei ole väliä. Ilman muuttujaa kaikki saavat 401:n, ja
-muuttujan muutos tulee voimaan vasta uudessa deployssa. Suojaus toimii vain
+sen alla omalla, Rentun Ruusun näköisellä kirjautumissivulla: vain
+salasanakenttä, ei käyttäjänimeä eikä selaimen ponnahdusikkunaa. Salasana on
+**vain** Vercelin ympäristömuuttujassa `LASKU_SALASANA` (repo on julkinen, ei
+koskaan tänne).
+
+- Oikea salasana → eväste `rr_lasku` (HttpOnly, Secure, SameSite=Lax, polku
+  `/lasku`, 30 päivää). Arvo on HMAC-SHA256 salasanasta, joten **salasanan
+  vaihto kirjaa kaikki laitteet ulos**.
+- Väärä salasana → puolen sekunnin viive ja ilmoitus ”Väärä salasana.”
+- Uloskirjautuminen: avaa `rentunruusu.com/lasku?ulos`.
+- Ilman muuttujaa mikään salasana ei kelpaa, ja sivu kertoo, ettei työkalua
+  ole otettu käyttöön.
+
+Muuttujan muutos tulee voimaan vasta uudessa deployssa. Suojaus toimii vain
 Vercelissä: pelkkä `website/`-kansio muualle ladattuna jättää `/lasku`-polun
-auki.
+auki. Testit: `tests/lasku-suojaus.test.mjs`.
