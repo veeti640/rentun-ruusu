@@ -2,6 +2,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /lasku
 
 # Tekoälyhaut: sallittu, jotta talo löytyy myös AI-hauista
 User-agent: GPTBot

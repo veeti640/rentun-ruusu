@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lasku · Rentun Ruusu</title>
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="lasku.css">
+<script type="module" src="lasku.js"></script>
+</head>
+<body>
+<div class="tyokalu">
+
+  <form class="lomake" id="lomake" autocomplete="off">
+    <h1>Uusi <em>lasku</em></h1>
+    <p class="ohje">Täytä kentät — lasku päivittyy oikealla. Lopuksi <strong>Tallenna PDF</strong> (valitse tulostimeksi ”Tallenna PDF-tiedostona”).</p>
+
+    <fieldset>
+      <legend>Asiakas</legend>
+      <label>Nimi <input type="text" name="asiakas" placeholder="Etunimi Sukunimi"></label>
+      <label>Sähköposti <input type="email" name="email" placeholder="nimi@esimerkki.fi"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Tilaisuus</legend>
+      <div class="rivi">
+        <label>Päivä <input type="date" name="pvm"></label>
+        <label>Henkilömäärä <input type="number" name="hlo" min="0" step="1" placeholder="esim. 60"></label>
+      </div>
+      <label class="valinta"><input type="radio" name="tila" value="sali" checked> Sali &amp; alakerta <span class="hinta">195 / 225 / 295 € + siivous 95 €</span></label>
+      <label class="valinta"><input type="radio" name="tila" value="pianotupa"> Pianotupa &amp; keittiö <span class="hinta">195 / 225 / 270 €</span></label>
+      <label>Vuokra-aika, lisätieto <small>(näkyy päivän alla)</small>
+        <input type="text" name="lisatieto" value="Tavarat noudettavissa seuraavana päivänä klo 12:00 mennessä"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Lisäpalvelut</legend>
+      <label class="valinta"><input type="checkbox" name="astiat"> Astiat <span class="hinta">2 € / hlö</span></label>
+      <label class="valinta"><input type="checkbox" name="liinat"> Valkoiset pöytäliinat <span class="hinta" data-k="liinahinta">1,50 € / hlö</span></label>
+      <div class="rivi muu">
+        <label>Muu rivi <small>(esim. alennus)</small> <input type="text" name="muuKuvaus" placeholder="Kuvaus"></label>
+        <label>€ <input type="text" name="muuEur" inputmode="decimal" placeholder="0"></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Maksu</legend>
+      <label>Eräpäivä <input type="date" name="erapaiva"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Laskun tekstit</legend>
+      <label>Salin järjestely <textarea name="jarjestely">Pöydät laitetaan saliin valmiiksi, henkilömäärä tarkentuu myöhemmin.</textarea></label>
+      <label>Vuokraan kuuluu <textarea name="kuuluu">Musiikkilaitteet, mikrofoni, Pianotupa, aulatilat sekä keittiö koneineen (ei astioita).</textarea></label>
+      <label>Tavarat ja nouto <textarea name="tavarat">Juhlatilaan voi jättää tavaroita juhlien jälkeen ja noutaa ne seuraavana päivänä klo 12:00 mennessä.</textarea></label>
+      <label>Avaimet <textarea name="avaimet">Avainten luovutus edellisenä päivänä erikseen sovittavana ajankohtana.</textarea></label>
+    </fieldset>
+
+    <div class="huom" id="huom" role="status" aria-live="polite"></div>
+
+    <div class="toiminnot">
+      <button type="button" class="paa" id="tallenna">Tallenna PDF</button>
+      <button type="button" id="uusi">Uusi lasku</button>
+    </div>
+  </form>
+
+  <div class="esikatselu" id="esikatselu">
+    <div class="kehys" id="kehys">
+      <div class="sheet">
+
+        <header class="masthead">
+          <div class="mark">
+            <img src="logo.png" alt="Rentun Ruusu">
+            <div class="place">Juhlatalo · Turenki</div>
+          </div>
+          <div class="doctype">
+            <div class="kicker">Tilavuokra</div>
+            <h1>Lasku <em>&amp;</em> vahvistus</h1>
+            <div class="ref" data-k="viite"></div>
+          </div>
+        </header>
+
+        <main class="body">
+          <section class="facts">
+            <div class="fact">
+              <div class="eyebrow">Asiakas</div>
+              <div class="name" data-k="asiakas"></div>
+              <div class="sub" data-k="email"></div>
+            </div>
+            <div class="fact">
+              <div class="eyebrow">Vuokra-aika</div>
+              <div class="name" data-k="pvm"></div>
+              <div class="sub" data-k="lisatieto"></div>
+            </div>
+            <div class="fact">
+              <div class="eyebrow">Vuokrakohde</div>
+              <div class="name" data-k="tilanimi"></div>
+              <div class="sub">Rentun Ruusu · Kauppakuja 16, 14200 Turenki</div>
+            </div>
+          </section>
+
+          <p class="lede">
+            Lasku koskee Rentun Ruusun <span data-k="genetiivi"></span> vuokrausta ajalle
+            <strong data-k="pvm"></strong>, Kauppakuja 16, 14200 Turenki.
+          </p>
+
+          <div class="terms-list">
+            <div class="item"><div class="eyebrow">Salin järjestely</div><p data-k="jarjestely"></p></div>
+            <div class="item"><div class="eyebrow">Vuokraan kuuluu</div><p data-k="kuuluu"></p></div>
+            <div class="item"><div class="eyebrow">Tavarat ja nouto</div><p data-k="tavarat"></p></div>
+            <div class="item"><div class="eyebrow">Avaimet</div><p data-k="avaimet"></p></div>
+          </div>
+
+          <section class="erittely">
+            <div class="eyebrow">Erittely</div>
+            <ol id="rivit"></ol>
+          </section>
+
+          <section class="ticket">
+            <div class="ticket-main">
+              <div class="eyebrow">Laskutustiedot</div>
+              <dl class="pay">
+                <dt>Nimi</dt><dd data-k="laskuttaja"></dd>
+                <dt>Viesti</dt><dd data-k="viite"></dd>
+                <dt>IBAN</dt><dd class="iban" data-k="iban"></dd>
+                <dt>Eräpäivä</dt><dd data-k="erapaiva"></dd>
+              </dl>
+            </div>
+            <div class="stub">
+              <div class="eyebrow">Maksettava</div>
+              <div class="amount" data-k="summa"></div>
+              <div class="vat">+ alv 0 %</div>
+              <div class="star">✦</div>
+            </div>
+          </section>
+
+          <section class="fineprint">
+            <div>
+              <h2>Maksu- / peruutusehdot</h2>
+              <p>Tilaisuuden peruuntuessa vähintään 60 vrk ennen vuokra-aikaa, palautetaan vuokraajalle 50 % tilavuokrasta.</p>
+            </div>
+            <div>
+              <h2>Korvausvelvollisuus</h2>
+              <p>Vuokraaja sitoutuu korvaamaan täysimääräisenä vuokra-aikana vuokratulle tilalle tai vuokraajan käyttöön luovutetulle välineistölle aiheutetut vahingot ja vuokralaisen huolimattomuudesta, sääntöjen tai kirjallisesti annetun ohjeistuksen noudattamatta jättämisestä aiheutuvat erilliset kulut ja kustannukset.</p>
+              <p class="warn">Tupakointi ja oikeiden kynttilöiden sytyttäminen sisätiloissa on ehdottomasti kielletty. Tupakan tumpit ja nikotiinipussit on kerättävä etuoven vieressä olevaan säiliöön.</p>
+            </div>
+          </section>
+        </main>
+
+        <footer class="colophon">
+          <div class="sig">Rentun Ruusu</div>
+          <div>
+            Kauppakuja 16, 14200 Turenki<span class="dot">·</span>rentunruusu16@gmail.com<span class="dot">·</span>+358 40 724 4622<span class="dot">·</span>rentunruusu.com
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
