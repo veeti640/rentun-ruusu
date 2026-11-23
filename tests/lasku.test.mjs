@@ -109,3 +109,11 @@ test("päivämäärät, viite ja tiedostonimi", () => {
   assert.equal(tiedostonimi("", ""), "lasku");
   assert.equal(TILAT.sali.siivous, 9500);
 });
+
+test("index.html: kaikki resurssipolut absoluuttisia (/lasku ilman kauttaviivaa rikkoo suhteelliset)", async () => {
+  const { readFileSync } = await import("node:fs");
+  const html = readFileSync(new URL("../website/lasku/index.html", import.meta.url), "utf8");
+  const refs = [...html.matchAll(/\b(?:src|href)="([^"#]+)"/g)].map((m) => m[1]);
+  assert.ok(refs.length >= 4, `löytyi ${refs.length}`);
+  for (const r of refs) assert.match(r, /^\//, `suhteellinen polku: ${r}`);
+});
