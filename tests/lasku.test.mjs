@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   TILAT, paivaLuokka, viikonpaiva, fiPvm, lisaaPaivia, euro, euroSyotteesta,
-  laskeRivit, viite, tiedostonimi,
+  laskeRivit, viite, tiedostonimi, oletusLisat, euroKenttaan,
 } from "../website/lasku/hinnasto.js";
 
 const NB = " ", TH = " ";
@@ -39,27 +39,84 @@ test("salin siivous 95 € lisätään aina, pianotuvassa ei riviä", () => {
   assert.equal(p.summa, 27000);
 });
 
-test("astiat 2 €/hlö, liinat: sali 1,50 €/hlö, pianotupa 50 € kiinteä", () => {
-  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", hlo: 60, astiat: true, liinat: true });
+const hlo = (snt) => ({ paalla: true, tapa: "hlo", snt });
+const kiintea = (snt) => ({ paalla: true, tapa: "kiintea", snt });
+
+test("oletuslisät huoneittain (hinnasto 2026)", () => {
+  assert.deepEqual(oletusLisat("sali"), {
+    astiat: { tapa: "hlo", snt: 200 }, liinat: { tapa: "hlo", snt: 150 },
+  });
+  assert.deepEqual(oletusLisat("pianotupa"), {
+    astiat: { tapa: "hlo", snt: 200 }, liinat: { tapa: "kiintea", snt: 5000 },
+  });
+  assert.deepEqual(oletusLisat("tuntematon"), oletusLisat("sali"));
+  // kopio, ei viittaus hinnastoon
+  oletusLisat("sali").astiat.snt = 1;
+  assert.equal(oletusLisat("sali").astiat.snt, 200);
+});
+
+test("astiat 2 €/hlö, liinat: sali 1,50 €/hlö, pianotupa 50 € kiinteä (oletukset)", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", hlo: 60, astiat: hlo(200), liinat: hlo(150) });
   assert.deepEqual(s.rivit.slice(2), [
     { selite: "Astiat · 60 hlö × 2 €", snt: 12000 },
     { selite: "Valkoiset pöytäliinat · 60 hlö × 1,50 €", snt: 9000 },
   ]);
   assert.equal(s.summa, 29500 + 9500 + 12000 + 9000);
-  const p = laskeRivit({ tila: "pianotupa", pvm: "2026-10-30", hlo: 20, astiat: true, liinat: true });
+  const p = laskeRivit({ tila: "pianotupa", pvm: "2026-10-30", hlo: 20, astiat: hlo(200), liinat: kiintea(5000) });
   assert.deepEqual(p.rivit.slice(1), [
     { selite: "Astiat · 20 hlö × 2 €", snt: 4000 },
     { selite: "Valkoiset pöytäliinat", snt: 5000 },
   ]);
 });
 
-test("henkilöhintainen lisä ilman henkilömäärää → huomautus, ei riviä", () => {
-  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", astiat: true, liinat: true });
+test("lisä pois päältä → ei riviä, vaikka hinta annettu", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", hlo: 60,
+    astiat: { paalla: false, tapa: "hlo", snt: 200 }, liinat: { paalla: false, tapa: "kiintea", snt: 5000 } });
   assert.equal(s.rivit.length, 2);
-  assert.equal(s.huomautukset.length, 2);
-  const p = laskeRivit({ tila: "pianotupa", pvm: "2026-10-31", liinat: true });
+  assert.equal(s.huomautukset.length, 0);
+});
+
+test("kiinteät astiat ja kiinteät liinat salissa — ei tarvitse henkilömäärää", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", astiat: kiintea(18000), liinat: kiintea(15000) });
+  assert.deepEqual(s.rivit.slice(2), [
+    { selite: "Astiat", snt: 18000 },
+    { selite: "Valkoiset pöytäliinat", snt: 15000 },
+  ]);
+  assert.equal(s.huomautukset.length, 0);
+});
+
+test("oma henkilöhinta, esim. 1,80 €/hlö", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", hlo: 120, astiat: hlo(180), liinat: hlo(100) });
+  assert.deepEqual(s.rivit.slice(2), [
+    { selite: "Astiat · 120 hlö × 1,80 €", snt: 21600 },
+    { selite: "Valkoiset pöytäliinat · 120 hlö × 1 €", snt: 12000 },
+  ]);
+});
+
+test("hinta ei ole luku → ei riviä + huomautus; hinta 0 → ei riviä, ei huomautusta", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", hlo: 60, astiat: hlo(NaN), liinat: kiintea(NaN) });
+  assert.equal(s.rivit.length, 2);
+  assert.deepEqual(s.huomautukset, ["Astiat: hinta ei ole luku.", "Pöytäliinat: hinta ei ole luku."]);
+  const z = laskeRivit({ tila: "sali", pvm: "2026-10-31", hlo: 60, astiat: hlo(0), liinat: kiintea(0) });
+  assert.equal(z.rivit.length, 2);
+  assert.equal(z.huomautukset.length, 0);
+});
+
+test("henkilöhintainen lisä ilman henkilömäärää → huomautus, ei riviä", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", astiat: hlo(200), liinat: hlo(150) });
+  assert.equal(s.rivit.length, 2);
+  assert.deepEqual(s.huomautukset, ["Astiat: anna henkilömäärä.", "Pöytäliinat: anna henkilömäärä."]);
+  const p = laskeRivit({ tila: "pianotupa", pvm: "2026-10-31", liinat: kiintea(5000) });
   assert.equal(p.rivit.length, 2); // kiinteä liina ei tarvitse hlö-määrää
   assert.equal(p.huomautukset.length, 0);
+});
+
+test("euroKenttaan: sentit lomakekenttään (2 / 1,50), takaisin euroSyotteesta", () => {
+  assert.equal(euroKenttaan(200), "2");
+  assert.equal(euroKenttaan(150), "1,50");
+  assert.equal(euroKenttaan(5000), "50");
+  assert.equal(euroKenttaan(12345), "123,45");
+  for (const snt of [0, 150, 200, 5000, 12345]) assert.equal(euroSyotteesta(euroKenttaan(snt)), snt);
 });
 
 test("muu rivi lisätään, myös negatiivinen; tyhjä ohitetaan", () => {

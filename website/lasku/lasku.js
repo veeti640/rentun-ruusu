@@ -1,12 +1,14 @@
 import {
-  TILAT, LASKUTTAJA, laskeRivit, euro, euroSyotteesta, viite, fiPvm, lisaaPaivia, tiedostonimi,
+  TILAT, LASKUTTAJA, laskeRivit, euro, euroSyotteesta, euroKenttaan, oletusLisat,
+  viite, fiPvm, lisaaPaivia, tiedostonimi,
 } from "./hinnasto.js";
 
-const AVAIN = "rr-lasku-luonnos-v1";
+const AVAIN = "rr-lasku-luonnos-v2";
 const lomake = document.getElementById("lomake");
 const kehys = document.getElementById("kehys");
 const esikatselu = document.getElementById("esikatselu");
 const TYHJA = "—";
+const LISAT = ["astiat", "liinat"];
 
 const tanaan = () => {
   const d = new Date(), p = (x) => String(x).padStart(2, "0");
@@ -18,7 +20,24 @@ function lue() {
   const o = Object.fromEntries(f.entries());
   o.astiat = f.has("astiat");
   o.liinat = f.has("liinat");
+  // Pois päältä olevat hintakentät ovat disabled → FormData ohittaa ne; luetaan suoraan.
+  for (const k of LISAT) {
+    o[k + "Tapa"] = lomake.elements[k + "Tapa"].value || "hlo";
+    o[k + "Eur"] = lomake.elements[k + "Eur"].value;
+  }
   return o;
+}
+
+function lisa(o, k) {
+  return { paalla: o[k], tapa: o[k + "Tapa"], snt: euroSyotteesta(o[k + "Eur"]) };
+}
+
+// Tilan vaihto palauttaa lisäpalvelujen tavan ja hinnan tilan oletuksiin (hinnasto.js).
+function oletuksetLisille(tila) {
+  const ol = oletusLisat(tila);
+  const o = {};
+  for (const k of LISAT) { o[k + "Tapa"] = ol[k].tapa; o[k + "Eur"] = euroKenttaan(ol[k].snt); }
+  kirjoita(o);
 }
 
 function kirjoita(o) {
@@ -38,7 +57,7 @@ function piirra() {
   const o = lue();
   const tila = TILAT[o.tila] || TILAT.sali;
   const { rivit, summa, huomautukset } = laskeRivit({
-    tila: o.tila, pvm: o.pvm, hlo: o.hlo, astiat: o.astiat, liinat: o.liinat,
+    tila: o.tila, pvm: o.pvm, hlo: o.hlo, astiat: lisa(o, "astiat"), liinat: lisa(o, "liinat"),
     muuKuvaus: o.muuKuvaus, muuSnt: euroSyotteesta(o.muuEur),
   });
 
@@ -57,7 +76,11 @@ function piirra() {
   aseta("iban", LASKUTTAJA.iban);
   aseta("erapaiva", fiPvm(o.erapaiva) || TYHJA);
   aseta("summa", euro(summa).replace(" €", " €"));
-  aseta("liinahinta", tila.liinat.tapa === "kiintea" ? "50 € / kerta" : "1,50 € / hlö");
+  for (const k of LISAT) {
+    const pois = !o[k];
+    for (const el of lomake.querySelectorAll(`[name="${k}Tapa"], [name="${k}Eur"]`)) el.disabled = pois;
+    aseta(k + "-yks", o[k + "Tapa"] === "kiintea" ? "€" : "€ / hlö");
+  }
 
   const ol = document.getElementById("rivit");
   ol.replaceChildren(...(rivit.length ? rivit : [null]).map((r) => {
@@ -82,6 +105,7 @@ function sovita() {
   kehys.style.height = `${kehys.scrollHeight * s}px`;
 }
 
+oletuksetLisille(lue().tila);
 const OLETUS = lue();
 
 function uusi() {
@@ -102,6 +126,9 @@ document.getElementById("tallenna").addEventListener("click", () => {
   window.print();
 });
 
+lomake.addEventListener("change", (e) => {
+  if (e.target.name === "tila") oletuksetLisille(e.target.value);
+});
 lomake.addEventListener("input", piirra);
 lomake.addEventListener("change", piirra);
 

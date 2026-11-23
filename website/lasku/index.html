@@ -36,8 +36,28 @@
 
     <fieldset>
       <legend>Lisäpalvelut</legend>
-      <label class="valinta"><input type="checkbox" name="astiat"> Astiat <span class="hinta">2 € / hlö</span></label>
-      <label class="valinta"><input type="checkbox" name="liinat"> Valkoiset pöytäliinat <span class="hinta" data-k="liinahinta">1,50 € / hlö</span></label>
+      <div class="lisa" data-lisa="astiat">
+        <label class="valinta"><input type="checkbox" name="astiat"> Astiat</label>
+        <div class="lisahinta">
+          <div class="tapa" role="radiogroup" aria-label="Astiat: hinnoittelu">
+            <label><input type="radio" name="astiatTapa" value="hlo"><span>€ / hlö</span></label>
+            <label><input type="radio" name="astiatTapa" value="kiintea"><span>kiinteä</span></label>
+          </div>
+          <label class="hintakentta"><span class="piilo">Astiat: hinta</span>
+            <input type="text" name="astiatEur" inputmode="decimal" placeholder="0"><span class="yks" data-k="astiat-yks">€ / hlö</span></label>
+        </div>
+      </div>
+      <div class="lisa" data-lisa="liinat">
+        <label class="valinta"><input type="checkbox" name="liinat"> Valkoiset pöytäliinat</label>
+        <div class="lisahinta">
+          <div class="tapa" role="radiogroup" aria-label="Valkoiset pöytäliinat: hinnoittelu">
+            <label><input type="radio" name="liinatTapa" value="hlo"><span>€ / hlö</span></label>
+            <label><input type="radio" name="liinatTapa" value="kiintea"><span>kiinteä</span></label>
+          </div>
+          <label class="hintakentta"><span class="piilo">Valkoiset pöytäliinat: hinta</span>
+            <input type="text" name="liinatEur" inputmode="decimal" placeholder="0"><span class="yks" data-k="liinat-yks">€ / hlö</span></label>
+        </div>
+      </div>
       <div class="rivi muu">
         <label>Muu rivi <small>(esim. alennus)</small> <input type="text" name="muuKuvaus" placeholder="Kuvaus"></label>
         <label>€ <input type="text" name="muuEur" inputmode="decimal" placeholder="0"></label>

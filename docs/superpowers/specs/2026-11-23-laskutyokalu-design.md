@@ -25,9 +25,15 @@ rechts Live-Vorschau des A4-Blatts, Knopf „Tallenna PDF“.
 | Pianotupa + keittiö | 195 € | 225 € | 270 € | inklusive (keine Zeile) |
 | Sali + alakerta | 195 € | 225 € | 295 € | 95 € immer als eigene Zeile |
 
-Lisäpalvelut (Häkchen, brauchen Personenzahl `hlö`):
+Lisäpalvelut (Häkchen; pro Extra wählbar **€ / hlö** oder **kiinteä** + editierbarer Betrag —
+für große Feiern ist ein Pauschalpreis oft besser). Vorbelegung aus `oletusLisat(tila)`, beim
+Raumwechsel werden Art und Betrag auf die Vorgabe des Raums zurückgesetzt:
 - Astiat: 2 €/hlö (beide Räume)
-- Valkoiset pöytäliinat: Pianotupa 50 € pauschal · Sali 1,50 €/hlö
+- Valkoiset pöytäliinat: Pianotupa 50 € kiinteä · Sali 1,50 €/hlö
+
+Zeilen: pro Person mit hlö → „Astiat · 60 hlö × 2 €“; pro Person ohne hlö → keine Zeile + Hinweis;
+kiinteä → „Astiat“ / „Valkoiset pöytäliinat“ mit dem Betrag; Betrag keine Zahl → keine Zeile +
+Hinweis „<Nimi>: hinta ei ole luku.“; Betrag 0 → keine Zeile, kein Hinweis.
 
 Wochentag-Klasse kommt aus dem Veranstaltungsdatum (lokales Datum, keine UTC-Verschiebung).
 

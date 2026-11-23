@@ -304,6 +304,21 @@ html{ background:#6E7787 }
 .lomake .valinta{ display:flex; gap:8px; align-items:center; font-weight:400; margin-top:7px }
 .lomake .valinta input{ width:18px; height:18px; accent-color:var(--rose-deep) }
 .lomake .hinta{ font-weight:400; color:rgba(43,54,74,.6); margin-left:auto; font-size:13px }
+.lomake .lisa{ margin-top:7px }
+.lomake .lisahinta{ display:flex; gap:10px; align-items:center; margin:6px 0 2px 26px; transition:opacity .15s }
+.lomake .lisahinta:has(:disabled){ opacity:.45 }
+.lomake .tapa{ display:inline-flex; flex:none; border:1px solid rgba(43,54,74,.25); border-radius:6px; overflow:hidden; background:#fff }
+.lomake .tapa label{ margin:0; position:relative; font-weight:400; font-size:14px }
+.lomake .tapa input{ position:absolute; opacity:0; inset:0; margin:0; cursor:pointer }
+.lomake .tapa span{ display:block; padding:6px 11px; white-space:nowrap }
+.lomake .tapa label + label span{ border-left:1px solid rgba(43,54,74,.25) }
+.lomake .tapa input:checked + span{ background:var(--navy); color:var(--gold) }
+.lomake .tapa input:focus-visible + span{ outline:2px solid var(--brass); outline-offset:-2px }
+.lomake .tapa input:disabled{ cursor:default }
+.lomake .hintakentta{ display:flex; align-items:center; gap:6px; margin:0; font-weight:400 }
+.lomake .hintakentta input[type=text]{ width:84px; margin:0; padding:6px 9px; text-align:right }
+.lomake .hintakentta .yks{ color:rgba(43,54,74,.7); font-size:14px; white-space:nowrap }
+.lomake .piilo{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap }
 .huom{ margin-top:12px; padding:10px 12px; border-radius:6px; background:rgba(180,120,118,.14); color:var(--rose-deep); font-size:14px; line-height:1.4 }
 .huom:empty{ display:none }
 .toiminnot{ display:flex; gap:10px; margin-top:18px; position:sticky; bottom:-40px; padding:12px 0 0; background:var(--lace) }
