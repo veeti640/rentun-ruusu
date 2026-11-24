@@ -26,6 +26,13 @@ export function oletusLisat(tila) {
   return { astiat: { ...ASTIAT }, liinat: { ...t.liinat } };
 }
 
+/** Hinnaston vuokra (null ilman päivää) ja siivous tilalle ja päivälle — lomakkeen esitäyttö. */
+export function oletusHinnat(tila, pvm) {
+  const t = TILAT[tila] || TILAT.sali;
+  const luokka = paivaLuokka(pvm);
+  return { vuokra: luokka ? t.hinnat[luokka] : null, siivous: t.siivous };
+}
+
 export const LASKUTTAJA = { nimi: "Olli Hurskainen", iban: "FI55 3939 0069 8453 45" };
 
 const LYHYET = ["su", "ma", "ti", "ke", "to", "pe", "la"];
@@ -92,7 +99,8 @@ function lisaRivi(lisa, nimi, lyhyt, n, rivit, huomautukset) {
   else huomautukset.push(`${lyhyt}: anna henkilömäärä.`);
 }
 
-export function laskeRivit({ tila, pvm, hlo, astiat, liinat, muuKuvaus, muuSnt } = {}) {
+// vuokraSnt / siivousSnt: oma hinta senteissä; undefined → hinnasto, 0 → ei riviä, NaN → huomautus.
+export function laskeRivit({ tila, pvm, hlo, astiat, liinat, muuKuvaus, muuSnt, vuokraSnt, siivousSnt } = {}) {
   const rivit = [];
   const huomautukset = [];
   const t = TILAT[tila];
@@ -102,8 +110,12 @@ export function laskeRivit({ tila, pvm, hlo, astiat, liinat, muuKuvaus, muuSnt }
   if (!t || !luokka) {
     huomautukset.push("Valitse tila ja tilaisuuden päivä, niin vuokra lasketaan.");
   } else {
-    rivit.push({ selite: `Tilavuokra · ${viikonpaiva(pvm)} ${fiPvm(pvm)}`, snt: t.hinnat[luokka] });
-    if (t.siivous) rivit.push({ selite: "Siivous", snt: t.siivous });
+    const vuokra = vuokraSnt === undefined ? t.hinnat[luokka] : vuokraSnt;
+    const siivous = siivousSnt === undefined ? t.siivous : siivousSnt;
+    if (Number.isNaN(vuokra)) huomautukset.push("Tilavuokra: hinta ei ole luku.");
+    else if (vuokra) rivit.push({ selite: `Tilavuokra · ${viikonpaiva(pvm)} ${fiPvm(pvm)}`, snt: vuokra });
+    if (Number.isNaN(siivous)) huomautukset.push("Siivous: hinta ei ole luku.");
+    else if (siivous) rivit.push({ selite: "Siivous", snt: siivous });
 
     lisaRivi(astiat, "Astiat", "Astiat", n, rivit, huomautukset);
     lisaRivi(liinat, "Valkoiset pöytäliinat", "Pöytäliinat", n, rivit, huomautukset);

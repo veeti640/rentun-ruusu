@@ -306,6 +306,8 @@ html{ background:#6E7787 }
 .lomake .valinta input{ width:18px; height:18px; accent-color:var(--rose-deep) }
 .lomake .hinta{ font-weight:400; color:rgba(43,54,74,.6); margin-left:auto; font-size:13px }
 .lomake .lisa{ margin-top:7px }
+.lomake small.hinnasto{ display:block; margin-top:3px; font-size:13px }
+.lomake small.hinnasto.muutettu{ color:var(--rose-deep) }
 .lomake .asrivi{ display:flex; gap:6px; align-items:center; margin-top:6px }
 .lomake .asrivi input[type=text]{ margin:0; flex:1 }
 .lomake .asrivi .poista{ flex:none; width:32px; height:36px; font:inherit; font-size:18px; line-height:1; color:rgba(43,54,74,.6); background:transparent; border:1px solid rgba(43,54,74,.25); border-radius:6px; cursor:pointer }

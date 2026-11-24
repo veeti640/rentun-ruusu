@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   TILAT, paivaLuokka, viikonpaiva, fiPvm, lisaaPaivia, euro, euroSyotteesta,
-  laskeRivit, viite, tiedostonimi, oletusLisat, euroKenttaan,
+  laskeRivit, viite, tiedostonimi, oletusLisat, euroKenttaan, oletusHinnat,
 } from "../website/lasku/hinnasto.js";
 
 const NB = " ", TH = " ";
@@ -173,4 +173,23 @@ test("index.html: kaikki resurssipolut absoluuttisia (/lasku ilman kauttaviivaa 
   const refs = [...html.matchAll(/\b(?:src|href)="([^"#]+)"/g)].map((m) => m[1]);
   assert.ok(refs.length >= 4, `löytyi ${refs.length}`);
   for (const r of refs) assert.match(r, /^\//, `suhteellinen polku: ${r}`);
+});
+
+test("oletusHinnat: hinnaston vuokra ja siivous tilan ja päivän mukaan", () => {
+  assert.deepEqual(oletusHinnat("sali", "2026-10-31"), { vuokra: 29500, siivous: 9500 });
+  assert.deepEqual(oletusHinnat("pianotupa", "2026-10-30"), { vuokra: 22500, siivous: 0 });
+  assert.deepEqual(oletusHinnat("sali", ""), { vuokra: null, siivous: 9500 });
+});
+
+test("oma vuokra ja siivous korvaavat hinnaston; 0 → ei riviä; ei luku → huomautus", () => {
+  const s = laskeRivit({ tila: "sali", pvm: "2026-10-31", vuokraSnt: 25000, siivousSnt: 7000 });
+  assert.deepEqual(s.rivit.map((r) => [r.selite, r.snt]), [["Tilavuokra · la 31.10.2026", 25000], ["Siivous", 7000]]);
+  assert.equal(s.summa, 32000);
+  const ilman = laskeRivit({ tila: "sali", pvm: "2026-10-31", siivousSnt: 0 });
+  assert.deepEqual(ilman.rivit.map((r) => r.selite), ["Tilavuokra · la 31.10.2026"]);
+  const p = laskeRivit({ tila: "pianotupa", pvm: "2026-10-31", siivousSnt: 5000 });
+  assert.deepEqual(p.rivit.map((r) => [r.selite, r.snt]), [["Tilavuokra · la 31.10.2026", 27000], ["Siivous", 5000]]);
+  const rikki = laskeRivit({ tila: "sali", pvm: "2026-10-31", vuokraSnt: NaN, siivousSnt: NaN });
+  assert.equal(rikki.rivit.length, 0);
+  assert.deepEqual(rikki.huomautukset, ["Tilavuokra: hinta ei ole luku.", "Siivous: hinta ei ole luku."]);
 });

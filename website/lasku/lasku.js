@@ -1,6 +1,6 @@
 import {
   TILAT, LASKUTTAJA, laskeRivit, euro, euroSyotteesta, euroKenttaan, oletusLisat,
-  viite, fiPvm, lisaaPaivia, tiedostonimi,
+  viite, fiPvm, lisaaPaivia, tiedostonimi, oletusHinnat,
 } from "./hinnasto.js";
 
 const AVAIN = "rr-lasku-luonnos-v2";
@@ -92,6 +92,24 @@ lomake.addEventListener("keydown", (e) => {
   }
 });
 
+// Tilan tai päivän vaihto täyttää vuokran ja siivouksen hinnastosta; sen jälkeen hinnat ovat vapaasti muokattavia.
+function oletuksetHinnoille() {
+  const o = lue();
+  const h = oletusHinnat(o.tila, o.pvm);
+  kirjoita({ vuokraEur: h.vuokra === null ? "" : euroKenttaan(h.vuokra), siivousEur: euroKenttaan(h.siivous) });
+}
+
+// Tyhjä kenttä = hinnaston hinta, 0 = ei riviä.
+const omaHinta = (arvo) => (String(arvo ?? "").trim() === "" ? undefined : euroSyotteesta(arvo));
+
+function hinnastoVihje(k, kentta, hinnasto, arvo) {
+  lomake.elements[kentta].placeholder = hinnasto === null ? "valitse päivä" : euroKenttaan(hinnasto);
+  const oma = omaHinta(arvo);
+  const muutettu = hinnasto !== null && oma !== undefined && oma !== hinnasto;
+  aseta(k, hinnasto === null ? "hinnasto: valitse päivä" : `hinnasto ${euro(hinnasto)}${muutettu ? " · muutettu" : ""}`);
+  for (const el of document.querySelectorAll(`[data-k="${k}"]`)) el.classList.toggle("muutettu", muutettu);
+}
+
 function kirjoita(o) {
   if (Array.isArray(o.asiakasRivit)) {
     asrivit.replaceChildren();
@@ -115,7 +133,11 @@ function piirra(tallenna = true) {
   const { rivit, summa, huomautukset } = laskeRivit({
     tila: o.tila, pvm: o.pvm, hlo: o.hlo, astiat: lisa(o, "astiat"), liinat: lisa(o, "liinat"),
     muuKuvaus: o.muuKuvaus, muuSnt: euroSyotteesta(o.muuEur),
+    vuokraSnt: omaHinta(o.vuokraEur), siivousSnt: omaHinta(o.siivousEur),
   });
+  const hinnasto = oletusHinnat(o.tila, o.pvm);
+  hinnastoVihje("vuokra-hinnasto", "vuokraEur", hinnasto.vuokra, o.vuokraEur);
+  hinnastoVihje("siivous-hinnasto", "siivousEur", hinnasto.siivous, o.siivousEur);
 
   aseta("viite", viite(o.pvm));
   aseta("asiakas", o.asiakas.trim() || TYHJA);
@@ -223,6 +245,7 @@ function sovita() {
 }
 
 oletuksetLisille(lue().tila);
+oletuksetHinnoille();
 const OLETUS = lue();
 
 function uusi() {
@@ -247,6 +270,7 @@ document.getElementById("tallenna").addEventListener("click", () => {
 
 lomake.addEventListener("change", (e) => {
   if (e.target.name === "tila") oletuksetLisille(e.target.value);
+  if (e.target.name === "tila" || e.target.name === "pvm") oletuksetHinnoille();
 });
 lomake.addEventListener("input", piirra);
 lomake.addEventListener("change", piirra);
