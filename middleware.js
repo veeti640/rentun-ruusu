@@ -20,7 +20,7 @@ const TAVUIKSI = new TextEncoder();
 const ATTRIBUUTIT = "Path=/lasku; HttpOnly; Secure; SameSite=Lax";
 
 /** LASKU_SALASANA pyyntöhetkellä (loppurivinvaihto pois, NFC), tai null jos puuttuu/tyhjä. */
-function asetettuSalasana() {
+export function asetettuSalasana() {
   const arvo = typeof process !== "undefined" ? process.env.LASKU_SALASANA : undefined;
   if (typeof arvo !== "string") return null;
   const salasana = arvo.replace(/[\r\n]+$/, "").normalize("NFC");
@@ -51,7 +51,7 @@ function evasteenArvot(otsake) {
     .map((osa) => osa.slice(EVASTE.length + 1));
 }
 
-async function kirjautunut(request, salasana) {
+export async function kirjautunut(request, salasana) {
   if (salasana === null) return false;
   const arvot = evasteenArvot(request.headers.get("cookie"));
   if (arvot.length === 0) return false;

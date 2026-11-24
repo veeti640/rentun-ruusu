@@ -1,5 +1,11 @@
 {
   "outputDirectory": "website",
   "cleanUrls": true,
-  "buildCommand": "npx --yes lightningcss-cli@1.33.0 --minify website/css/styles.css -o website/css/styles.css"
+  "buildCommand": "npx --yes lightningcss-cli@1.33.0 --minify website/css/styles.css -o website/css/styles.css",
+  "rewrites": [
+    {
+      "source": "/lasku/luonnos",
+      "destination": "/api/lasku-luonnos"
+    }
+  ]
 }

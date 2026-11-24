@@ -6,3 +6,6 @@
 
 # Laskut sisältävät asiakastietoja — ei versionhallintaan
 laskut/
+
+# Riippuvuudet asennetaan Vercelissä
+node_modules/

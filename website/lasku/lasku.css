@@ -335,6 +335,9 @@ html{ background:#6E7787 }
   font:inherit; font-weight:700; padding:11px 16px; border-radius:8px; cursor:pointer;
   border:1px solid var(--navy); background:transparent; color:var(--navy);
 }
+.toiminnot{ flex-wrap:wrap }
+.toiminnot .tallennus{ flex-basis:100%; margin:0; padding-bottom:4px; font-size:13px; line-height:1.35; color:rgba(43,54,74,.65) }
+.toiminnot .tallennus.virhe{ color:var(--rose-deep) }
 .toiminnot button.paa{ flex:1; background:var(--navy); color:var(--gold); border-color:var(--navy) }
 .toiminnot button:focus-visible{ outline:2px solid var(--brass); outline-offset:2px }
 

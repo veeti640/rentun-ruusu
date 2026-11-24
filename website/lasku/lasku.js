@@ -109,7 +109,7 @@ function aseta(k, teksti) {
   for (const el of document.querySelectorAll(`[data-k="${k}"]`)) el.textContent = teksti;
 }
 
-function piirra() {
+function piirra(tallenna = true) {
   const o = lue();
   const tila = TILAT[o.tila] || TILAT.sali;
   const { rivit, summa, huomautukset } = laskeRivit({
@@ -152,7 +152,67 @@ function piirra() {
 
   document.getElementById("huom").textContent = huomautukset.join(" ");
   try { localStorage.setItem(AVAIN, JSON.stringify(o)); } catch {}
+  if (tallenna) { muokattu = true; ajastaTallennus(); }
 }
+
+// --- pilvitallennus: sama luonnos jokaisella koneella (GET/PUT /lasku/luonnos, ks. lib/luonnos.js) ---
+const tilarivi = document.getElementById("tallennus");
+const TEKSTIT = ["lisatieto", "jarjestely", "kuuluu", "tavarat", "avaimet"]; // säilyvät „Uusi lasku“ -napissa
+let pilvi = "odottaa"; // odottaa → paalla | pois. Ei tallenneta ennen kuin pilven luonnos on luettu.
+let ajastin = null;
+let muokattu = false;
+
+function naytaTila(teksti, virhe = false) {
+  tilarivi.textContent = teksti;
+  tilarivi.classList.toggle("virhe", virhe);
+}
+const klo = () => new Date().toLocaleTimeString("fi-FI", { hour: "2-digit", minute: "2-digit" });
+
+async function tallennaPilveen(keepalive = false) {
+  clearTimeout(ajastin);
+  ajastin = null;
+  if (pilvi !== "paalla") return;
+  try {
+    const v = await fetch("/lasku/luonnos", {
+      method: "PUT", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(lue()), keepalive, credentials: "same-origin",
+    });
+    if (!v.ok) throw new Error(String(v.status));
+    naytaTila(`Tallennettu pilveen klo ${klo()}`);
+  } catch {
+    naytaTila("Pilveen tallennus epäonnistui — tallessa vain tällä koneella. Yritetään uudelleen seuraavasta muutoksesta.", true);
+  }
+}
+
+function ajastaTallennus() {
+  if (pilvi !== "paalla") return;
+  clearTimeout(ajastin);
+  naytaTila("Tallennetaan…");
+  ajastin = setTimeout(tallennaPilveen, 1000);
+}
+
+async function haePilvesta() {
+  naytaTila("Haetaan tallennettua luonnosta…");
+  try {
+    const v = await fetch("/lasku/luonnos", { cache: "no-store", credentials: "same-origin" });
+    if (v.status === 503) {
+      pilvi = "pois";
+      naytaTila("Pilvitallennus ei ole vielä käytössä — tallessa vain tällä koneella.", true);
+      return;
+    }
+    if (!v.ok) throw new Error(String(v.status));
+    const { luonnos } = await v.json();
+    pilvi = "paalla";
+    if (muokattu) { ajastaTallennus(); return; } // ehdit jo kirjoittaa: oma muutos voittaa
+    if (luonnos) { kirjoita(luonnos); piirra(false); naytaTila("Luonnos haettu pilvestä."); }
+    else naytaTila("Pilvitallennus käytössä.");
+  } catch {
+    pilvi = "pois";
+    naytaTila("Pilveen ei saatu yhteyttä — tallessa vain tällä koneella. Lataa sivu uudelleen.", true);
+  }
+}
+
+addEventListener("pagehide", () => { if (ajastin) tallennaPilveen(true); });
 
 function sovita() {
   const leveys = esikatselu.clientWidth - 56;
@@ -167,12 +227,14 @@ const OLETUS = lue();
 
 function uusi() {
   try { localStorage.removeItem(AVAIN); } catch {}
-  kirjoita({ ...OLETUS, erapaiva: lisaaPaivia(tanaan(), 14) });
+  const nyt = lue();
+  const omat = Object.fromEntries(TEKSTIT.map((k) => [k, nyt[k]]));
+  kirjoita({ ...OLETUS, ...omat, erapaiva: lisaaPaivia(tanaan(), 14) });
   piirra();
 }
 
 document.getElementById("uusi").addEventListener("click", () => {
-  if (confirm("Tyhjennetäänkö lomake?")) uusi();
+  if (confirm("Tyhjennetäänkö lomake? Omat tekstit (vuokra-aika ja laskun tekstit) säilyvät.")) uusi();
 });
 
 document.getElementById("tallenna").addEventListener("click", () => {
@@ -193,6 +255,7 @@ let luonnos = null;
 try { luonnos = JSON.parse(localStorage.getItem(AVAIN) || "null"); } catch {}
 if (luonnos) kirjoita(luonnos);
 if (!lomake.elements.erapaiva.value) lomake.elements.erapaiva.value = lisaaPaivia(tanaan(), 14);
-piirra();
+piirra(false);
+haePilvesta();
 new ResizeObserver(sovita).observe(esikatselu);
 sovita();
