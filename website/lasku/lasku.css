@@ -132,6 +132,7 @@ body{
   font-variant-numeric:tabular-nums;
 }
 .fact .sub{ font-size:9.6pt; line-height:1.5; color:rgba(43,54,74,.78); margin-top:1.4mm }
+.fact .sub.monirivi{ white-space:pre-line }
 
 .lede{
   margin-top:6mm;
@@ -291,7 +292,7 @@ html{ background:#6E7787 }
 .lomake legend{ font-family:var(--caps); font-weight:700; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-deep); padding-right:8px }
 .lomake label{ display:block; margin-top:9px; font-weight:500 }
 .lomake label small{ font-weight:400; color:rgba(43,54,74,.6) }
-.lomake input[type=text], .lomake input[type=email], .lomake input[type=date],
+.lomake input[type=text], .lomake input[type=email], .lomake input[type=tel], .lomake input[type=date],
 .lomake input[type=number], .lomake textarea{
   display:block; width:100%; margin-top:4px; padding:8px 10px;
   font:inherit; font-weight:400; color:var(--navy);
@@ -305,6 +306,14 @@ html{ background:#6E7787 }
 .lomake .valinta input{ width:18px; height:18px; accent-color:var(--rose-deep) }
 .lomake .hinta{ font-weight:400; color:rgba(43,54,74,.6); margin-left:auto; font-size:13px }
 .lomake .lisa{ margin-top:7px }
+.lomake .asrivi{ display:flex; gap:6px; align-items:center; margin-top:6px }
+.lomake .asrivi input[type=text]{ margin:0; flex:1 }
+.lomake .asrivi .poista{ flex:none; width:32px; height:36px; font:inherit; font-size:18px; line-height:1; color:rgba(43,54,74,.6); background:transparent; border:1px solid rgba(43,54,74,.25); border-radius:6px; cursor:pointer }
+.lomake .asrivi .poista:hover{ color:var(--rose-deep); border-color:var(--rose-deep) }
+.lomake .lisaarivi{ margin-top:7px; padding:4px 0; font:inherit; font-weight:700; font-size:14px; color:var(--rose-deep); background:none; border:0; cursor:pointer }
+.lomake .lisaarivi:hover{ text-decoration:underline }
+.lomake .vihje{ margin-left:8px; font-size:13px; color:rgba(43,54,74,.6) }
+.lomake .poista:focus-visible, .lomake .lisaarivi:focus-visible{ outline:2px solid var(--brass); outline-offset:2px }
 .lomake .lisahinta{ display:flex; gap:10px; align-items:center; margin:6px 0 2px 26px; transition:opacity .15s }
 .lomake .lisahinta:has(:disabled){ opacity:.45 }
 .lomake .tapa{ display:inline-flex; flex:none; border:1px solid rgba(43,54,74,.25); border-radius:6px; overflow:hidden; background:#fff }

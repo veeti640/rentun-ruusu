@@ -19,7 +19,12 @@
     <fieldset>
       <legend>Asiakas</legend>
       <label>Nimi <input type="text" name="asiakas" placeholder="Etunimi Sukunimi"></label>
-      <label>Sähköposti <input type="email" name="email" placeholder="nimi@esimerkki.fi"></label>
+      <div class="asrivit" id="asrivit"></div>
+      <button type="button" class="lisaarivi" id="lisaarivi">+ Lisää rivi</button><small class="vihje">tai paina Enter (esim. osoite, yritys)</small>
+      <div class="rivi">
+        <label>Sähköposti <input type="email" name="email" placeholder="nimi@esimerkki.fi"></label>
+        <label>Puhelin <input type="tel" name="puhelin" placeholder="+358 40 123 4567"></label>
+      </div>
     </fieldset>
 
     <fieldset>
@@ -106,7 +111,7 @@
             <div class="fact">
               <div class="eyebrow">Asiakas</div>
               <div class="name" data-k="asiakas"></div>
-              <div class="sub" data-k="email"></div>
+              <div class="sub monirivi" data-k="asiakastiedot"></div>
             </div>
             <div class="fact">
               <div class="eyebrow">Vuokra-aika</div>
@@ -171,7 +176,7 @@
         <footer class="colophon">
           <div class="sig">Rentun Ruusu</div>
           <div>
-            Kauppakuja 16, 14200 Turenki<span class="dot">·</span>rentunruusu16@gmail.com<span class="dot">·</span>+358 40 724 4622<span class="dot">·</span>rentunruusu.com
+            Kauppakuja 16, 14200 Turenki<span class="dot">·</span>info@rentunruusu.com<span class="dot">·</span>+358 40 724 4622<span class="dot">·</span>rentunruusu.com
           </div>
         </footer>
 

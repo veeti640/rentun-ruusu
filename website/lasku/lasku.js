@@ -18,6 +18,8 @@ const tanaan = () => {
 function lue() {
   const f = new FormData(lomake);
   const o = Object.fromEntries(f.entries());
+  o.asiakasRivit = f.getAll("asiakasRivi");
+  delete o.asiakasRivi;
   o.astiat = f.has("astiat");
   o.liinat = f.has("liinat");
   // Pois päältä olevat hintakentät ovat disabled → FormData ohittaa ne; luetaan suoraan.
@@ -40,7 +42,61 @@ function oletuksetLisille(tila) {
   kirjoita(o);
 }
 
+// Asiakkaan lisärivit (osoite, yritys …): Enter / „+ Lisää rivi“ lisää, × tai Backspace tyhjässä poistaa.
+const asrivit = document.getElementById("asrivit");
+
+function uusiRivi(arvo = "", paikka = "loppu") {
+  const d = document.createElement("div");
+  d.className = "asrivi";
+  const i = document.createElement("input");
+  i.type = "text"; i.name = "asiakasRivi"; i.value = arvo;
+  i.placeholder = "esim. Katuosoite 1, 00100 Kaupunki";
+  i.setAttribute("aria-label", "Asiakas, lisärivi");
+  const x = document.createElement("button");
+  x.type = "button"; x.className = "poista"; x.textContent = "×";
+  x.setAttribute("aria-label", "Poista rivi");
+  d.append(i, x);
+  if (paikka === "alku") asrivit.prepend(d); else if (paikka === "loppu") asrivit.append(d); else paikka.after(d);
+  return i;
+}
+
+function poistaRivi(d, kohdista) {
+  const ed = d.previousElementSibling?.querySelector("input") || lomake.elements.asiakas;
+  d.remove();
+  if (kohdista) ed.focus();
+  piirra();
+}
+
+document.getElementById("lisaarivi").addEventListener("click", () => {
+  uusiRivi().focus();
+  piirra();
+});
+
+asrivit.addEventListener("click", (e) => {
+  if (e.target.classList.contains("poista")) poistaRivi(e.target.parentElement, true);
+});
+
+lomake.addEventListener("keydown", (e) => {
+  const t = e.target;
+  if (t.name !== "asiakas" && t.name !== "asiakasRivi") return;
+  const rivi = t.name === "asiakasRivi" ? t.parentElement : null;
+  if (e.key === "Enter" && !e.isComposing) {
+    e.preventDefault();
+    const seur = rivi ? rivi.nextElementSibling : asrivit.firstElementChild;
+    const seurI = seur?.querySelector("input");
+    (seurI && !seurI.value ? seurI : uusiRivi("", rivi || "alku")).focus();
+    piirra();
+  } else if (e.key === "Backspace" && rivi && !t.value) {
+    e.preventDefault();
+    poistaRivi(rivi, true);
+  }
+});
+
 function kirjoita(o) {
+  if (Array.isArray(o.asiakasRivit)) {
+    asrivit.replaceChildren();
+    for (const r of o.asiakasRivit) uusiRivi(r);
+  }
   for (const el of lomake.elements) {
     if (!el.name || !(el.name in o)) continue;
     if (el.type === "checkbox") el.checked = !!o[el.name];
@@ -63,7 +119,8 @@ function piirra() {
 
   aseta("viite", viite(o.pvm));
   aseta("asiakas", o.asiakas.trim() || TYHJA);
-  aseta("email", o.email.trim());
+  aseta("asiakastiedot", [...o.asiakasRivit, o.email, o.puhelin]
+    .map((r) => r.trim()).filter(Boolean).join("\n"));
   aseta("pvm", fiPvm(o.pvm) || TYHJA);
   aseta("lisatieto", o.lisatieto.trim());
   aseta("tilanimi", tila.nimi);
