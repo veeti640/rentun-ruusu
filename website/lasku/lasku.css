@@ -162,6 +162,7 @@ body{
   content:""; position:absolute; left:0; right:0; height:2.4mm;
   background-image:radial-gradient(circle at 1.2mm 50%, var(--lace) .95mm, rgba(244,239,229,0) 1.05mm);
   background-size:4.8mm 2.4mm;
+  z-index:1; /* über .stub (auch position:relative), sonst fehlen oben rechts die Halbkreise */
 }
 .ticket::before{ top:-1.2mm }
 .ticket::after{ bottom:-1.2mm }
