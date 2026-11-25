@@ -161,9 +161,12 @@ test("päivämäärät, viite ja tiedostonimi", () => {
   assert.equal(fiPvm(""), "");
   assert.equal(lisaaPaivia("2026-12-25", 14), "2027-01-08");
   assert.equal(viite("2026-10-31"), "RR 31.10.2026");
-  assert.equal(tiedostonimi("2026-10-31", "Emmi Anttila"), "lasku-2026-10-31-emmi-anttila");
-  assert.equal(tiedostonimi("2026-10-31", "Äijälä Öljy & Co"), "lasku-2026-10-31-aijala-oljy-co");
-  assert.equal(tiedostonimi("", ""), "lasku");
+  assert.equal(tiedostonimi("2026-10-31", "Emmi Anttila"), "Emmi Anttila 31.10.2026");
+  assert.equal(tiedostonimi("2026-10-31", "  Äijälä   Öljy & Co "), "Äijälä Öljy & Co 31.10.2026");
+  assert.equal(tiedostonimi("2026-10-31", "A/B: Oy?"), "A-B Oy 31.10.2026");
+  assert.equal(tiedostonimi("2026-10-31", ""), "31.10.2026");
+  assert.equal(tiedostonimi("", "Emmi Anttila"), "Emmi Anttila");
+  assert.equal(tiedostonimi("", ""), "Lasku");
   assert.equal(TILAT.sali.siivous, 9500);
 });
 

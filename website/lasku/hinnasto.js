@@ -133,9 +133,13 @@ export function viite(iso) {
   return p ? `RR ${p}` : "RR";
 }
 
+// Tallennettavan PDF:n nimi = asiakkaan nimi + tilaisuuden päivä, ei muuta.
+// Selain käyttää document.titlea tiedostonimenä; tiedostonimissä kielletyt
+// merkit pois (/ ja \\ → -), muuten nimi sellaisenaan.
 export function tiedostonimi(iso, asiakas) {
-  const slug = String(asiakas || "")
-    .normalize("NFD").replace(/[̀-ͯ]/g, "")
-    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-  return ["lasku", paiva(iso) ? iso : "", slug].filter(Boolean).join("-");
+  const nimi = String(asiakas || "")
+    .replace(/[\/\\]/g, "-")
+    .replace(/[:*?"<>|\u0000-\u001f]/g, "")
+    .replace(/\s+/g, " ").trim();
+  return [nimi, fiPvm(iso)].filter(Boolean).join(" ") || "Lasku";
 }
